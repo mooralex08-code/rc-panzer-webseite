@@ -1,66 +1,182 @@
 <!doctype html>
-<html lang="de"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
 <title>RC Panzer Admin</title>
 <style>
 :root{--bg:#11140f;--panel:#20271c;--olive:#596447;--sand:#c8b998;--text:#f1f0e7;--muted:#b7bba9;--line:rgba(255,255,255,.14)}
 *{box-sizing:border-box}body{margin:0;font-family:Arial,Helvetica,sans-serif;background:var(--bg);color:var(--text)}
-.wrap{max-width:1100px;margin:auto;padding:30px 18px 80px}.card{background:var(--panel);border:1px solid var(--line);padding:24px;margin:18px 0}
-h1,h2{margin-top:0}.muted{color:var(--muted)}label{display:block;font-weight:700;margin:14px 0 6px}
-input,textarea{width:100%;padding:12px;border:1px solid var(--line);background:#0d100b;color:var(--text)}
-textarea{min-height:90px;resize:vertical}.btn{display:inline-block;padding:12px 18px;border:0;background:var(--sand);color:#171910;font-weight:700;cursor:pointer;margin:8px 8px 0 0}
-.btn.secondary{background:var(--olive);color:white}.btn.danger{background:#7f332b;color:white}.hidden{display:none}
-.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}.tank{border:1px solid var(--line);padding:14px;background:#171c14}.tank img{width:100%;height:180px;object-fit:cover;background:#0a0c09}
-.top{display:flex;justify-content:space-between;align-items:center;gap:20px}.badge{padding:5px 8px;border:1px solid var(--sand);color:var(--sand);font-size:12px}
-.note{padding:14px;border-left:4px solid var(--sand);background:#191d15;color:#d7d9ce}
-@media(max-width:700px){.grid{grid-template-columns:1fr}.top{align-items:flex-start;flex-direction:column}}
+.wrap{max-width:1150px;margin:auto;padding:30px 18px 80px}.card{background:var(--panel);border:1px solid var(--line);padding:24px;margin:18px 0}
+h1,h2,h3{margin-top:0}.muted{color:var(--muted)}label{display:block;font-weight:700;margin:14px 0 6px}
+input,textarea,select{width:100%;padding:12px;border:1px solid var(--line);background:#0d100b;color:var(--text)}
+textarea{min-height:95px;resize:vertical}.btn{display:inline-block;padding:12px 18px;border:0;background:var(--sand);color:#171910;font-weight:700;cursor:pointer;margin:8px 8px 0 0}
+.btn.secondary{background:var(--olive);color:white}.btn.danger{background:#7f332b;color:white}.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+.item{border:1px solid var(--line);padding:15px;background:#171c14}.item img{width:100%;height:190px;object-fit:cover;background:#0a0c09}.note{padding:14px;border-left:4px solid var(--sand);background:#191d15;color:#d7d9ce}
+.sticky{position:sticky;top:0;z-index:10;background:#11140f;padding:12px 0;border-bottom:1px solid var(--line)}.actions{display:flex;flex-wrap:wrap;gap:8px}.section-title{margin-top:4px}
+@media(max-width:760px){.grid{grid-template-columns:1fr}}
 </style>
 <script>
-if (sessionStorage.getItem("rcPanzerAdminLoggedIn") !== "1") {
-  window.location.href = "index.html";
-}
+if (sessionStorage.getItem("rcPanzerAdminLoggedIn") !== "1") location.href="index.html";
 </script>
+</head>
+<body>
+<div class="wrap">
+  <div class="sticky">
+    <h1>RC Panzer – Admin</h1>
+    <div class="actions">
+      <button class="btn" id="saveBtn">Alles speichern</button>
+      <button class="btn secondary" id="previewBtn">Webseite öffnen</button>
+      <button class="btn danger" id="resetBtn">Änderungen zurücksetzen</button>
+      <button class="btn secondary" id="logoutBtn">Abmelden</button>
+    </div>
+    <p id="saveMsg" class="muted"></p>
+  </div>
 
-</head><body><div class="wrap">
-<div class="top"><div><h1>RC Panzer – Admin</h1><p class="muted">Texte und Bilder für die Webseite bearbeiten.</p></div><span class="badge">TEST-PORTAL</span></div>
-<div class="note">Diese GitHub-Pages-Testversion speichert Änderungen nur in diesem Browser/Gerät. Das Passwort ist bei einer rein statischen Webseite nicht sicher geschützt.</div>
-<section id="login" class="card hidden"><h2>Anmelden</h2><label>Benutzername</label><input id="user"><label>Passwort</label><input id="pass" type="password"><button class="btn" id="loginBtn">Anmelden</button><p id="loginMsg" class="muted"></p></section>
-<section id="editor">
-<div class="card"><h2>Startseite</h2><label>Überschrift</label><input id="heroTitle"><label>Einleitung</label><textarea id="heroCopy"></textarea></div>
-<div class="card"><h2>Meine Panzer</h2><div id="tankGrid" class="grid"></div></div>
-<div class="card"><button class="btn" id="saveBtn">Änderungen speichern</button><button class="btn secondary" id="previewBtn">Webseite öffnen</button><button class="btn danger" id="resetBtn">Änderungen zurücksetzen</button><p id="saveMsg" class="muted"></p></div>
-</section></div>
+  <div class="note">
+    Du kannst hier Texte, E-Mail-Adresse, Panzerdaten, Bilder und Teile ändern.
+    Bei dieser GitHub-Pages-Testversion werden die Änderungen nur in diesem Browser gespeichert.
+  </div>
+
+  <section class="card">
+    <h2>Allgemein</h2>
+    <label>Seitentitel / Logo-Text</label><input id="brand">
+    <label>Unterzeile beim Logo</label><input id="tagline">
+    <label>Startseiten-Überschrift</label><input id="heroTitle">
+    <label>Startseiten-Text</label><textarea id="heroCopy"></textarea>
+  </section>
+
+  <section class="card">
+    <h2>Kontakt & E-Mail</h2>
+    <label>E-Mail-Adresse</label><input id="email" type="email" placeholder="deine-mail@gmail.com">
+    <label>Kontakt-Überschrift</label><input id="contactHeading">
+    <label>Kontakt-Text</label><textarea id="contactIntro"></textarea>
+    <label>Kleiner Hinweis unter der E-Mail</label><input id="contactNote">
+  </section>
+
+  <section class="card">
+    <h2>Über mich</h2>
+    <label>Seit wann / Jahr</label><input id="aboutSince">
+    <label>Überschrift</label><input id="aboutHeading">
+    <label>Absatz 1</label><textarea id="aboutText1"></textarea>
+    <label>Absatz 2</label><textarea id="aboutText2"></textarea>
+    <label>Absatz 3</label><textarea id="aboutText3"></textarea>
+  </section>
+
+  <section class="card">
+    <h2>Meine Panzer</h2>
+    <div id="tankGrid" class="grid"></div>
+  </section>
+
+  <section class="card">
+    <h2>Teile & Zubehör</h2>
+    <label>Überschrift</label><input id="partsHeading">
+    <div id="partsGrid" class="grid"></div>
+    <label>Hinweis unter den Angeboten</label><textarea id="legalNote"></textarea>
+  </section>
+
+  <section class="card">
+    <h2>Fußbereich</h2>
+    <label>Hinweis ganz unten</label><textarea id="footerNote"></textarea>
+  </section>
+</div>
+
 <script>
-const USER="Micha", PASS="moormicha08", KEY="rcPanzerSiteData";
-const defaultCards=[
-["Tiger I","Deutscher schwerer Panzer des Zweiten Weltkriegs.","tiger.jpg"],
-["Flakpanzer Gepard","Bundeswehr-Flugabwehrpanzer mit markantem Zwillinggeschütz.","flakpanzer.jpg"],
-["RC-Rasenmäher – Sonderprojekt","Kein Panzer, aber als besonderes RC-Projekt weiterhin in deiner Sammlung.","rasenmaeher.jpg"],
-["T-72 – vermutlich T-72B","Sowjetisch/russischer Kampfpanzer mit Zusatzpanzerung am Turm.","t72.jpg"],
-["Leopard 2A6","Moderner deutscher Kampfpanzer mit langem 120-mm-Rohr und Keilpanzerung am Turm.","leopard2a6.jpg"],
-["M113","Klassischer leichter Ketten-Schützenpanzer/Transportpanzer mit fünf Laufrollen.","m113.jpg"],
-["Schützenpanzer Marder 1A3","Bundeswehr-Schützenpanzer mit 20-mm-Bordkanone und markanter Seitenpanzerung.","marder1a3.jpg"],
-["FV107 Scimitar – vermutlich","Britischer leichter Spähpanzer mit kompakter Silhouette und 30-mm-Bewaffnung.","scimitar.jpg"],
-["Flakpanzer Gepard","Bundeswehr-Flugabwehrkanonenpanzer auf Leopard-1-Fahrgestell.","gepard2.jpg"],
-["Panzer III – vermutlich Ausf. L/M","Deutscher mittlerer Panzer mit sechs Laufrollen und langem 5-cm-Rohr.","panzer3.jpg"],
-["T-72B","Sowjetischer Kampfpanzer mit Reaktivpanzerung und niedriger Turmsilhouette.","t72b.jpg"],
-["Cromwell Cruiser Tank","Britischer Cruiser-Panzer des Zweiten Weltkriegs.","cromwell.jpg"],
-["Sturmtiger","Deutsches schweres Sturmpanzermodell mit 38-cm-Raketenmörser.","sturmtiger.jpg"]
-].map(x=>({name:x[0],desc:x[1],image:x[2]}));
-function getData(){try{return JSON.parse(localStorage.getItem(KEY))||{}}catch(e){return{}}}
-function loadEditor(){
- const d=getData(); heroTitle.value=(d.heroTitle||"RC Panzer / Gebaut für Details.").replace(/<br>/g," / ").replace(/<[^>]+>/g,"");
- heroCopy.value=d.heroCopy||"Willkommen in meiner kleinen RC-Panzer-Werkstatt. Hier zeige ich meine Modelle, Umbauten und Projekte – und biete hin und wieder passende Ersatz- und Zubehörteile an.";
- const cards=d.cards||defaultCards; tankGrid.innerHTML="";
- cards.forEach((c,i)=>{const box=document.createElement("div");box.className="tank";box.innerHTML=`<img id="img${i}" src="${c.image}"><label>Modellname</label><input id="name${i}" value="${(c.name||"").replace(/"/g,"&quot;")}"><label>Beschreibung</label><textarea id="desc${i}">${c.desc||""}</textarea><label>Neues Bild auswählen</label><input id="file${i}" type="file" accept="image/*">`;tankGrid.appendChild(box);box.querySelector("#file"+i).onchange=e=>{const f=e.target.files[0];if(!f)return;const r=new FileReader();r.onload=()=>box.querySelector("#img"+i).src=r.result;r.readAsDataURL(f)}})
-}
-loginBtn.onclick=()=>{if(user.value===USER&&pass.value===PASS){login.classList.add("hidden");editor.classList.remove("hidden");loadEditor()}else loginMsg.textContent="Benutzername oder Passwort ist falsch."}
-saveBtn.onclick=()=>{const cards=defaultCards.map((_,i)=>({name:document.getElementById("name"+i).value.trim(),desc:document.getElementById("desc"+i).value.trim(),image:document.getElementById("img"+i).src}));localStorage.setItem(KEY,JSON.stringify({heroTitle:heroTitle.value.trim().replace(/\s*\/\s*/g,"<br>"),heroCopy:heroCopy.value.trim(),cards}));saveMsg.textContent="Gespeichert. Änderungen gelten in diesem Browser."}
-previewBtn.onclick=()=>window.open("index.html","_blank");
-resetBtn.onclick=()=>{if(confirm("Alle Test-Änderungen löschen?")){localStorage.removeItem(KEY);loadEditor();saveMsg.textContent="Zurückgesetzt."}}
-</script>
-<script>
-window.addEventListener("DOMContentLoaded", () => {
-  if (typeof loadEditor === "function") loadEditor();
+const KEY="rcPanzerSiteData";
+const defaults={
+ brand:"PANZER WERKSTATT",
+ tagline:"Modelle · Umbauten · Teile",
+ heroTitle:"RC Panzer.<br><span>Gebaut für Details.</span>",
+ heroCopy:"Willkommen in meiner kleinen RC-Panzer-Werkstatt. Hier zeige ich meine Modelle, Umbauten und Projekte – und biete hin und wieder passende Ersatz- und Zubehörteile an.",
+ email:"rcpanzer@example.de",
+ contactHeading:"Interesse an einem Teil?",
+ contactIntro:"Schreib mir kurz, um welches Teil oder Modell es geht. Für den Test ist aktuell eine Beispieladresse eingetragen.",
+ contactNote:"Bitte vor Veröffentlichung durch deine echte E-Mail-Adresse ersetzen.",
+ aboutSince:"20XX",
+ aboutHeading:"Modellbau aus Leidenschaft",
+ aboutText1:"Hallo! Ich beschäftige mich seit einigen Jahren mit RC-Panzern und allem, was dazugehört. Besonders spannend finde ich Umbauten, technische Verbesserungen, eigene Lackierungen und natürlich das Fahren der Modelle.",
+ aboutText2:"Auf dieser Seite möchte ich meine Panzer und laufenden Projekte zeigen. Da sich im Laufe der Zeit auch einige Ersatzteile und Zubehörteile ansammeln, findest du hier außerdem gelegentlich Teile, die ich privat abgeben möchte.",
+ aboutText3:"Wenn du Fragen zu einem Modell oder Interesse an einem Teil hast, schreib mir einfach eine E-Mail. Ich freue mich über den Austausch mit anderen RC-Panzer-Fans.",
+ partsHeading:"Teile & Zubehör",
+ legalNote:"Privatverkauf. Beispieltexte und -preise – bitte vor Veröffentlichung mit deinen echten Angaben ersetzen.",
+ footerNote:"Kein offizieller Auftritt der Bundeswehr. Gestaltung lediglich im militärisch-technischen Stil.",
+ cards:[
+["Tiger I","Deutscher schwerer Panzer des Zweiten Weltkriegs.","tiger.jpg","1:16","Klassiker"],
+["Flakpanzer Gepard","Bundeswehr-Flugabwehrpanzer mit markantem Zwillinggeschütz.","flakpanzer.jpg","RC","Flak"],
+["RC-Rasenmäher – Sonderprojekt","Kein Panzer, aber als besonderes RC-Projekt weiterhin in deiner Sammlung.","rasenmaeher.jpg","RC","Sonderprojekt"],
+["T-72 – vermutlich T-72B","Sowjetisch/russischer Kampfpanzer mit Zusatzpanzerung am Turm.","t72.jpg","RC","Ostblock"],
+["Leopard 2A6","Moderner deutscher Kampfpanzer mit langem 120-mm-Rohr und Keilpanzerung am Turm.","leopard2a6.jpg","RC","Bundeswehr"],
+["M113","Klassischer leichter Ketten-Schützenpanzer/Transportpanzer mit fünf Laufrollen.","m113.jpg","RC","Transporter"],
+["Schützenpanzer Marder 1A3","Bundeswehr-Schützenpanzer mit 20-mm-Bordkanone und markanter Seitenpanzerung.","marder1a3.jpg","RC","Bundeswehr"],
+["FV107 Scimitar – vermutlich","Britischer leichter Spähpanzer mit kompakter Silhouette und 30-mm-Bewaffnung.","scimitar.jpg","RC","Britisch"],
+["Flakpanzer Gepard","Bundeswehr-Flugabwehrkanonenpanzer auf Leopard-1-Fahrgestell.","gepard2.jpg","RC","Flak"],
+["Panzer III – vermutlich Ausf. L/M","Deutscher mittlerer Panzer mit sechs Laufrollen und langem 5-cm-Rohr.","panzer3.jpg","RC","WWII"],
+["T-72B","Sowjetischer Kampfpanzer mit Reaktivpanzerung und niedriger Turmsilhouette.","t72b.jpg","RC","Ostblock"],
+["Cromwell Cruiser Tank","Britischer Cruiser-Panzer des Zweiten Weltkriegs.","cromwell.jpg","RC","Britisch"],
+["Sturmtiger","Deutsches schweres Sturmpanzermodell mit 38-cm-Raketenmörser.","sturmtiger.jpg","RC","WWII"]
+].map(x=>({name:x[0],desc:x[1],image:x[2],scale:x[3],tag:x[4]})),
+ parts:[
+  {status:"Verfügbar",name:"Metallgetriebe 1:16",desc:"Gebrauchtes Getriebe, technisch geprüft und voll funktionsfähig.",price:"35 €",actionText:"Anfragen →"},
+  {status:"Verfügbar",name:"Metallketten Tiger I",desc:"Ein Satz Metallketten mit Gebrauchsspuren, passend für viele 1:16-Modelle.",price:"45 €",actionText:"Anfragen →"},
+  {status:"Reserviert",name:"Turm-Einheit Panther",desc:"Komplette Turmeinheit als Basis für Reparatur, Ersatz oder eigenes Umbauprojekt.",price:"60 €",actionText:"Derzeit reserviert"},
+  {status:"Verfügbar",name:"Kleinteile-Paket",desc:"Luken, Werkzeuge, Halterungen und weitere Kleinteile aus verschiedenen Projekten.",price:"20 €",actionText:"Anfragen →"}
+ ]
+};
+function loadData(){try{return Object.assign({},defaults,JSON.parse(localStorage.getItem(KEY)||"{}"))}catch(e){return defaults}}
+const d=loadData();
+["brand","tagline","heroCopy","email","contactHeading","contactIntro","contactNote","aboutSince","aboutHeading","aboutText1","aboutText2","aboutText3","partsHeading","legalNote","footerNote"].forEach(id=>document.getElementById(id).value=d[id]||"");
+heroTitle.value=(d.heroTitle||"").replace(/<br>/g," / ").replace(/<[^>]+>/g,"");
+
+function esc(s){return String(s??"").replace(/&/g,"&amp;").replace(/"/g,"&quot;").replace(/</g,"&lt;")}
+tankGrid.innerHTML="";
+(d.cards||defaults.cards).forEach((c,i)=>{
+ const box=document.createElement("div"); box.className="item";
+ box.innerHTML=`<img id="img${i}" src="${c.image}">
+ <label>Modellname</label><input id="name${i}" value="${esc(c.name)}">
+ <label>Beschreibung</label><textarea id="desc${i}">${esc(c.desc)}</textarea>
+ <label>Maßstab / Kürzel</label><input id="scale${i}" value="${esc(c.scale)}">
+ <label>Kategorie</label><input id="tag${i}" value="${esc(c.tag)}">
+ <label>Bild austauschen</label><input id="file${i}" type="file" accept="image/*">`;
+ tankGrid.appendChild(box);
+ box.querySelector("#file"+i).onchange=e=>{const f=e.target.files[0];if(!f)return;const r=new FileReader();r.onload=()=>box.querySelector("#img"+i).src=r.result;r.readAsDataURL(f)}
 });
+
+partsGrid.innerHTML="";
+(d.parts||defaults.parts).forEach((p,i)=>{
+ const box=document.createElement("div"); box.className="item";
+ box.innerHTML=`<h3>Teil ${i+1}</h3>
+ <label>Status</label><input id="pstatus${i}" value="${esc(p.status)}">
+ <label>Name</label><input id="pname${i}" value="${esc(p.name)}">
+ <label>Beschreibung</label><textarea id="pdesc${i}">${esc(p.desc)}</textarea>
+ <label>Preis</label><input id="pprice${i}" value="${esc(p.price)}">
+ <label>Button-/Statustext</label><input id="paction${i}" value="${esc(p.actionText)}">`;
+ partsGrid.appendChild(box);
+});
+
+saveBtn.onclick=()=>{
+ const cards=(d.cards||defaults.cards).map((_,i)=>({
+   name:document.getElementById("name"+i).value.trim(),
+   desc:document.getElementById("desc"+i).value.trim(),
+   image:document.getElementById("img"+i).src,
+   scale:document.getElementById("scale"+i).value.trim(),
+   tag:document.getElementById("tag"+i).value.trim()
+ }));
+ const parts=(d.parts||defaults.parts).map((_,i)=>({
+   status:document.getElementById("pstatus"+i).value.trim(),
+   name:document.getElementById("pname"+i).value.trim(),
+   desc:document.getElementById("pdesc"+i).value.trim(),
+   price:document.getElementById("pprice"+i).value.trim(),
+   actionText:document.getElementById("paction"+i).value.trim()
+ }));
+ const data={cards,parts};
+ ["brand","tagline","heroCopy","email","contactHeading","contactIntro","contactNote","aboutSince","aboutHeading","aboutText1","aboutText2","aboutText3","partsHeading","legalNote","footerNote"].forEach(id=>data[id]=document.getElementById(id).value.trim());
+ data.heroTitle=heroTitle.value.trim().replace(/\s*\/\s*/g,"<br>");
+ localStorage.setItem(KEY,JSON.stringify(data));
+ saveMsg.textContent="Gespeichert. Die Änderungen erscheinen auf dieser Webseite in diesem Browser.";
+};
+previewBtn.onclick=()=>window.open("index.html","_blank");
+resetBtn.onclick=()=>{if(confirm("Alle Änderungen in diesem Browser zurücksetzen?")){localStorage.removeItem(KEY);location.reload()}};
+logoutBtn.onclick=()=>{sessionStorage.removeItem("rcPanzerAdminLoggedIn");location.href="index.html"};
 </script>
-</body></html>
+</body>
+</html>
