@@ -1,0 +1,42 @@
+{
+  "brand": "PANZER WERKSTATT",
+  "tagline": "Modelle · Umbauten · Teile",
+  "heroTitle": "RC Panzer.<br><span>Gebaut für Details.</span>",
+  "heroCopy": "Willkommen in meiner kleinen RC-Panzer-Werkstatt. Hier zeige ich meine Modelle, Umbauten und Projekte – und biete hin und wieder passende Ersatz- und Zubehörteile an.",
+  "heroImage": "",
+  "email": "rcpanzer@example.de",
+  "contactHeading": "Interesse an einem Teil?",
+  "contactIntro": "Schreib mir kurz, um welches Teil oder Modell es geht. Für den Test ist aktuell eine Beispieladresse eingetragen.",
+  "contactNote": "Bitte vor Veröffentlichung durch deine echte E-Mail-Adresse ersetzen.",
+  "phone": "",
+  "aboutSince": "20XX",
+  "aboutHeading": "Modellbau aus Leidenschaft",
+  "aboutText1": "Hallo! Ich beschäftige mich seit einigen Jahren mit RC-Panzern und allem, was dazugehört.",
+  "aboutText2": "Auf dieser Seite möchte ich meine Panzer und laufenden Projekte zeigen.",
+  "aboutText3": "Wenn du Fragen zu einem Modell oder Interesse an einem Teil hast, schreib mir einfach eine E-Mail.",
+  "partsHeading": "Teile & Zubehör",
+  "legalNote": "Privatverkauf. Beispieltexte und -preise – bitte vor Veröffentlichung mit deinen echten Angaben ersetzen.",
+  "footerNote": "Kein offizieller Auftritt der Bundeswehr. Gestaltung lediglich im militärisch-technischen Stil.",
+  "cards": [
+    {"name":"Tiger I","desc":"Deutscher schwerer Panzer des Zweiten Weltkriegs.","image":"tiger.jpg","scale":"1:16","tag":"Klassiker"},
+    {"name":"Flakpanzer Gepard","desc":"Bundeswehr-Flugabwehrpanzer mit markantem Zwillinggeschütz.","image":"gepard2.jpg","scale":"RC","tag":"Flak"},
+    {"name":"RC-Rasenmäher – Sonderprojekt","desc":"Kein Panzer, aber als besonderes RC-Projekt weiterhin in deiner Sammlung.","image":"rasenmaeher.jpg","scale":"RC","tag":"Sonderprojekt"},
+    {"name":"T-72 – vermutlich T-72B","desc":"Sowjetisch/russischer Kampfpanzer mit Zusatzpanzerung am Turm.","image":"t72.jpg","scale":"RC","tag":"Ostblock"},
+    {"name":"Leopard 2A6","desc":"Moderner deutscher Kampfpanzer mit langem 120-mm-Rohr und Keilpanzerung am Turm.","image":"leopard2a6.jpg","scale":"RC","tag":"Bundeswehr"},
+    {"name":"M113","desc":"Klassischer leichter Ketten-Schützenpanzer/Transportpanzer mit fünf Laufrollen.","image":"m113.jpg","scale":"RC","tag":"Transporter"},
+    {"name":"Schützenpanzer Marder 1A3","desc":"Bundeswehr-Schützenpanzer mit 20-mm-Bordkanone und markanter Seitenpanzerung.","image":"marder1a3.jpg","scale":"RC","tag":"Bundeswehr"},
+    {"name":"FV107 Scimitar – vermutlich","desc":"Britischer leichter Spähpanzer.","image":"scimitar.jpg","scale":"RC","tag":"Britisch"},
+    {"name":"Flakpanzer Gepard","desc":"Bundeswehr-Flugabwehrkanonenpanzer auf Leopard-1-Fahrgestell.","image":"gepard2.jpg","scale":"RC","tag":"Flak"},
+    {"name":"Panzer III – vermutlich Ausf. L/M","desc":"Deutscher mittlerer Panzer.","image":"panzer3.jpg","scale":"RC","tag":"WWII"},
+    {"name":"T-72B","desc":"Sowjetischer Kampfpanzer mit Reaktivpanzerung.","image":"t72b.jpg","scale":"RC","tag":"Ostblock"},
+    {"name":"Cromwell Cruiser Tank","desc":"Britischer Cruiser-Panzer des Zweiten Weltkriegs.","image":"cromwell.jpg","scale":"RC","tag":"Britisch"},
+    {"name":"Sturmtiger","desc":"Deutsches schweres Sturmpanzermodell mit 38-cm-Raketenmörser.","image":"sturmtiger.jpg","scale":"RC","tag":"WWII"}
+  ],
+  "parts": [
+    {"status":"Verfügbar","name":"Metallgetriebe 1:16","desc":"Gebrauchtes Getriebe, technisch geprüft und voll funktionsfähig.","price":"35 €","actionText":"Anfragen →","image":""},
+    {"status":"Verfügbar","name":"Metallketten Tiger I","desc":"Ein Satz Metallketten mit Gebrauchsspuren.","price":"45 €","actionText":"Anfragen →","image":""},
+    {"status":"Reserviert","name":"Turm-Einheit Panther","desc":"Komplette Turmeinheit als Basis für Reparatur oder Umbau.","price":"60 €","actionText":"Derzeit reserviert","image":""},
+    {"status":"Verfügbar","name":"Kleinteile-Paket","desc":"Luken, Werkzeuge, Halterungen und weitere Kleinteile.","price":"20 €","actionText":"Anfragen →","image":""}
+  ],
+  "posts": []
+}
