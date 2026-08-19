@@ -473,10 +473,3 @@ footer > p { margin: 0; text-align: right; }
 }
 .admin-submit { margin-top: 22px; width: 100%; }
 .admin-login-message { min-height: 24px; margin: 12px 0 0; color: #e3b39f; font-weight: 700; }
-
-/* Admin-editierbare Bilder und Beiträge */
-.hero-admin-image{width:78%;height:62%;object-fit:cover;border:1px solid var(--line);box-shadow:var(--shadow);position:relative;z-index:2}.hidden-by-admin{display:none!important}
-.part-image{width:calc(100% + 52px);height:180px;object-fit:cover;margin:-26px -26px 22px}.part-card .part-image + .part-status{margin-top:0}
-.posts-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}.post-card{background:rgba(32,39,28,.82);border:1px solid var(--line);overflow:hidden}.post-card>img{width:100%;aspect-ratio:16/10;object-fit:cover;display:block}.post-content{padding:24px}.post-content p:last-child{color:var(--muted)}
-.phone-line{display:grid;gap:3px;margin-top:12px}.phone-line span{font-size:11px;text-transform:uppercase;color:#656957}.phone-line a{font-weight:700}
-@media(max-width:900px){.posts-grid{grid-template-columns:1fr 1fr}}@media(max-width:620px){.posts-grid{grid-template-columns:1fr}}

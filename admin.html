@@ -1,68 +1,204 @@
 <!doctype html>
 <html lang="de">
 <head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
 <title>RC Panzer Admin</title>
 <style>
 :root{--bg:#11140f;--panel:#20271c;--olive:#596447;--sand:#c8b998;--text:#f1f0e7;--muted:#b7bba9;--line:rgba(255,255,255,.14)}
-*{box-sizing:border-box}body{margin:0;font-family:Arial,Helvetica,sans-serif;background:var(--bg);color:var(--text)}.wrap{max-width:1150px;margin:auto;padding:30px 18px 80px}.card{background:var(--panel);border:1px solid var(--line);padding:24px;margin:18px 0}h1,h2,h3{margin-top:0}.muted{color:var(--muted)}label{display:block;font-weight:700;margin:14px 0 6px}input,textarea,select{width:100%;padding:12px;border:1px solid var(--line);background:#0d100b;color:var(--text)}textarea{min-height:95px;resize:vertical}.btn{display:inline-block;padding:12px 18px;border:0;background:var(--sand);color:#171910;font-weight:700;cursor:pointer;margin:8px 8px 0 0}.btn.secondary{background:var(--olive);color:white}.btn.danger{background:#7f332b;color:white}.btn.small{padding:8px 12px;font-size:13px}.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}.item{border:1px solid var(--line);padding:15px;background:#171c14;position:relative}.item img,.preview{width:100%;height:190px;object-fit:cover;background:#0a0c09}.note{padding:14px;border-left:4px solid var(--sand);background:#191d15;color:#d7d9ce;margin:14px 0}.success{border-left-color:#91bd79}.error{border-left-color:#d66}.sticky{position:sticky;top:0;z-index:10;background:#11140f;padding:12px 0;border-bottom:1px solid var(--line)}.actions,.section-actions{display:flex;flex-wrap:wrap;gap:8px}.section-actions{margin-bottom:18px}.remove{position:absolute;right:12px;top:12px}.github-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px}.github-grid .wide{grid-column:1/-1}.help{font-size:13px;color:var(--muted);line-height:1.5}.status{font-weight:700}.hidden{display:none!important}@media(max-width:760px){.grid,.github-grid{grid-template-columns:1fr}.github-grid .wide{grid-column:auto}}
+*{box-sizing:border-box}body{margin:0;font-family:Arial,Helvetica,sans-serif;background:var(--bg);color:var(--text)}
+.wrap{max-width:1150px;margin:auto;padding:30px 18px 80px}.card{background:var(--panel);border:1px solid var(--line);padding:24px;margin:18px 0}
+h1,h2,h3{margin-top:0}.muted{color:var(--muted)}label{display:block;font-weight:700;margin:14px 0 6px}
+input,textarea,select{width:100%;padding:12px;border:1px solid var(--line);background:#0d100b;color:var(--text)}
+textarea{min-height:95px;resize:vertical}.btn{display:inline-block;padding:12px 18px;border:0;background:var(--sand);color:#171910;font-weight:700;cursor:pointer;margin:8px 8px 0 0}
+.btn.secondary{background:var(--olive);color:white}.btn.danger{background:#7f332b;color:white}.btn.small{padding:8px 12px;font-size:13px}
+.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}.item{border:1px solid var(--line);padding:15px;background:#171c14;position:relative}
+.item img{width:100%;height:190px;object-fit:cover;background:#0a0c09}.note{padding:14px;border-left:4px solid var(--sand);background:#191d15;color:#d7d9ce}
+.sticky{position:sticky;top:0;z-index:10;background:#11140f;padding:12px 0;border-bottom:1px solid var(--line)}.actions{display:flex;flex-wrap:wrap;gap:8px}
+.section-actions{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:18px}.remove{position:absolute;right:12px;top:12px}
+@media(max-width:760px){.grid{grid-template-columns:1fr}}
 </style>
-<script>if(sessionStorage.getItem("rcPanzerAdminLoggedIn")!=="1")location.href="index.html";</script>
-</head>
-<body><div class="wrap">
-<div class="sticky"><h1>RC Panzer – Admin</h1><div class="actions"><button class="btn" id="saveBtn">Für alle speichern</button><button class="btn secondary" id="previewBtn">Webseite öffnen</button><button class="btn secondary" id="reloadBtn">Online-Daten neu laden</button><button class="btn secondary" id="logoutBtn">Abmelden</button></div><p id="saveMsg" class="muted"></p></div>
-
-<div class="note"><strong>Gemeinsame Speicherung:</strong> Preise, Kontaktdaten, Beiträge und Bilder werden zentral im GitHub-Repository gespeichert und gelten danach für alle Besucher. Falls beim ersten Speichern noch eine Verbindung fehlt, wirst du oben zur einmaligen Einrichtung geführt – es erscheint keine alte GitHub-Fehlermeldung mehr.</div>
-
-<section class="card"><h2>Einmalige Verbindung zum Speichern</h2><p class="help">Die Webseite versucht Besitzer und Repository automatisch zu erkennen. Zum dauerhaften Speichern für alle Besucher musst du nur einmal einen GitHub-Token mit <strong>Contents: Read and write</strong> für dieses Repository eintragen. Der Token bleibt nur in dieser Browser-Sitzung und wird niemals in die öffentliche Webseite geschrieben.</p><div class="note" id="setupHint"><strong>Noch nicht verbunden.</strong> Du kannst alle Inhalte bearbeiten. Erst wenn du auf „Für alle speichern“ klickst, brauchst du die GitHub-Verbindung.</div><div class="github-grid"><div><label>GitHub Besitzer</label><input id="ghOwner" placeholder="z. B. Micha123"></div><div><label>Repository</label><input id="ghRepo" placeholder="z. B. rc-panzer-webseite"></div><div><label>Branch</label><input id="ghBranch" value="main"></div><div class="wide"><label>GitHub Token</label><input id="ghToken" type="password" autocomplete="off" placeholder="github_pat_..."></div></div><button class="btn secondary" id="testGitHubBtn">Verbindung testen</button><p id="githubMsg" class="muted"></p></section>
-
-<section class="card"><h2>Allgemein</h2><label>Seitentitel / Logo-Text</label><input id="brand"><label>Unterzeile beim Logo</label><input id="tagline"><label>Startseiten-Überschrift</label><input id="heroTitle"><label>Startseiten-Text</label><textarea id="heroCopy"></textarea><label>Großes Bild auf der Startseite</label><img id="heroPreview" class="preview hidden" alt="Vorschau"><input id="heroFile" type="file" accept="image/*"><button class="btn danger small" id="removeHeroBtn" type="button">Startbild entfernen</button></section>
-
-<section class="card"><h2>Kontakt</h2><label>E-Mail-Adresse</label><input id="email" type="email"><label>Telefon (optional)</label><input id="phone" type="tel"><label>Kontakt-Überschrift</label><input id="contactHeading"><label>Kontakt-Text</label><textarea id="contactIntro"></textarea><label>Kleiner Hinweis</label><input id="contactNote"></section>
-
-<section class="card"><h2>Über mich</h2><label>Seit wann / Jahr</label><input id="aboutSince"><label>Überschrift</label><input id="aboutHeading"><label>Absatz 1</label><textarea id="aboutText1"></textarea><label>Absatz 2</label><textarea id="aboutText2"></textarea><label>Absatz 3</label><textarea id="aboutText3"></textarea></section>
-
-<section class="card"><h2>Meine Panzer</h2><div class="section-actions"><button class="btn secondary" id="addTankBtn">+ Panzer hinzufügen</button></div><div id="tankGrid" class="grid"></div></section>
-
-<section class="card"><h2>Beiträge / Neuigkeiten</h2><p class="help">Hier kannst du beliebig viele zusätzliche Beiträge anlegen, jeweils mit Überschrift, Text, Datum und Bild.</p><div class="section-actions"><button class="btn secondary" id="addPostBtn">+ Beitrag hinzufügen</button></div><div id="postsGrid" class="grid"></div></section>
-
-<section class="card"><h2>Teile & Zubehör</h2><label>Überschrift</label><input id="partsHeading"><div class="section-actions"><button class="btn secondary" id="addPartBtn">+ Teil hinzufügen</button></div><div id="partsGrid" class="grid"></div><label>Hinweis unter den Angeboten</label><textarea id="legalNote"></textarea></section>
-
-<section class="card"><h2>Fußbereich</h2><label>Hinweis ganz unten</label><textarea id="footerNote"></textarea></section>
-</div>
 <script>
-const defaults={brand:"PANZER WERKSTATT",tagline:"Modelle · Umbauten · Teile",heroTitle:"RC Panzer.<br><span>Gebaut für Details.</span>",heroCopy:"",heroImage:"",email:"",phone:"",contactHeading:"Interesse an einem Teil?",contactIntro:"",contactNote:"",aboutSince:"20XX",aboutHeading:"Modellbau aus Leidenschaft",aboutText1:"",aboutText2:"",aboutText3:"",partsHeading:"Teile & Zubehör",legalNote:"",footerNote:"",cards:[],parts:[],posts:[]};
-let d={...defaults},cards=[],parts=[],posts=[],heroFile=null;
-const $=id=>document.getElementById(id); const esc=s=>String(s??"").replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[m]));
-const slug=s=>String(s||"bild").toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g,"").replace(/[^a-z0-9]+/g,"-").replace(/^-|-$/g,"").slice(0,55)||"bild";
-function cfg(){return{owner:$("ghOwner").value.trim(),repo:$("ghRepo").value.trim(),branch:$("ghBranch").value.trim()||"main",token:$("ghToken").value.trim()}}
-function saveCfg(){const c=cfg();localStorage.setItem("rcPanzerGitHubConfig",JSON.stringify({owner:c.owner,repo:c.repo,branch:c.branch}));if(c.token)sessionStorage.setItem("rcPanzerGitHubToken",c.token)}
-function inferGitHubConfig(){
-  const host=location.hostname.toLowerCase();
-  if(host.endsWith(".github.io")){
-    const owner=host.split(".")[0];
-    const repo=location.pathname.split("/").filter(Boolean)[0]||owner+".github.io";
-    return {owner,repo,branch:"main"};
-  }
-  return {};
+if (sessionStorage.getItem("rcPanzerAdminLoggedIn") !== "1") location.href="index.html";
+</script>
+</head>
+<body>
+<div class="wrap">
+  <div class="sticky">
+    <h1>RC Panzer – Admin</h1>
+    <div class="actions">
+      <button class="btn" id="saveBtn">Alles speichern</button>
+      <button class="btn secondary" id="previewBtn">Webseite öffnen</button>
+      <button class="btn danger" id="resetBtn">Änderungen zurücksetzen</button>
+      <button class="btn secondary" id="logoutBtn">Abmelden</button>
+    </div>
+    <p id="saveMsg" class="muted"></p>
+  </div>
+
+  <div class="note">
+    Du kannst jetzt auch neue Panzer und neue Teile hinzufügen sowie vorhandene Einträge löschen.
+    Bei dieser GitHub-Pages-Testversion werden die Änderungen nur in diesem Browser gespeichert.
+  </div>
+
+  <section class="card">
+    <h2>Allgemein</h2>
+    <label>Seitentitel / Logo-Text</label><input id="brand">
+    <label>Unterzeile beim Logo</label><input id="tagline">
+    <label>Startseiten-Überschrift</label><input id="heroTitle">
+    <label>Startseiten-Text</label><textarea id="heroCopy"></textarea>
+  </section>
+
+  <section class="card">
+    <h2>Kontakt & E-Mail</h2>
+    <label>E-Mail-Adresse</label><input id="email" type="email" placeholder="deine-mail@gmail.com">
+    <label>Kontakt-Überschrift</label><input id="contactHeading">
+    <label>Kontakt-Text</label><textarea id="contactIntro"></textarea>
+    <label>Kleiner Hinweis unter der E-Mail</label><input id="contactNote">
+  </section>
+
+  <section class="card">
+    <h2>Über mich</h2>
+    <label>Seit wann / Jahr</label><input id="aboutSince">
+    <label>Überschrift</label><input id="aboutHeading">
+    <label>Absatz 1</label><textarea id="aboutText1"></textarea>
+    <label>Absatz 2</label><textarea id="aboutText2"></textarea>
+    <label>Absatz 3</label><textarea id="aboutText3"></textarea>
+  </section>
+
+  <section class="card">
+    <h2>Meine Panzer</h2>
+    <div class="section-actions"><button class="btn secondary" id="addTankBtn">+ Panzer hinzufügen</button></div>
+    <div id="tankGrid" class="grid"></div>
+  </section>
+
+  <section class="card">
+    <h2>Teile & Zubehör</h2>
+    <label>Überschrift</label><input id="partsHeading">
+    <div class="section-actions"><button class="btn secondary" id="addPartBtn">+ Teil hinzufügen</button></div>
+    <div id="partsGrid" class="grid"></div>
+    <label>Hinweis unter den Angeboten</label><textarea id="legalNote"></textarea>
+  </section>
+
+  <section class="card">
+    <h2>Fußbereich</h2>
+    <label>Hinweis ganz unten</label><textarea id="footerNote"></textarea>
+  </section>
+</div>
+
+<script>
+const KEY="rcPanzerSiteData";
+const defaults={
+ brand:"PANZER WERKSTATT", tagline:"Modelle · Umbauten · Teile",
+ heroTitle:"RC Panzer.<br><span>Gebaut für Details.</span>",
+ heroCopy:"Willkommen in meiner kleinen RC-Panzer-Werkstatt. Hier zeige ich meine Modelle, Umbauten und Projekte – und biete hin und wieder passende Ersatz- und Zubehörteile an.",
+ email:"rcpanzer@example.de", contactHeading:"Interesse an einem Teil?",
+ contactIntro:"Schreib mir kurz, um welches Teil oder Modell es geht. Für den Test ist aktuell eine Beispieladresse eingetragen.",
+ contactNote:"Bitte vor Veröffentlichung durch deine echte E-Mail-Adresse ersetzen.",
+ aboutSince:"20XX", aboutHeading:"Modellbau aus Leidenschaft",
+ aboutText1:"Hallo! Ich beschäftige mich seit einigen Jahren mit RC-Panzern und allem, was dazugehört.",
+ aboutText2:"Auf dieser Seite möchte ich meine Panzer und laufenden Projekte zeigen.",
+ aboutText3:"Wenn du Fragen zu einem Modell oder Interesse an einem Teil hast, schreib mir einfach eine E-Mail.",
+ partsHeading:"Teile & Zubehör",
+ legalNote:"Privatverkauf. Beispieltexte und -preise – bitte vor Veröffentlichung mit deinen echten Angaben ersetzen.",
+ footerNote:"Kein offizieller Auftritt der Bundeswehr. Gestaltung lediglich im militärisch-technischen Stil.",
+ cards:[
+["Tiger I","Deutscher schwerer Panzer des Zweiten Weltkriegs.","tiger.jpg","1:16","Klassiker"],
+["Flakpanzer Gepard","Bundeswehr-Flugabwehrpanzer mit markantem Zwillinggeschütz.","flakpanzer.jpg","RC","Flak"],
+["RC-Rasenmäher – Sonderprojekt","Kein Panzer, aber als besonderes RC-Projekt weiterhin in deiner Sammlung.","rasenmaeher.jpg","RC","Sonderprojekt"],
+["T-72 – vermutlich T-72B","Sowjetisch/russischer Kampfpanzer mit Zusatzpanzerung am Turm.","t72.jpg","RC","Ostblock"],
+["Leopard 2A6","Moderner deutscher Kampfpanzer mit langem 120-mm-Rohr und Keilpanzerung am Turm.","leopard2a6.jpg","RC","Bundeswehr"],
+["M113","Klassischer leichter Ketten-Schützenpanzer/Transportpanzer mit fünf Laufrollen.","m113.jpg","RC","Transporter"],
+["Schützenpanzer Marder 1A3","Bundeswehr-Schützenpanzer mit 20-mm-Bordkanone und markanter Seitenpanzerung.","marder1a3.jpg","RC","Bundeswehr"],
+["FV107 Scimitar – vermutlich","Britischer leichter Spähpanzer.","scimitar.jpg","RC","Britisch"],
+["Flakpanzer Gepard","Bundeswehr-Flugabwehrkanonenpanzer auf Leopard-1-Fahrgestell.","gepard2.jpg","RC","Flak"],
+["Panzer III – vermutlich Ausf. L/M","Deutscher mittlerer Panzer.","panzer3.jpg","RC","WWII"],
+["T-72B","Sowjetischer Kampfpanzer mit Reaktivpanzerung.","t72b.jpg","RC","Ostblock"],
+["Cromwell Cruiser Tank","Britischer Cruiser-Panzer des Zweiten Weltkriegs.","cromwell.jpg","RC","Britisch"],
+["Sturmtiger","Deutsches schweres Sturmpanzermodell mit 38-cm-Raketenmörser.","sturmtiger.jpg","RC","WWII"]
+].map(x=>({name:x[0],desc:x[1],image:x[2],scale:x[3],tag:x[4]})),
+ parts:[
+  {status:"Verfügbar",name:"Metallgetriebe 1:16",desc:"Gebrauchtes Getriebe, technisch geprüft und voll funktionsfähig.",price:"35 €",actionText:"Anfragen →"},
+  {status:"Verfügbar",name:"Metallketten Tiger I",desc:"Ein Satz Metallketten mit Gebrauchsspuren.",price:"45 €",actionText:"Anfragen →"},
+  {status:"Reserviert",name:"Turm-Einheit Panther",desc:"Komplette Turmeinheit als Basis für Reparatur oder Umbau.",price:"60 €",actionText:"Derzeit reserviert"},
+  {status:"Verfügbar",name:"Kleinteile-Paket",desc:"Luken, Werkzeuge, Halterungen und weitere Kleinteile.",price:"20 €",actionText:"Anfragen →"}
+ ]
+};
+
+function loadData(){try{return Object.assign({},defaults,JSON.parse(localStorage.getItem(KEY)||"{}"))}catch(e){return defaults}}
+let d=loadData();
+let cards=(d.cards||defaults.cards).slice();
+let parts=(d.parts||defaults.parts).slice();
+
+["brand","tagline","heroCopy","email","contactHeading","contactIntro","contactNote","aboutSince","aboutHeading","aboutText1","aboutText2","aboutText3","partsHeading","legalNote","footerNote"].forEach(id=>document.getElementById(id).value=d[id]||"");
+heroTitle.value=(d.heroTitle||"").replace(/<br>/g," / ").replace(/<[^>]+>/g,"");
+
+function esc(s){return String(s??"").replace(/&/g,"&amp;").replace(/"/g,"&quot;").replace(/</g,"&lt;")}
+
+function renderTanks(){
+ tankGrid.innerHTML="";
+ cards.forEach((c,i)=>{
+  const box=document.createElement("div"); box.className="item";
+  box.innerHTML=`<button class="btn danger small remove" type="button" data-remove-tank="${i}">Löschen</button>
+  <img id="img${i}" src="${c.image||""}">
+  <label>Modellname</label><input id="name${i}" value="${esc(c.name)}">
+  <label>Beschreibung</label><textarea id="desc${i}">${esc(c.desc)}</textarea>
+  <label>Maßstab / Kürzel</label><input id="scale${i}" value="${esc(c.scale)}">
+  <label>Kategorie</label><input id="tag${i}" value="${esc(c.tag)}">
+  <label>Bild austauschen</label><input id="file${i}" type="file" accept="image/*">`;
+  tankGrid.appendChild(box);
+  box.querySelector("#file"+i).onchange=e=>{const f=e.target.files[0];if(!f)return;const r=new FileReader();r.onload=()=>{box.querySelector("#img"+i).src=r.result;cards[i].image=r.result};r.readAsDataURL(f)}
+ });
+ document.querySelectorAll("[data-remove-tank]").forEach(btn=>btn.onclick=()=>{const i=+btn.dataset.removeTank;cards.splice(i,1);renderTanks()});
 }
-function updateSetupHint(){const c=cfg(),h=$("setupHint");if(!h)return;if(c.owner&&c.repo&&c.token){h.className="note success";h.innerHTML="<strong>Verbunden.</strong> Änderungen können jetzt für alle Besucher gespeichert werden."}else if(c.owner&&c.repo){h.className="note";h.innerHTML="<strong>Repository erkannt.</strong> Zum Speichern für alle fehlt nur noch dein GitHub-Token."}else{h.className="note";h.innerHTML="<strong>Noch nicht verbunden.</strong> Du kannst alles bearbeiten. Trage zum Speichern Besitzer, Repository und Token ein."}}
-function loadCfg(){let c={};try{c=JSON.parse(localStorage.getItem("rcPanzerGitHubConfig")||"{}")||{}}catch{}const inferred=inferGitHubConfig();$("ghOwner").value=c.owner||inferred.owner||"";$("ghRepo").value=c.repo||inferred.repo||"";$("ghBranch").value=c.branch||inferred.branch||"main";$("ghToken").value=sessionStorage.getItem("rcPanzerGitHubToken")||"";updateSetupHint()}
-async function loadData(){const r=await fetch("site-data.json?v="+Date.now(),{cache:"no-store"});if(!r.ok)throw new Error("site-data.json konnte nicht geladen werden ("+r.status+")");d={...defaults,...await r.json()};cards=(d.cards||[]).map(x=>({...x}));parts=(d.parts||[]).map(x=>({...x}));posts=(d.posts||[]).map(x=>({...x}));fillFields();renderAll()}
-function fillFields(){["brand","tagline","heroCopy","email","phone","contactHeading","contactIntro","contactNote","aboutSince","aboutHeading","aboutText1","aboutText2","aboutText3","partsHeading","legalNote","footerNote"].forEach(id=>$(id).value=d[id]||"");$("heroTitle").value=(d.heroTitle||"").replace(/<br\s*\/?\s*>/gi," / ").replace(/<[^>]+>/g,"");if(d.heroImage){$("heroPreview").src=d.heroImage;$("heroPreview").classList.remove("hidden")}else $("heroPreview").classList.add("hidden")}
-function filePreview(input,img,cb){input.onchange=e=>{const f=e.target.files[0];if(!f)return;img.src=URL.createObjectURL(f);img.classList.remove("hidden");cb(f)}}
-function renderTanks(){$("tankGrid").innerHTML="";cards.forEach((c,i)=>{const b=document.createElement("div");b.className="item";b.innerHTML=`<button class="btn danger small remove" data-x="${i}">Löschen</button><img id="ti${i}" src="${esc(c.image||"")}" alt=""><label>Modellname</label><input id="tn${i}" value="${esc(c.name)}"><label>Beschreibung</label><textarea id="td${i}">${esc(c.desc)}</textarea><label>Maßstab / Kürzel</label><input id="ts${i}" value="${esc(c.scale)}"><label>Kategorie</label><input id="tt${i}" value="${esc(c.tag)}"><label>Bild austauschen</label><input id="tf${i}" type="file" accept="image/*">`;$("tankGrid").appendChild(b);b.querySelector("[data-x]").onclick=()=>{sync();cards.splice(i,1);renderTanks()};filePreview($("tf"+i),$("ti"+i),f=>cards[i]._file=f)});}
-function renderParts(){$("partsGrid").innerHTML="";parts.forEach((p,i)=>{const b=document.createElement("div");b.className="item";b.innerHTML=`<button class="btn danger small remove" data-x="${i}">Löschen</button><img id="pi${i}" src="${esc(p.image||"")}" alt=""><label>Status</label><input id="ps${i}" value="${esc(p.status)}"><label>Name</label><input id="pn${i}" value="${esc(p.name)}"><label>Beschreibung</label><textarea id="pd${i}">${esc(p.desc)}</textarea><label>Preis</label><input id="pp${i}" value="${esc(p.price)}"><label>Button-/Statustext</label><input id="pa${i}" value="${esc(p.actionText)}"><label>Bild</label><input id="pf${i}" type="file" accept="image/*">`;$("partsGrid").appendChild(b);b.querySelector("[data-x]").onclick=()=>{sync();parts.splice(i,1);renderParts()};filePreview($("pf"+i),$("pi"+i),f=>parts[i]._file=f)});}
-function renderPosts(){$("postsGrid").innerHTML="";posts.forEach((p,i)=>{const b=document.createElement("div");b.className="item";b.innerHTML=`<button class="btn danger small remove" data-x="${i}">Löschen</button><img id="oi${i}" src="${esc(p.image||"")}" alt=""><label>Überschrift</label><input id="ot${i}" value="${esc(p.title)}"><label>Datum / kleine Zeile</label><input id="od${i}" value="${esc(p.date)}"><label>Text</label><textarea id="ox${i}">${esc(p.text)}</textarea><label>Bild</label><input id="of${i}" type="file" accept="image/*">`;$("postsGrid").appendChild(b);b.querySelector("[data-x]").onclick=()=>{sync();posts.splice(i,1);renderPosts()};filePreview($("of"+i),$("oi"+i),f=>posts[i]._file=f)});}
-function renderAll(){renderTanks();renderParts();renderPosts()}
-function sync(){cards=cards.map((c,i)=>({...c,name:$("tn"+i)?.value.trim()||"",desc:$("td"+i)?.value.trim()||"",scale:$("ts"+i)?.value.trim()||"",tag:$("tt"+i)?.value.trim()||""}));parts=parts.map((p,i)=>({...p,status:$("ps"+i)?.value.trim()||"",name:$("pn"+i)?.value.trim()||"",desc:$("pd"+i)?.value.trim()||"",price:$("pp"+i)?.value.trim()||"",actionText:$("pa"+i)?.value.trim()||""}));posts=posts.map((p,i)=>({...p,title:$("ot"+i)?.value.trim()||"",date:$("od"+i)?.value.trim()||"",text:$("ox"+i)?.value.trim()||""}))}
-function collect(){sync();const out={cards:cards.map(({_file,...x})=>x),parts:parts.map(({_file,...x})=>x),posts:posts.map(({_file,...x})=>x)};["brand","tagline","heroCopy","email","phone","contactHeading","contactIntro","contactNote","aboutSince","aboutHeading","aboutText1","aboutText2","aboutText3","partsHeading","legalNote","footerNote"].forEach(id=>out[id]=$(id).value.trim());out.heroTitle=$("heroTitle").value.trim().replace(/\s*\/\s*/g,"<br>");out.heroImage=d.heroImage||"";return out}
-async function api(path,opt={}){const c=cfg();if(!c.owner||!c.repo||!c.token)throw new Error("GitHub-Verbindung noch nicht vollständig eingerichtet.");const r=await fetch(`https://api.github.com/repos/${encodeURIComponent(c.owner)}/${encodeURIComponent(c.repo)}/contents/${path}${opt.get?`?ref=${encodeURIComponent(c.branch)}`:""}`,{method:opt.method||"GET",headers:{Accept:"application/vnd.github+json",Authorization:"Bearer "+c.token,"X-GitHub-Api-Version":"2022-11-28",...(opt.body?{"Content-Type":"application/json"}:{})},body:opt.body?JSON.stringify(opt.body):undefined});if(!r.ok){let m="";try{m=(await r.json()).message}catch{}throw new Error(`GitHub: ${m||r.status}`)}return r.status===204?null:r.json()}
-function bytesToBase64(bytes){let s="";for(let i=0;i<bytes.length;i+=0x8000)s+=String.fromCharCode(...bytes.subarray(i,i+0x8000));return btoa(s)}
-async function putFile(path,bytes,message){const c=cfg();let sha;try{sha=(await api(path,{get:true})).sha}catch(e){if(!String(e.message).includes("Not Found")&&!String(e.message).includes("404"))throw e}const body={message,content:bytesToBase64(bytes),branch:c.branch};if(sha)body.sha=sha;return api(path,{method:"PUT",body})}
-async function uploadImage(file,label){const ext=(file.name.split(".").pop()||"jpg").toLowerCase().replace(/[^a-z0-9]/g,"")||"jpg";const path=`images/admin/${Date.now()}-${slug(label)}.${ext}`;await putFile(path,new Uint8Array(await file.arrayBuffer()),"Admin: Bild aktualisiert");return path}
-async function saveGlobal(){saveCfg();sync();const c=cfg();if(!c.owner||!c.repo){updateSetupHint();$("saveMsg").textContent="Bitte einmal oben GitHub-Besitzer und Repository eintragen. Danach kannst du für alle Besucher speichern.";document.querySelector("section.card").scrollIntoView({behavior:"smooth",block:"start"});return}if(!c.token){updateSetupHint();$("saveMsg").textContent="Zum ersten Speichern fehlt nur noch dein GitHub-Token. Trage ihn oben bei „GitHub Token“ ein und klicke danach erneut auf „Für alle speichern“.";document.querySelector("section.card").scrollIntoView({behavior:"smooth",block:"start"});$("ghToken").focus();return}$("saveBtn").disabled=true;$("saveMsg").textContent="Speichere Bilder und Daten …";try{for(const c of cards)if(c._file){c.image=await uploadImage(c._file,c.name);delete c._file}for(const p of parts)if(p._file){p.image=await uploadImage(p._file,p.name);delete p._file}for(const p of posts)if(p._file){p.image=await uploadImage(p._file,p.title);delete p._file}if(heroFile){d.heroImage=await uploadImage(heroFile,"startseite");heroFile=null}const out=collect();const bytes=new TextEncoder().encode(JSON.stringify(out,null,2)+"\n");await putFile("site-data.json",bytes,"Admin: Webseitendaten aktualisiert");d={...out};updateSetupHint();$("saveMsg").textContent="Erfolgreich gespeichert. Die Änderungen gelten jetzt für alle Besucher. GitHub Pages kann kurz brauchen, bis die neue Version ausgeliefert wird.";renderAll()}catch(e){$("saveMsg").textContent="Fehler: "+e.message}finally{$("saveBtn").disabled=false}}
-$("addTankBtn").onclick=()=>{sync();cards.push({name:"Neuer Panzer",desc:"Beschreibung eintragen",image:"",scale:"RC",tag:"Neu"});renderTanks()};$("addPartBtn").onclick=()=>{sync();parts.push({status:"Verfügbar",name:"Neues Teil",desc:"Beschreibung eintragen",price:"0 €",actionText:"Anfragen →",image:""});renderParts()};$("addPostBtn").onclick=()=>{sync();posts.push({title:"Neuer Beitrag",date:new Date().toLocaleDateString("de-DE"),text:"Text des Beitrags",image:""});renderPosts()};
-filePreview($("heroFile"),$("heroPreview"),f=>heroFile=f);$("removeHeroBtn").onclick=()=>{heroFile=null;d.heroImage="";$("heroPreview").classList.add("hidden");$("heroFile").value=""};$("saveBtn").onclick=saveGlobal;$("previewBtn").onclick=()=>window.open("index.html","_blank");$("reloadBtn").onclick=()=>loadData().then(()=>$("saveMsg").textContent="Online-Daten neu geladen.").catch(e=>$("saveMsg").textContent=e.message);$("logoutBtn").onclick=()=>{sessionStorage.removeItem("rcPanzerAdminLoggedIn");sessionStorage.removeItem("rcPanzerGitHubToken");location.href="index.html"};$("testGitHubBtn").onclick=async()=>{saveCfg();updateSetupHint();$("githubMsg").textContent="Prüfe …";try{const x=await api("site-data.json",{get:true});$("githubMsg").textContent="Verbindung OK: site-data.json gefunden ("+x.name+").";updateSetupHint()}catch(e){$("githubMsg").textContent="Verbindung noch nicht bereit: "+e.message}};["ghOwner","ghRepo","ghBranch","ghToken"].forEach(id=>$(id).addEventListener("input",()=>{saveCfg();updateSetupHint()}));
-loadCfg();loadData().catch(e=>{$("saveMsg").textContent="Fehler beim Laden: "+e.message;renderAll()});
-</script></body></html>
+
+function renderParts(){
+ partsGrid.innerHTML="";
+ parts.forEach((p,i)=>{
+  const box=document.createElement("div"); box.className="item";
+  box.innerHTML=`<button class="btn danger small remove" type="button" data-remove-part="${i}">Löschen</button>
+  <h3>Teil ${i+1}</h3>
+  <label>Status</label><input id="pstatus${i}" value="${esc(p.status)}">
+  <label>Name</label><input id="pname${i}" value="${esc(p.name)}">
+  <label>Beschreibung</label><textarea id="pdesc${i}">${esc(p.desc)}</textarea>
+  <label>Preis</label><input id="pprice${i}" value="${esc(p.price)}">
+  <label>Button-/Statustext</label><input id="paction${i}" value="${esc(p.actionText)}">`;
+  partsGrid.appendChild(box);
+ });
+ document.querySelectorAll("[data-remove-part]").forEach(btn=>btn.onclick=()=>{const i=+btn.dataset.removePart;parts.splice(i,1);renderParts()});
+}
+
+function syncFromFields(){
+ cards=cards.map((c,i)=>({
+  name:document.getElementById("name"+i)?.value.trim()||c.name,
+  desc:document.getElementById("desc"+i)?.value.trim()||"",
+  image:document.getElementById("img"+i)?.src||c.image,
+  scale:document.getElementById("scale"+i)?.value.trim()||"",
+  tag:document.getElementById("tag"+i)?.value.trim()||""
+ }));
+ parts=parts.map((p,i)=>({
+  status:document.getElementById("pstatus"+i)?.value.trim()||"",
+  name:document.getElementById("pname"+i)?.value.trim()||"",
+  desc:document.getElementById("pdesc"+i)?.value.trim()||"",
+  price:document.getElementById("pprice"+i)?.value.trim()||"",
+  actionText:document.getElementById("paction"+i)?.value.trim()||""
+ }));
+}
+
+addTankBtn.onclick=()=>{syncFromFields();cards.push({name:"Neuer Panzer",desc:"Beschreibung eintragen",image:"",scale:"RC",tag:"Neu"});renderTanks();window.scrollTo({top:tankGrid.lastElementChild.offsetTop-120,behavior:"smooth"})};
+addPartBtn.onclick=()=>{syncFromFields();parts.push({status:"Verfügbar",name:"Neues Teil",desc:"Beschreibung eintragen",price:"0 €",actionText:"Anfragen →"});renderParts();window.scrollTo({top:partsGrid.lastElementChild.offsetTop-120,behavior:"smooth"})};
+
+saveBtn.onclick=()=>{
+ syncFromFields();
+ const data={cards,parts};
+ ["brand","tagline","heroCopy","email","contactHeading","contactIntro","contactNote","aboutSince","aboutHeading","aboutText1","aboutText2","aboutText3","partsHeading","legalNote","footerNote"].forEach(id=>data[id]=document.getElementById(id).value.trim());
+ data.heroTitle=heroTitle.value.trim().replace(/\s*\/\s*/g,"<br>");
+ localStorage.setItem(KEY,JSON.stringify(data));
+ saveMsg.textContent="Gespeichert. Neue Panzer/Teile sind jetzt in diesem Browser auf der Webseite sichtbar.";
+};
+previewBtn.onclick=()=>window.open("index.html","_blank");
+resetBtn.onclick=()=>{if(confirm("Alle Änderungen in diesem Browser zurücksetzen?")){localStorage.removeItem(KEY);location.reload()}};
+logoutBtn.onclick=()=>{sessionStorage.removeItem("rcPanzerAdminLoggedIn");location.href="index.html"};
+
+renderTanks(); renderParts();
+</script>
+</body></html>
