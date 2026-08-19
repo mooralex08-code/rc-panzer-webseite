@@ -222,6 +222,18 @@ h3 { font-size: 30px; margin-bottom: 10px; }
   position: relative;
   overflow: hidden;
 }
+
+.model-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.model-image:not(.placeholder)::before,
+.model-image:not(.placeholder)::after {
+  display: none;
+}
+
 .model-image::before,
 .model-image::after {
   content: "";
