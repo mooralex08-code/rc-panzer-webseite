@@ -10,6 +10,3 @@ Für GitHub:
 5. GitHub Pages aktualisiert die Webseite automatisch.
 
 Hinweis: Bei einzelnen Modellbezeichnungen steht „vermutlich“, wenn die genaue Ausführung anhand des Fotos nicht zweifelsfrei bestimmbar ist.
-
-
-WICHTIG: Diese Version verwendet im Admin-Bereich KEINEN GitHub-Token und KEINE GitHub-API. Falls online noch „Bad credentials“ erscheint, ist noch eine ältere admin.html veröffentlicht oder im Browser-Cache. Dann alle Dateien dieser ZIP erneut hochladen und die Seite hart neu laden.
