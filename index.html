@@ -27,7 +27,7 @@
       <a href="#panzer">Meine Panzer</a>
       <a href="#teile">Teile</a>
       <a href="#ueber-mich">Über mich</a>
-      <a class="nav-cta" href="#kontakt">Kontakt</a>
+      <a href="#kontakt">Kontakt</a><button class="nav-cta admin-login-open" type="button">Admin Login</button>
     </nav>
   </header>
 
@@ -271,7 +271,27 @@
     </section>
   </main>
 
-  <footer>
+  
+  <div class="admin-modal" id="adminModal" aria-hidden="true">
+    <div class="admin-modal-backdrop" data-close-admin></div>
+    <div class="admin-modal-box" role="dialog" aria-modal="true" aria-labelledby="adminLoginTitle">
+      <button class="admin-modal-close" type="button" data-close-admin aria-label="Schließen">×</button>
+      <p class="eyebrow">ADMIN-BEREICH</p>
+      <h2 id="adminLoginTitle">Anmelden</h2>
+      <p class="admin-modal-text">Melde dich an, um deine Panzer, Texte und Bilder zu bearbeiten.</p>
+
+      <label for="adminUser">Benutzername</label>
+      <input id="adminUser" type="text" autocomplete="username" placeholder="Benutzername">
+
+      <label for="adminPass">Passwort</label>
+      <input id="adminPass" type="password" autocomplete="current-password" placeholder="Passwort">
+
+      <button class="btn btn-primary admin-submit" id="adminSubmit" type="button">Einloggen</button>
+      <p class="admin-login-message" id="adminLoginMessage"></p>
+    </div>
+  </div>
+
+<footer>
     <div class="brand footer-brand">
       <span class="brand-mark">RC</span>
       <span><strong>PANZER WERKSTATT</strong><small>Private Modellbau-Seite</small></span>
@@ -282,5 +302,46 @@
 
   <script src="script.js"></script>
 <script src="site-admin-data.js"></script>
+
+<script>
+(function(){
+  const USER = "Micha";
+  const PASS = "moormicha08";
+
+  const modal = document.getElementById("adminModal");
+  const user = document.getElementById("adminUser");
+  const pass = document.getElementById("adminPass");
+  const msg = document.getElementById("adminLoginMessage");
+
+  document.querySelectorAll(".admin-login-open").forEach(btn => {
+    btn.addEventListener("click", () => {
+      modal.classList.add("open");
+      modal.setAttribute("aria-hidden", "false");
+      msg.textContent = "";
+      setTimeout(() => user.focus(), 50);
+    });
+  });
+
+  document.querySelectorAll("[data-close-admin]").forEach(el => {
+    el.addEventListener("click", () => {
+      modal.classList.remove("open");
+      modal.setAttribute("aria-hidden", "true");
+    });
+  });
+
+  function login(){
+    if(user.value === USER && pass.value === PASS){
+      sessionStorage.setItem("rcPanzerAdminLoggedIn", "1");
+      window.location.href = "admin.html";
+    } else {
+      msg.textContent = "Benutzername oder Passwort ist falsch.";
+    }
+  }
+
+  document.getElementById("adminSubmit").addEventListener("click", login);
+  pass.addEventListener("keydown", e => { if(e.key === "Enter") login(); });
+})();
+</script>
+
 </body>
 </html>

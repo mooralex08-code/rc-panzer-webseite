@@ -13,11 +13,18 @@ textarea{min-height:90px;resize:vertical}.btn{display:inline-block;padding:12px 
 .top{display:flex;justify-content:space-between;align-items:center;gap:20px}.badge{padding:5px 8px;border:1px solid var(--sand);color:var(--sand);font-size:12px}
 .note{padding:14px;border-left:4px solid var(--sand);background:#191d15;color:#d7d9ce}
 @media(max-width:700px){.grid{grid-template-columns:1fr}.top{align-items:flex-start;flex-direction:column}}
-</style></head><body><div class="wrap">
+</style>
+<script>
+if (sessionStorage.getItem("rcPanzerAdminLoggedIn") !== "1") {
+  window.location.href = "index.html";
+}
+</script>
+
+</head><body><div class="wrap">
 <div class="top"><div><h1>RC Panzer – Admin</h1><p class="muted">Texte und Bilder für die Webseite bearbeiten.</p></div><span class="badge">TEST-PORTAL</span></div>
 <div class="note">Diese GitHub-Pages-Testversion speichert Änderungen nur in diesem Browser/Gerät. Das Passwort ist bei einer rein statischen Webseite nicht sicher geschützt.</div>
-<section id="login" class="card"><h2>Anmelden</h2><label>Benutzername</label><input id="user"><label>Passwort</label><input id="pass" type="password"><button class="btn" id="loginBtn">Anmelden</button><p id="loginMsg" class="muted"></p></section>
-<section id="editor" class="hidden">
+<section id="login" class="card hidden"><h2>Anmelden</h2><label>Benutzername</label><input id="user"><label>Passwort</label><input id="pass" type="password"><button class="btn" id="loginBtn">Anmelden</button><p id="loginMsg" class="muted"></p></section>
+<section id="editor">
 <div class="card"><h2>Startseite</h2><label>Überschrift</label><input id="heroTitle"><label>Einleitung</label><textarea id="heroCopy"></textarea></div>
 <div class="card"><h2>Meine Panzer</h2><div id="tankGrid" class="grid"></div></div>
 <div class="card"><button class="btn" id="saveBtn">Änderungen speichern</button><button class="btn secondary" id="previewBtn">Webseite öffnen</button><button class="btn danger" id="resetBtn">Änderungen zurücksetzen</button><p id="saveMsg" class="muted"></p></div>
@@ -50,4 +57,10 @@ loginBtn.onclick=()=>{if(user.value===USER&&pass.value===PASS){login.classList.a
 saveBtn.onclick=()=>{const cards=defaultCards.map((_,i)=>({name:document.getElementById("name"+i).value.trim(),desc:document.getElementById("desc"+i).value.trim(),image:document.getElementById("img"+i).src}));localStorage.setItem(KEY,JSON.stringify({heroTitle:heroTitle.value.trim().replace(/\s*\/\s*/g,"<br>"),heroCopy:heroCopy.value.trim(),cards}));saveMsg.textContent="Gespeichert. Änderungen gelten in diesem Browser."}
 previewBtn.onclick=()=>window.open("index.html","_blank");
 resetBtn.onclick=()=>{if(confirm("Alle Test-Änderungen löschen?")){localStorage.removeItem(KEY);loadEditor();saveMsg.textContent="Zurückgesetzt."}}
-</script></body></html>
+</script>
+<script>
+window.addEventListener("DOMContentLoaded", () => {
+  if (typeof loadEditor === "function") loadEditor();
+});
+</script>
+</body></html>

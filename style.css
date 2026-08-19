@@ -404,3 +404,72 @@ footer > p { margin: 0; text-align: right; }
   .footer-brand { grid-row: auto; }
   footer > p, .footer-note { text-align: left; }
 }
+
+
+.admin-login-open {
+  border: 1px solid var(--sand);
+  background: transparent;
+  color: var(--sand);
+  padding: 9px 14px;
+  font: inherit;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+}
+.admin-login-open:hover { background: var(--sand); color: #171910; }
+.mobile-admin-btn { width: 100%; text-align: left; margin-top: 8px; }
+
+.admin-modal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+.admin-modal.open { display: flex; }
+.admin-modal-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,.78);
+  backdrop-filter: blur(6px);
+}
+.admin-modal-box {
+  position: relative;
+  z-index: 2;
+  width: min(460px, 100%);
+  background: #20271c;
+  border: 1px solid rgba(255,255,255,.14);
+  box-shadow: 0 24px 80px rgba(0,0,0,.55);
+  padding: 34px;
+}
+.admin-modal-box h2 { font-size: 48px; margin-bottom: 12px; }
+.admin-modal-text { color: #b7bba9; margin-bottom: 22px; }
+.admin-modal-box label {
+  display: block;
+  margin: 14px 0 6px;
+  font-weight: 700;
+  color: #e8eadf;
+}
+.admin-modal-box input {
+  width: 100%;
+  padding: 13px 14px;
+  border: 1px solid rgba(255,255,255,.16);
+  background: #0f120d;
+  color: #f1f0e7;
+  outline: none;
+}
+.admin-modal-box input:focus { border-color: var(--sand); }
+.admin-modal-close {
+  position: absolute;
+  right: 14px;
+  top: 10px;
+  border: 0;
+  background: transparent;
+  color: #f1f0e7;
+  font-size: 34px;
+  cursor: pointer;
+}
+.admin-submit { margin-top: 22px; width: 100%; }
+.admin-login-message { min-height: 24px; margin: 12px 0 0; color: #e3b39f; font-weight: 700; }
