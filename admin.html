@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="de"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>RC Panzer Admin</title>
+<style>
+:root{--bg:#11140f;--panel:#20271c;--olive:#596447;--sand:#c8b998;--text:#f1f0e7;--muted:#b7bba9;--line:rgba(255,255,255,.14)}
+*{box-sizing:border-box}body{margin:0;font-family:Arial,Helvetica,sans-serif;background:var(--bg);color:var(--text)}
+.wrap{max-width:1100px;margin:auto;padding:30px 18px 80px}.card{background:var(--panel);border:1px solid var(--line);padding:24px;margin:18px 0}
+h1,h2{margin-top:0}.muted{color:var(--muted)}label{display:block;font-weight:700;margin:14px 0 6px}
+input,textarea{width:100%;padding:12px;border:1px solid var(--line);background:#0d100b;color:var(--text)}
+textarea{min-height:90px;resize:vertical}.btn{display:inline-block;padding:12px 18px;border:0;background:var(--sand);color:#171910;font-weight:700;cursor:pointer;margin:8px 8px 0 0}
+.btn.secondary{background:var(--olive);color:white}.btn.danger{background:#7f332b;color:white}.hidden{display:none}
+.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}.tank{border:1px solid var(--line);padding:14px;background:#171c14}.tank img{width:100%;height:180px;object-fit:cover;background:#0a0c09}
+.top{display:flex;justify-content:space-between;align-items:center;gap:20px}.badge{padding:5px 8px;border:1px solid var(--sand);color:var(--sand);font-size:12px}
+.note{padding:14px;border-left:4px solid var(--sand);background:#191d15;color:#d7d9ce}
+@media(max-width:700px){.grid{grid-template-columns:1fr}.top{align-items:flex-start;flex-direction:column}}
+</style></head><body><div class="wrap">
+<div class="top"><div><h1>RC Panzer – Admin</h1><p class="muted">Texte und Bilder für die Webseite bearbeiten.</p></div><span class="badge">TEST-PORTAL</span></div>
+<div class="note">Diese GitHub-Pages-Testversion speichert Änderungen nur in diesem Browser/Gerät. Das Passwort ist bei einer rein statischen Webseite nicht sicher geschützt.</div>
+<section id="login" class="card"><h2>Anmelden</h2><label>Benutzername</label><input id="user"><label>Passwort</label><input id="pass" type="password"><button class="btn" id="loginBtn">Anmelden</button><p id="loginMsg" class="muted"></p></section>
+<section id="editor" class="hidden">
+<div class="card"><h2>Startseite</h2><label>Überschrift</label><input id="heroTitle"><label>Einleitung</label><textarea id="heroCopy"></textarea></div>
+<div class="card"><h2>Meine Panzer</h2><div id="tankGrid" class="grid"></div></div>
+<div class="card"><button class="btn" id="saveBtn">Änderungen speichern</button><button class="btn secondary" id="previewBtn">Webseite öffnen</button><button class="btn danger" id="resetBtn">Änderungen zurücksetzen</button><p id="saveMsg" class="muted"></p></div>
+</section></div>
+<script>
+const USER="Micha", PASS="moormicha08", KEY="rcPanzerSiteData";
+const defaultCards=[
+["Tiger I","Deutscher schwerer Panzer des Zweiten Weltkriegs.","tiger.jpg"],
+["Flakpanzer Gepard","Bundeswehr-Flugabwehrpanzer mit markantem Zwillinggeschütz.","flakpanzer.jpg"],
+["RC-Rasenmäher – Sonderprojekt","Kein Panzer, aber als besonderes RC-Projekt weiterhin in deiner Sammlung.","rasenmaeher.jpg"],
+["T-72 – vermutlich T-72B","Sowjetisch/russischer Kampfpanzer mit Zusatzpanzerung am Turm.","t72.jpg"],
+["Leopard 2A6","Moderner deutscher Kampfpanzer mit langem 120-mm-Rohr und Keilpanzerung am Turm.","leopard2a6.jpg"],
+["M113","Klassischer leichter Ketten-Schützenpanzer/Transportpanzer mit fünf Laufrollen.","m113.jpg"],
+["Schützenpanzer Marder 1A3","Bundeswehr-Schützenpanzer mit 20-mm-Bordkanone und markanter Seitenpanzerung.","marder1a3.jpg"],
+["FV107 Scimitar – vermutlich","Britischer leichter Spähpanzer mit kompakter Silhouette und 30-mm-Bewaffnung.","scimitar.jpg"],
+["Flakpanzer Gepard","Bundeswehr-Flugabwehrkanonenpanzer auf Leopard-1-Fahrgestell.","gepard2.jpg"],
+["Panzer III – vermutlich Ausf. L/M","Deutscher mittlerer Panzer mit sechs Laufrollen und langem 5-cm-Rohr.","panzer3.jpg"],
+["T-72B","Sowjetischer Kampfpanzer mit Reaktivpanzerung und niedriger Turmsilhouette.","t72b.jpg"],
+["Cromwell Cruiser Tank","Britischer Cruiser-Panzer des Zweiten Weltkriegs.","cromwell.jpg"],
+["Sturmtiger","Deutsches schweres Sturmpanzermodell mit 38-cm-Raketenmörser.","sturmtiger.jpg"]
+].map(x=>({name:x[0],desc:x[1],image:x[2]}));
+function getData(){try{return JSON.parse(localStorage.getItem(KEY))||{}}catch(e){return{}}}
+function loadEditor(){
+ const d=getData(); heroTitle.value=(d.heroTitle||"RC Panzer / Gebaut für Details.").replace(/<br>/g," / ").replace(/<[^>]+>/g,"");
+ heroCopy.value=d.heroCopy||"Willkommen in meiner kleinen RC-Panzer-Werkstatt. Hier zeige ich meine Modelle, Umbauten und Projekte – und biete hin und wieder passende Ersatz- und Zubehörteile an.";
+ const cards=d.cards||defaultCards; tankGrid.innerHTML="";
+ cards.forEach((c,i)=>{const box=document.createElement("div");box.className="tank";box.innerHTML=`<img id="img${i}" src="${c.image}"><label>Modellname</label><input id="name${i}" value="${(c.name||"").replace(/"/g,"&quot;")}"><label>Beschreibung</label><textarea id="desc${i}">${c.desc||""}</textarea><label>Neues Bild auswählen</label><input id="file${i}" type="file" accept="image/*">`;tankGrid.appendChild(box);box.querySelector("#file"+i).onchange=e=>{const f=e.target.files[0];if(!f)return;const r=new FileReader();r.onload=()=>box.querySelector("#img"+i).src=r.result;r.readAsDataURL(f)}})
+}
+loginBtn.onclick=()=>{if(user.value===USER&&pass.value===PASS){login.classList.add("hidden");editor.classList.remove("hidden");loadEditor()}else loginMsg.textContent="Benutzername oder Passwort ist falsch."}
+saveBtn.onclick=()=>{const cards=defaultCards.map((_,i)=>({name:document.getElementById("name"+i).value.trim(),desc:document.getElementById("desc"+i).value.trim(),image:document.getElementById("img"+i).src}));localStorage.setItem(KEY,JSON.stringify({heroTitle:heroTitle.value.trim().replace(/\s*\/\s*/g,"<br>"),heroCopy:heroCopy.value.trim(),cards}));saveMsg.textContent="Gespeichert. Änderungen gelten in diesem Browser."}
+previewBtn.onclick=()=>window.open("index.html","_blank");
+resetBtn.onclick=()=>{if(confirm("Alle Test-Änderungen löschen?")){localStorage.removeItem(KEY);loadEditor();saveMsg.textContent="Zurückgesetzt."}}
+</script></body></html>
