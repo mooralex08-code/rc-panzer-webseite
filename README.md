@@ -1,23 +1,18 @@
-# FORMORA – Ausbaustufe 3
+# FORMORA – Ausbaustufe 3.1
 
-## Seiten
-- index.html – Startseite
-- shop.html – eigener Shop
-- konfigurator.html – eigener 3D-Druck-Konfigurator
-- admin.html – Adminbereich
-- 404.html
-- .nojekyll
+Diese Version macht die neuen Funktionen direkt sichtbar.
 
-## Admin Login
+## Sofort sichtbar auf der Startseite
+- Shop öffnen
+- 3D-Konfigurator
+- Admin öffnen
+- Admin-Link auch oben in der Navigation
+- Navigation bleibt auf Handy/iPad sichtbar
+- futuristischer Mauszeiger auf PC
+- zusätzliche Hover- und Hintergrundeffekte
+
+## Admin
 Benutzer: Admin
 Passwort: 123
 
-WICHTIG:
-Der Admin speichert Änderungen über localStorage. Das bedeutet:
-- Änderungen gelten nur in demselben Browser/Gerät.
-- GitHub Pages hat keine Datenbank und keinen sicheren Server-Login.
-- Für einen echten Admin mit globalen Änderungen brauchen wir später Backend/CMS/Firebase/Supabase o.ä.
-
-## GitHub Pages
-Alle Dateien direkt in den Repository-Hauptordner laden.
-Settings → Pages → Deploy from branch → main → / (root)
+Hinweis: Der Admin nutzt auf GitHub Pages localStorage. Änderungen sind deshalb nur im selben Browser/Gerät gespeichert.

@@ -92,7 +92,28 @@ body.cursor-down .cursor-ring{width:24px;height:24px}
 .login{min-height:100vh;display:grid;place-items:center;padding:30px}.login-box{width:min(430px,100%);border:1px solid var(--line);border-radius:24px;padding:24px;background:#0a101a}
 @media (pointer:coarse){.cursor-ring,.cursor-dot{display:none!important}}
 @media(max-width:900px){.hero-grid{grid-template-columns:1fr}.visual{min-height:360px}.grid,.products{grid-template-columns:repeat(2,minmax(0,1fr))}.admin-shell{grid-template-columns:1fr}.admin-side{height:auto;position:relative;border-right:0;border-bottom:1px solid var(--line)}}
-@media(max-width:620px){nav a:not(.keep){display:none}.grid,.products{grid-template-columns:1fr}.hero{padding:50px 0}.visual{min-height:300px}.print-object{inset:45px}.admin-grid{grid-template-columns:1fr}.admin-field.full{grid-column:auto}.admin-product{grid-template-columns:1fr}.nav{height:auto;padding:14px 0}}
+@media(max-width:620px){nav{gap:5px;justify-content:flex-end}nav a:not(.keep){display:inline-flex;padding:8px 9px;font-size:12px}.grid,.products{grid-template-columns:1fr}.hero{padding:50px 0}.visual{min-height:300px}.print-object{inset:45px}.admin-grid{grid-template-columns:1fr}.admin-field.full{grid-column:auto}.admin-product{grid-template-columns:1fr}.nav{height:auto;padding:14px 0}}
+
+.new-badge{
+  display:inline-flex;align-items:center;gap:7px;padding:8px 12px;border-radius:999px;
+  border:1px solid rgba(108,247,255,.32);background:rgba(108,247,255,.08);
+  color:#9ffbff;font-size:12px;font-weight:800;letter-spacing:.08em;margin-bottom:18px
+}
+.quick-launch{
+  display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin-top:26px
+}
+.launch-card{
+  display:block;padding:20px;border:1px solid rgba(255,255,255,.12);border-radius:20px;
+  background:linear-gradient(145deg,rgba(108,247,255,.07),rgba(173,124,255,.05));
+  transition:.25s ease
+}
+.launch-card:hover{transform:translateY(-5px);border-color:rgba(108,247,255,.45)}
+.launch-card .launch-icon{font-size:34px;margin-bottom:10px}
+.launch-card b{display:block;font-size:19px;margin-bottom:5px}
+.launch-card small{color:#9ba7b8;line-height:1.5}
+.admin-nav{border-color:rgba(255,108,207,.35)!important;color:#ff9cdb!important}
+@media(max-width:700px){.quick-launch{grid-template-columns:1fr}.nav{align-items:flex-start}.brand{min-width:120px}nav{max-width:65%}}
+
 </style></head>
 <body><div class="cursor-ring"></div><div class="cursor-dot"></div>
 <header><div class="wrap nav">
@@ -100,7 +121,7 @@ body.cursor-down .cursor-ring{width:24px;height:24px}
   <nav>
     <a href="index.html">Start</a>
     <a href="shop.html">Shop</a>
-    <a href="konfigurator.html">Konfigurator</a>
+    <a href="konfigurator.html">Konfigurator</a><a href="admin.html" class="admin-nav">Admin</a>
     <button id="cartBtn" class="ghost-btn keep">Warenkorb <span id="count">0</span></button>
   </nav>
 </div></header>
@@ -112,6 +133,25 @@ body.cursor-down .cursor-ring{width:24px;height:24px}
     <h1 id="heroTitle">Du denkst es.<br>Wir drucken es.</h1>
     <p id="heroText">3D-Druck für Modellbau, Figuren, Ersatzteile, Technik, Deko, Haushalt und personalisierte Ideen.</p>
     <div class="hero-actions"><a class="btn primary" href="shop.html">Shop öffnen</a><a class="btn" href="konfigurator.html">Eigenes Projekt starten</a></div>
+<div class="new-badge">✦ NEU: Mehrseiten-Shop + Admin</div>
+<div class="quick-launch">
+  <a class="launch-card" href="shop.html">
+    <div class="launch-icon">🛒</div>
+    <b>Shop öffnen</b>
+    <small>Der Shop öffnet jetzt als eigene Seite.</small>
+  </a>
+  <a class="launch-card" href="konfigurator.html">
+    <div class="launch-icon">🧪</div>
+    <b>3D-Konfigurator</b>
+    <small>Material, Farbe, Größe und Datei auswählen.</small>
+  </a>
+  <a class="launch-card" href="admin.html">
+    <div class="launch-icon">⚙️</div>
+    <b>Admin öffnen</b>
+    <small>Produkte, Preise, Texte und Bilder verwalten.</small>
+  </a>
+</div>
+
   </div>
   <div class="visual reveal"><div class="print-object"><span>🧊</span></div></div>
 </div></section>

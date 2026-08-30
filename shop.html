@@ -92,7 +92,7 @@ body.cursor-down .cursor-ring{width:24px;height:24px}
 .login{min-height:100vh;display:grid;place-items:center;padding:30px}.login-box{width:min(430px,100%);border:1px solid var(--line);border-radius:24px;padding:24px;background:#0a101a}
 @media (pointer:coarse){.cursor-ring,.cursor-dot{display:none!important}}
 @media(max-width:900px){.hero-grid{grid-template-columns:1fr}.visual{min-height:360px}.grid,.products{grid-template-columns:repeat(2,minmax(0,1fr))}.admin-shell{grid-template-columns:1fr}.admin-side{height:auto;position:relative;border-right:0;border-bottom:1px solid var(--line)}}
-@media(max-width:620px){nav a:not(.keep){display:none}.grid,.products{grid-template-columns:1fr}.hero{padding:50px 0}.visual{min-height:300px}.print-object{inset:45px}.admin-grid{grid-template-columns:1fr}.admin-field.full{grid-column:auto}.admin-product{grid-template-columns:1fr}.nav{height:auto;padding:14px 0}}
+@media(max-width:620px){nav{gap:5px;justify-content:flex-end}nav a:not(.keep){display:inline-flex;padding:8px 9px;font-size:12px}.grid,.products{grid-template-columns:1fr}.hero{padding:50px 0}.visual{min-height:300px}.print-object{inset:45px}.admin-grid{grid-template-columns:1fr}.admin-field.full{grid-column:auto}.admin-product{grid-template-columns:1fr}.nav{height:auto;padding:14px 0}}
 </style></head>
 <body><div class="cursor-ring"></div><div class="cursor-dot"></div>
 <header><div class="wrap nav">
@@ -100,7 +100,7 @@ body.cursor-down .cursor-ring{width:24px;height:24px}
   <nav>
     <a href="index.html">Start</a>
     <a href="shop.html">Shop</a>
-    <a href="konfigurator.html">Konfigurator</a>
+    <a href="konfigurator.html">Konfigurator</a><a href="admin.html" class="admin-nav">Admin</a>
     <button id="cartBtn" class="ghost-btn keep">Warenkorb <span id="count">0</span></button>
   </nav>
 </div></header>
