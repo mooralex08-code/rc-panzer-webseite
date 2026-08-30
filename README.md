@@ -1,18 +1,13 @@
-# FORMORA – Ausbaustufe 3.1
+# FORMORA – Premium Startseite
 
-Diese Version macht die neuen Funktionen direkt sichtbar.
+Entfernt:
+- „NEU: Mehrseiten-Shop + Admin“
+- große „Admin öffnen“-Werbekachel auf der Startseite
 
-## Sofort sichtbar auf der Startseite
-- Shop öffnen
-- 3D-Konfigurator
-- Admin öffnen
-- Admin-Link auch oben in der Navigation
-- Navigation bleibt auf Handy/iPad sichtbar
-- futuristischer Mauszeiger auf PC
-- zusätzliche Hover- und Hintergrundeffekte
-
-## Admin
-Benutzer: Admin
-Passwort: 123
-
-Hinweis: Der Admin nutzt auf GitHub Pages localStorage. Änderungen sind deshalb nur im selben Browser/Gerät gespeichert.
+Neu:
+- interessanter Premium-Bereich
+- Vorteile / Features
+- animierter Custom-Print-Bereich
+- „So funktioniert's“-Ablauf
+- Shop, Konfigurator und Admin bleiben als echte Seiten erhalten
+- Admin Login bleibt oben in der Navigation

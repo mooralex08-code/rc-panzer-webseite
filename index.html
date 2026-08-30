@@ -133,6 +133,21 @@ body.cursor-down .cursor-ring{width:24px;height:24px}
   .admin-nav{display:inline-flex!important;padding:8px 10px!important;font-size:12px!important}
 }
 
+
+.feature-strip{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:34px}
+.feature-pill{padding:16px;border:1px solid rgba(255,255,255,.1);border-radius:18px;background:rgba(255,255,255,.035);backdrop-filter:blur(10px)}
+.feature-pill strong{display:block;margin-bottom:5px}.feature-pill span{font-size:13px;color:#929dad}
+.showcase{display:grid;grid-template-columns:1.15fr .85fr;gap:18px;margin-top:22px}
+.showcase-main,.showcase-side{border:1px solid rgba(255,255,255,.1);border-radius:28px;overflow:hidden;position:relative;background:linear-gradient(145deg,rgba(108,247,255,.06),rgba(173,124,255,.045))}
+.showcase-main{min-height:380px;padding:34px;display:flex;flex-direction:column;justify-content:flex-end}
+.showcase-side{min-height:380px;padding:28px}
+.glow-shape{position:absolute;width:260px;height:260px;border-radius:42% 58% 63% 37%;background:linear-gradient(135deg,rgba(108,247,255,.32),rgba(173,124,255,.24),rgba(255,108,207,.2));filter:blur(2px);right:-40px;top:-55px;animation:morph 8s ease-in-out infinite}
+@keyframes morph{50%{transform:rotate(35deg) scale(1.12);border-radius:62% 38% 43% 57%}}
+.process{display:grid;gap:14px;margin-top:22px}.process-step{display:grid;grid-template-columns:42px 1fr;gap:12px;align-items:start;padding:14px;border-bottom:1px solid rgba(255,255,255,.08)}
+.process-step b:first-child{width:38px;height:38px;border-radius:12px;display:grid;place-items:center;background:rgba(108,247,255,.08);color:#6cf7ff}
+@media(max-width:800px){.feature-strip{grid-template-columns:repeat(2,1fr)}.showcase{grid-template-columns:1fr}.showcase-main,.showcase-side{min-height:320px}}
+@media(max-width:480px){.feature-strip{grid-template-columns:1fr}}
+
 </style></head>
 <body><div class="cursor-ring"></div><div class="cursor-dot"></div>
 <header><div class="wrap nav">
@@ -174,6 +189,41 @@ body.cursor-down .cursor-ring{width:24px;height:24px}
   <div style="display:flex;justify-content:space-between;font-size:20px;margin:22px 0"><b>Gesamt</b><b id="sum">0,00 €</b></div>
   <button id="order" class="btn primary" style="width:100%">Bestellanfrage senden</button>
 </aside>
+
+
+<section>
+<div class="wrap">
+  <div class="sectionhead reveal">
+    <div><div class="eyebrow">FORMORA EXPERIENCE</div><h2>Von der Idee zum echten Teil.</h2><p>Ein moderner 3D-Druck-Service für Einzelstücke, Kleinserien und besondere Projekte.</p></div>
+  </div>
+  <div class="feature-strip">
+    <div class="feature-pill reveal"><strong>⚡ Schnell</strong><span>Direkte Anfrage ohne komplizierte Schritte.</span></div>
+    <div class="feature-pill reveal"><strong>🧪 Materialwahl</strong><span>PLA, PETG, TPU und weitere Optionen.</span></div>
+    <div class="feature-pill reveal"><strong>✦ Individuell</strong><span>Personalisierte Teile und Sonderanfertigungen.</span></div>
+    <div class="feature-pill reveal"><strong>📐 Präzise</strong><span>Für Deko, Technik, Modellbau und Ersatzteile.</span></div>
+  </div>
+
+  <div class="showcase">
+    <div class="showcase-main reveal">
+      <div class="glow-shape"></div>
+      <div style="position:relative;z-index:2">
+        <div class="eyebrow">CUSTOM PRINT</div>
+        <h2 style="font-size:clamp(34px,5vw,62px)">Deine Idee.<br>Deine Form.</h2>
+        <p>Du hast ein eigenes Modell oder brauchst ein spezielles Teil? Stelle dein Projekt im Konfigurator zusammen.</p>
+        <a class="btn primary" href="konfigurator.html">Projekt konfigurieren →</a>
+      </div>
+    </div>
+    <div class="showcase-side reveal">
+      <div class="eyebrow">SO FUNKTIONIERT'S</div>
+      <div class="process">
+        <div class="process-step"><b>01</b><div><b>Idee auswählen</b><p>Produkt aus dem Shop oder eigenes Projekt.</p></div></div>
+        <div class="process-step"><b>02</b><div><b>Konfigurieren</b><p>Material, Farbe, Größe und Menge festlegen.</p></div></div>
+        <div class="process-step"><b>03</b><div><b>Anfrage senden</b><p>Zusammenfassung prüfen und Anfrage abschicken.</p></div></div>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
 
 <footer class="footer"><div class="wrap">FORMORA · 3D-Manufaktur <span style="float:right"><a href="admin.html" style="opacity:.35">Admin</a></span></div></footer>
 <script>
