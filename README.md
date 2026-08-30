@@ -1,11 +1,13 @@
-# FORMORA
+# FORMORA – WOW Startseite
 
-Der komplette Bereich „Dein eigener 3D-Druck“ wurde entfernt:
-- keine Konfigurator-Seite mehr
-- kein Datei-Upload
-- keine Material-/Farb-/Größen-Auswahl
-- keine Preis-Schätzung
-- kein „Anfrage per E-Mail“-Button aus diesem Bereich
-- keine Links zum Konfigurator
-
-Der restliche Shop, Warenkorb, Admin, Design und die übrige Webseite bleiben erhalten.
+Neu:
+- Warenkorb öffnet NICHT mehr automatisch beim Hinzufügen.
+- Stattdessen erscheint kurz eine kleine Bestätigung.
+- Warenkorb öffnet nur noch, wenn der Besucher selbst auf „Warenkorb“ klickt.
+- Startseite emotionaler und moderner gestaltet.
+- neue Inspirationsflächen
+- stärkere Hero-Botschaft
+- Premium-CTA und Hover-Effekte
+- responsive für Handy, Tablet und PC
+- Shop und Admin bleiben erhalten
+- 3D-Konfigurator bleibt entfernt

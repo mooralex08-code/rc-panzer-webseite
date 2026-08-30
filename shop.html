@@ -112,6 +112,13 @@ body.cursor-down .cursor-ring{width:24px;height:24px}
   .admin-nav{display:inline-flex!important;padding:8px 10px!important;font-size:12px!important}
 }
 
+
+.cart-toast{position:fixed;right:20px;bottom:20px;z-index:120;padding:14px 18px;border-radius:15px;background:#0d1720;border:1px solid rgba(108,247,255,.35);box-shadow:0 18px 55px rgba(0,0,0,.4);color:#dffcff;transform:translateY(30px);opacity:0;pointer-events:none;transition:.25s}.cart-toast.show{transform:none;opacity:1}@media(max-width:520px){.cart-toast{left:14px;right:14px;bottom:14px}}
+
+@media (pointer:fine){
+  html,body,a,button,input,select,textarea,.product,.card,.inspire,.ghost-btn,.btn{cursor:none!important}
+}
+
 </style></head>
 <body><div class="cursor-ring"></div><div class="cursor-dot"></div>
 <header><div class="wrap nav">
@@ -149,7 +156,7 @@ function loadData(){
 function saveData(data){localStorage.setItem("formoraData",JSON.stringify(data))}
 function money(v){return Number(v||0).toLocaleString("de-DE",{style:"currency",currency:"EUR"})}
 let cart=[];
-function addCart(p){const x=cart.find(i=>i.id===p.id);if(x)x.qty++;else cart.push({...p,qty:1});renderCart();openCart()}
+function addCart(p){const x=cart.find(i=>i.id===p.id);if(x)x.qty++;else cart.push({...p,qty:1});renderCart();showCartToast(p.name)}
 function renderCart(){
   const count=document.getElementById("count"),items=document.getElementById("items"),sum=document.getElementById("sum");
   if(!count||!items||!sum)return;
@@ -162,6 +169,14 @@ function renderCart(){
     row.innerHTML=`<div><b>${x.name}</b><br><small>${money(x.price)} pro Stück</small></div><div style="text-align:right"><b>${money(x.price*x.qty)}</b><div class="cart-controls"><button data-act="dec" data-id="${x.id}">−</button><button disabled>${x.qty}</button><button data-act="inc" data-id="${x.id}">+</button><button data-act="del" data-id="${x.id}">×</button></div></div>`;
     items.appendChild(row)
   })
+}
+function showCartToast(name){
+  let t=document.getElementById("cartToast");
+  if(!t){t=document.createElement("div");t.id="cartToast";t.className="cart-toast";document.body.appendChild(t)}
+  t.textContent="✓ "+name+" wurde zum Warenkorb hinzugefügt";
+  t.classList.add("show");
+  clearTimeout(window.__cartToastTimer);
+  window.__cartToastTimer=setTimeout(()=>t.classList.remove("show"),1800);
 }
 function openCart(){document.getElementById("drawer")?.classList.add("open");document.getElementById("overlay")?.classList.add("show")}
 function closeCart(){document.getElementById("drawer")?.classList.remove("open");document.getElementById("overlay")?.classList.remove("show")}

@@ -148,6 +148,33 @@ body.cursor-down .cursor-ring{width:24px;height:24px}
 @media(max-width:800px){.feature-strip{grid-template-columns:repeat(2,1fr)}.showcase{grid-template-columns:1fr}.showcase-main,.showcase-side{min-height:320px}}
 @media(max-width:480px){.feature-strip{grid-template-columns:1fr}}
 
+
+.cart-toast{position:fixed;right:20px;bottom:20px;z-index:120;padding:14px 18px;border-radius:15px;background:#0d1720;border:1px solid rgba(108,247,255,.35);box-shadow:0 18px 55px rgba(0,0,0,.4);color:#dffcff;transform:translateY(30px);opacity:0;pointer-events:none;transition:.25s}
+.cart-toast.show{transform:none;opacity:1}
+.hero-trust{display:flex;gap:18px;flex-wrap:wrap;margin-top:22px;color:#9ca8b8;font-size:13px}
+.hero-trust span{display:flex;align-items:center;gap:6px}
+.hero-highlight{background:linear-gradient(90deg,#fff,#9ffaff 45%,#c9a7ff 75%,#ffb2e4);-webkit-background-clip:text;background-clip:text;color:transparent}
+.inspiration-grid{display:grid;grid-template-columns:1.2fr .8fr .8fr;grid-template-rows:230px 230px;gap:16px}
+.inspire{border:1px solid rgba(255,255,255,.1);border-radius:25px;position:relative;overflow:hidden;padding:24px;background:#0a1018;display:flex;align-items:flex-end;transition:.3s}
+.inspire:hover{transform:translateY(-5px);border-color:rgba(108,247,255,.35)}
+.inspire.big{grid-row:1/3}
+.inspire:before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 70% 20%,rgba(108,247,255,.18),transparent 38%),radial-gradient(circle at 20% 90%,rgba(173,124,255,.13),transparent 38%)}
+.inspire:nth-child(2):before{background:radial-gradient(circle at 60% 20%,rgba(255,108,207,.18),transparent 40%)}
+.inspire:nth-child(3):before{background:radial-gradient(circle at 60% 30%,rgba(173,124,255,.2),transparent 40%)}
+.inspire:nth-child(4):before{background:radial-gradient(circle at 50% 20%,rgba(108,247,255,.16),transparent 40%)}
+.inspire-content{position:relative;z-index:2}.inspire-icon{font-size:56px;position:absolute;right:24px;top:24px;filter:drop-shadow(0 16px 25px rgba(0,0,0,.4))}
+.inspire.big .inspire-icon{font-size:110px;right:35px;top:45px}
+.cta-wow{position:relative;overflow:hidden;border:1px solid rgba(108,247,255,.22);border-radius:30px;padding:46px;background:linear-gradient(120deg,rgba(108,247,255,.08),rgba(173,124,255,.08),rgba(255,108,207,.06));text-align:center}
+.cta-wow:before{content:"";position:absolute;width:340px;height:340px;border-radius:50%;background:rgba(108,247,255,.08);filter:blur(20px);left:-120px;top:-160px}
+.cta-wow>*{position:relative;z-index:2}
+@media(max-width:800px){.inspiration-grid{grid-template-columns:1fr 1fr;grid-template-rows:auto}.inspire.big{grid-row:auto;grid-column:1/-1;min-height:320px}.inspire{min-height:210px}}
+@media(max-width:520px){.inspiration-grid{grid-template-columns:1fr}.inspire.big{grid-column:auto}.inspire{min-height:220px}.cta-wow{padding:30px 20px}.cart-toast{left:14px;right:14px;bottom:14px}}
+
+
+@media (pointer:fine){
+  html,body,a,button,input,select,textarea,.product,.card,.inspire,.ghost-btn,.btn{cursor:none!important}
+}
+
 </style></head>
 <body><div class="cursor-ring"></div><div class="cursor-dot"></div>
 <header><div class="wrap nav">
@@ -164,9 +191,9 @@ body.cursor-down .cursor-ring{width:24px;height:24px}
 <section class="hero"><div class="wrap hero-grid">
   <div class="reveal">
     <div class="eyebrow">FORMORA // 3D PRINT STUDIO</div>
-    <h1 id="heroTitle">Du denkst es.<br>Wir drucken es.</h1>
-    <p id="heroText">3D-Druck für Modellbau, Figuren, Ersatzteile, Technik, Deko, Haushalt und personalisierte Ideen.</p>
-    <div class="hero-actions"><a class="btn primary" href="shop.html">Shop öffnen</a></div>
+    <h1 id="heroTitle">Aus Ideen werden<br><span class="hero-highlight">echte Dinge.</span></h1>
+    <p id="heroText">Besondere 3D-Drucke, praktische Lösungen und individuelle Designs – gemacht für Menschen, die nicht einfach irgendetwas von der Stange wollen.</p>
+    <div class="hero-actions"><a class="btn primary" href="shop.html">Produkte entdecken →</a></div>
 
 
   <div class="visual reveal"><div class="print-object"><span>🧊</span></div></div>
@@ -225,12 +252,34 @@ body.cursor-down .cursor-ring{width:24px;height:24px}
 </div>
 </section>
 
+
+<section>
+<div class="wrap">
+<div class="sectionhead reveal"><div><div class="eyebrow">LASS DICH INSPIRIEREN</div><h2>Nicht einfach gedruckt.<br>Für dich gemacht.</h2><p>Entdecke, was mit 3D-Druck alles möglich ist.</p></div><a class="btn" href="shop.html">Zum Shop →</a></div>
+<div class="inspiration-grid">
+  <a class="inspire big reveal" href="shop.html"><div class="inspire-icon">⚙️</div><div class="inspire-content"><div class="eyebrow">FUNKTIONAL</div><h2 style="font-size:38px">Ersatzteile & Technik</h2><p>Wenn ein kleines Teil fehlt, muss nicht gleich alles neu gekauft werden.</p></div></a>
+  <a class="inspire reveal" href="shop.html"><div class="inspire-icon">♟️</div><div class="inspire-content"><b>Figuren & Modellbau</b><p>Details, Miniaturen und besondere Projekte.</p></div></a>
+  <a class="inspire reveal" href="shop.html"><div class="inspire-icon">✦</div><div class="inspire-content"><b>Deko & Design</b><p>Formen, die auffallen.</p></div></a>
+  <a class="inspire reveal" href="shop.html"><div class="inspire-icon">⌂</div><div class="inspire-content"><b>Haushalt</b><p>Praktische Ideen für den Alltag.</p></div></a>
+  <a class="inspire reveal" href="shop.html"><div class="inspire-icon">Aa</div><div class="inspire-content"><b>Personalisiert</b><p>Produkte mit deinem Namen oder Wunschtext.</p></div></a>
+</div>
+</div>
+</section>
+<section><div class="wrap">
+<div class="cta-wow reveal">
+<div class="eyebrow">FORMORA 3D-MANUFAKTUR</div>
+<h2>Etwas Besonderes gesucht?</h2>
+<p>Schau dir unsere Produkte an und entdecke, was aus einer guten Idee entstehen kann.</p>
+<a class="btn primary" href="shop.html">Jetzt Shop entdecken →</a>
+</div>
+</div></section>
+
 <footer class="footer"><div class="wrap">FORMORA · 3D-Manufaktur <span style="float:right"><a href="admin.html" style="opacity:.35">Admin</a></span></div></footer>
 <script>
 document.addEventListener("DOMContentLoaded",()=>{const d=loadData();document.getElementById("heroTitle").innerHTML=d.heroTitle.replace(". ",".<br>");document.getElementById("heroText").textContent=d.heroText})
 </script>
 <script>
-const DEFAULT_DATA = {"brand": "FORMORA", "tagline": "3D-MANUFAKTUR · IDEEN WERDEN GREIFBAR", "heroTitle": "Du denkst es. Wir drucken es.", "heroText": "3D-Druck für Modellbau, Figuren, Ersatzteile, Technik, Deko, Haushalt und personalisierte Ideen.", "email": "deine-email@beispiel.de", "products": [{"id": "p1", "cat": "Modellbau", "name": "Diorama Detail Set", "price": 14.9, "desc": "Kleine Details und Zubehörteile für Modellbau-Projekte.", "image": ""}, {"id": "p2", "cat": "Modellbau", "name": "Fahrzeug Detailteil", "price": 17.9, "desc": "Detailteil für Fahrzeuge, Panzer und Modellbauprojekte.", "image": ""}, {"id": "p3", "cat": "Figuren", "name": "Fantasy Büste", "price": 28.9, "desc": "3D-gedruckte Büste zum Sammeln, Bemalen oder Verschenken.", "image": ""}, {"id": "p4", "cat": "Figuren", "name": "Miniaturen Set", "price": 19.9, "desc": "Mehrere kleine Figuren als Demo-Produkt.", "image": ""}, {"id": "p5", "cat": "Ersatzteile", "name": "Ersatzclip Set", "price": 6.9, "desc": "Praktische Ersatzclips als Beispiel für funktionalen 3D-Druck.", "image": ""}, {"id": "p6", "cat": "Technik", "name": "Universal Adapter", "price": 12.9, "desc": "Adapter, Halterungen und technische Bauteile.", "image": ""}, {"id": "p7", "cat": "Technik", "name": "Controller Dock", "price": 18.9, "desc": "Schlichter Halter für Controller und Gaming-Zubehör.", "image": ""}, {"id": "p8", "cat": "Deko", "name": "Design Vase", "price": 22.9, "desc": "Geometrische Vase mit moderner Oberflächenstruktur.", "image": ""}, {"id": "p9", "cat": "Haushalt", "name": "Kabel Organizer", "price": 8.9, "desc": "Kleine Ordnungshilfe für Arbeitsplatz und Zuhause.", "image": ""}, {"id": "p10", "cat": "Haushalt", "name": "Werkzeughalter", "price": 16.9, "desc": "3D-gedruckter Halter für Werkstatt oder Hobbyraum.", "image": ""}, {"id": "p11", "cat": "Personalisiert", "name": "Namensschild Custom", "price": 13.9, "desc": "Personalisiertes Schild mit Wunschname oder kurzem Text.", "image": ""}, {"id": "p12", "cat": "Personalisiert", "name": "Logo Schlüsselanhänger", "price": 9.9, "desc": "Schlüsselanhänger mit individuellem Namen oder Logo.", "image": ""}]};
+const DEFAULT_DATA = {"brand": "FORMORA", "tagline": "3D-MANUFAKTUR · IDEEN WERDEN GREIFBAR", "heroTitle": "Aus Ideen werden echte Dinge.", "heroText": "Besondere 3D-Drucke, praktische Lösungen und individuelle Designs – gemacht für Menschen, die nicht einfach irgendetwas von der Stange wollen.", "email": "deine-email@beispiel.de", "products": [{"id": "p1", "cat": "Modellbau", "name": "Diorama Detail Set", "price": 14.9, "desc": "Kleine Details und Zubehörteile für Modellbau-Projekte.", "image": ""}, {"id": "p2", "cat": "Modellbau", "name": "Fahrzeug Detailteil", "price": 17.9, "desc": "Detailteil für Fahrzeuge, Panzer und Modellbauprojekte.", "image": ""}, {"id": "p3", "cat": "Figuren", "name": "Fantasy Büste", "price": 28.9, "desc": "3D-gedruckte Büste zum Sammeln, Bemalen oder Verschenken.", "image": ""}, {"id": "p4", "cat": "Figuren", "name": "Miniaturen Set", "price": 19.9, "desc": "Mehrere kleine Figuren als Demo-Produkt.", "image": ""}, {"id": "p5", "cat": "Ersatzteile", "name": "Ersatzclip Set", "price": 6.9, "desc": "Praktische Ersatzclips als Beispiel für funktionalen 3D-Druck.", "image": ""}, {"id": "p6", "cat": "Technik", "name": "Universal Adapter", "price": 12.9, "desc": "Adapter, Halterungen und technische Bauteile.", "image": ""}, {"id": "p7", "cat": "Technik", "name": "Controller Dock", "price": 18.9, "desc": "Schlichter Halter für Controller und Gaming-Zubehör.", "image": ""}, {"id": "p8", "cat": "Deko", "name": "Design Vase", "price": 22.9, "desc": "Geometrische Vase mit moderner Oberflächenstruktur.", "image": ""}, {"id": "p9", "cat": "Haushalt", "name": "Kabel Organizer", "price": 8.9, "desc": "Kleine Ordnungshilfe für Arbeitsplatz und Zuhause.", "image": ""}, {"id": "p10", "cat": "Haushalt", "name": "Werkzeughalter", "price": 16.9, "desc": "3D-gedruckter Halter für Werkstatt oder Hobbyraum.", "image": ""}, {"id": "p11", "cat": "Personalisiert", "name": "Namensschild Custom", "price": 13.9, "desc": "Personalisiertes Schild mit Wunschname oder kurzem Text.", "image": ""}, {"id": "p12", "cat": "Personalisiert", "name": "Logo Schlüsselanhänger", "price": 9.9, "desc": "Schlüsselanhänger mit individuellem Namen oder Logo.", "image": ""}]};
 function loadData(){
   try{
     const raw=localStorage.getItem("formoraData");
@@ -240,7 +289,7 @@ function loadData(){
 function saveData(data){localStorage.setItem("formoraData",JSON.stringify(data))}
 function money(v){return Number(v||0).toLocaleString("de-DE",{style:"currency",currency:"EUR"})}
 let cart=[];
-function addCart(p){const x=cart.find(i=>i.id===p.id);if(x)x.qty++;else cart.push({...p,qty:1});renderCart();openCart()}
+function addCart(p){const x=cart.find(i=>i.id===p.id);if(x)x.qty++;else cart.push({...p,qty:1});renderCart();showCartToast(p.name)}
 function renderCart(){
   const count=document.getElementById("count"),items=document.getElementById("items"),sum=document.getElementById("sum");
   if(!count||!items||!sum)return;
@@ -253,6 +302,14 @@ function renderCart(){
     row.innerHTML=`<div><b>${x.name}</b><br><small>${money(x.price)} pro Stück</small></div><div style="text-align:right"><b>${money(x.price*x.qty)}</b><div class="cart-controls"><button data-act="dec" data-id="${x.id}">−</button><button disabled>${x.qty}</button><button data-act="inc" data-id="${x.id}">+</button><button data-act="del" data-id="${x.id}">×</button></div></div>`;
     items.appendChild(row)
   })
+}
+function showCartToast(name){
+  let t=document.getElementById("cartToast");
+  if(!t){t=document.createElement("div");t.id="cartToast";t.className="cart-toast";document.body.appendChild(t)}
+  t.textContent="✓ "+name+" wurde zum Warenkorb hinzugefügt";
+  t.classList.add("show");
+  clearTimeout(window.__cartToastTimer);
+  window.__cartToastTimer=setTimeout(()=>t.classList.remove("show"),1800);
 }
 function openCart(){document.getElementById("drawer")?.classList.add("open");document.getElementById("overlay")?.classList.add("show")}
 function closeCart(){document.getElementById("drawer")?.classList.remove("open");document.getElementById("overlay")?.classList.remove("show")}
