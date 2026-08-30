@@ -1,8 +1,13 @@
-# FORMORA – ohne 3D-Konfigurator
+# FORMORA – Premium Startseite
 
 Entfernt:
-- komplette Seite „Dein eigener 3D-Druck“
-- 3D-Konfigurator
-- Links und Buttons zum Konfigurator
+- „NEU: Mehrseiten-Shop + Admin“
+- große „Admin öffnen“-Werbekachel auf der Startseite
 
-Shop und Admin bleiben erhalten.
+Neu:
+- interessanter Premium-Bereich
+- Vorteile / Features
+- animierter Custom-Print-Bereich
+- „So funktioniert's“-Ablauf
+- Shop, Konfigurator und Admin bleiben als echte Seiten erhalten
+- Admin Login bleibt oben in der Navigation
