@@ -132,7 +132,7 @@ function loadData(){
 function saveData(data){localStorage.setItem("formoraData",JSON.stringify(data))}
 function money(v){return Number(v||0).toLocaleString("de-DE",{style:"currency",currency:"EUR"})}
 let cart=[];
-function addCart(p){const x=cart.find(i=>i.id===p.id);if(x)x.qty++;else cart.push({...p,qty:1});renderCart();openCart()}
+function addCart(p){const x=cart.find(i=>i.id===p.id);if(x)x.qty++;else cart.push({...p,qty:1});renderCart();showCartToast(p.name)}
 function renderCart(){
   const count=document.getElementById("count"),items=document.getElementById("items"),sum=document.getElementById("sum");
   if(!count||!items||!sum)return;
