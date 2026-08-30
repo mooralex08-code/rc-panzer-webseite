@@ -1,32 +1,23 @@
-# FORMORA – GitHub Pages
+# FORMORA – Ausbaustufe 3
 
-Dieses Paket ist vollständig für GitHub Pages vorbereitet.
+## Seiten
+- index.html – Startseite
+- shop.html – eigener Shop
+- konfigurator.html – eigener 3D-Druck-Konfigurator
+- admin.html – Adminbereich
+- 404.html
+- .nojekyll
 
-## Diese Dateien müssen direkt ins Hauptverzeichnis des Repositories
+## Admin Login
+Benutzer: Admin
+Passwort: 123
 
-- `index.html`
-- `404.html`
-- `.nojekyll`
-- `README.md`
+WICHTIG:
+Der Admin speichert Änderungen über localStorage. Das bedeutet:
+- Änderungen gelten nur in demselben Browser/Gerät.
+- GitHub Pages hat keine Datenbank und keinen sicheren Server-Login.
+- Für einen echten Admin mit globalen Änderungen brauchen wir später Backend/CMS/Firebase/Supabase o.ä.
 
-## GitHub Pages aktivieren
-
-1. Repository auf GitHub öffnen.
-2. **Settings** öffnen.
-3. Links **Pages** auswählen.
-4. Unter **Build and deployment**:
-   - Source: `Deploy from a branch`
-   - Branch: `main`
-   - Folder: `/ (root)`
-5. Speichern.
-6. Kurz warten, bis GitHub die Pages-Adresse anzeigt.
-
-Die `index.html` enthält bereits CSS und JavaScript direkt in der Datei.
-Es werden deshalb keine extra CSS- oder JS-Ordner benötigt.
-
-## Eigene Domain
-
-Wenn später eine eigene Domain verbunden werden soll:
-GitHub → Settings → Pages → Custom domain.
-
-Danach muss beim Domain-Anbieter noch der passende DNS-Eintrag gesetzt werden.
+## GitHub Pages
+Alle Dateien direkt in den Repository-Hauptordner laden.
+Settings → Pages → Deploy from branch → main → / (root)

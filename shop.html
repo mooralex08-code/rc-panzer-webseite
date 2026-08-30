@@ -1,4 +1,4 @@
-<!doctype html><html lang="de"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>FORMORA — Admin</title><style>
+<!doctype html><html lang="de"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>FORMORA — Shop</title><style>
 :root{
   --bg:#05070b;--panel:#0a0f18;--panel2:#0e1522;--txt:#f5f7fb;--muted:#8e99ab;
   --cyan:#6cf7ff;--violet:#ad7cff;--pink:#ff6ccf;--line:rgba(255,255,255,.10);
@@ -95,28 +95,31 @@ body.cursor-down .cursor-ring{width:24px;height:24px}
 @media(max-width:620px){nav a:not(.keep){display:none}.grid,.products{grid-template-columns:1fr}.hero{padding:50px 0}.visual{min-height:300px}.print-object{inset:45px}.admin-grid{grid-template-columns:1fr}.admin-field.full{grid-column:auto}.admin-product{grid-template-columns:1fr}.nav{height:auto;padding:14px 0}}
 </style></head>
 <body><div class="cursor-ring"></div><div class="cursor-dot"></div>
-<div id="login" class="login"><div class="login-box">
-<div class="eyebrow">FORMORA ADMIN</div><h2>Admin Login</h2><p>Nur für die Verwaltung dieser Browser-Version.</p>
-<div class="admin-field"><label>Benutzername</label><input id="user"></div>
-<div class="admin-field" style="margin-top:12px"><label>Passwort</label><input id="pass" type="password"></div>
-<button id="loginBtn" class="btn primary" style="width:100%;margin-top:16px">Einloggen</button>
-<p id="loginMsg"></p>
-</div></div>
-<div id="adminApp" style="display:none" class="admin-shell">
-<aside class="admin-side"><a class="brand" href="index.html">FORMORA<small>ADMIN CONTROL</small></a><p>Produkte und Seitentexte bearbeiten.</p><button id="logout" class="btn">Abmelden</button></aside>
-<main class="admin-main">
-<h2>Website verwalten</h2>
-<div class="admin-panel"><h3>Allgemeine Einstellungen</h3><div class="admin-grid">
-<div class="admin-field"><label>Markenname</label><input id="aBrand"></div>
-<div class="admin-field"><label>E-Mail</label><input id="aEmail"></div>
-<div class="admin-field full"><label>Untertitel</label><input id="aTagline"></div>
-<div class="admin-field full"><label>Hero Überschrift</label><input id="aHeroTitle"></div>
-<div class="admin-field full"><label>Hero Text</label><textarea id="aHeroText"></textarea></div>
-</div><button id="saveGeneral" class="btn primary" style="margin-top:14px">Speichern</button></div>
-<div class="admin-panel"><div style="display:flex;justify-content:space-between;align-items:center;gap:10px"><h3>Produkte</h3><button id="addProduct" class="btn">+ Produkt</button></div><div id="adminProducts"></div></div>
-<div class="admin-panel"><h3>Backup</h3><p>Damit kannst du deine Änderungen sichern und auf einen anderen Browser übertragen.</p><button id="exportBtn" class="btn">Backup herunterladen</button><input id="importFile" type="file" accept=".json" style="margin-top:10px"></div>
-</main></div>
-<script>
+<header><div class="wrap nav">
+  <a class="brand" href="index.html"><span data-brand>FORMORA</span><small data-tagline>3D-MANUFAKTUR · IDEEN WERDEN GREIFBAR</small></a>
+  <nav>
+    <a href="index.html">Start</a>
+    <a href="shop.html">Shop</a>
+    <a href="konfigurator.html">Konfigurator</a>
+    <button id="cartBtn" class="ghost-btn keep">Warenkorb <span id="count">0</span></button>
+  </nav>
+</div></header>
+
+<main><section><div class="wrap">
+<div class="sectionhead"><div><div class="eyebrow">SHOP</div><h2>Alle Produkte</h2><p>Suche oder filtere nach Kategorie.</p></div></div>
+<input id="search" class="search" placeholder="Produkte suchen …">
+<div id="filters" class="filters"></div>
+<div id="products" class="products"></div>
+</div></section></main>
+
+<div id="overlay" class="overlay"></div>
+<aside id="drawer" class="drawer">
+  <div style="display:flex;justify-content:space-between;align-items:center"><h3>Warenkorb</h3><button id="closeCart" class="ghost-btn">Schließen</button></div>
+  <div id="items"></div>
+  <div style="display:flex;justify-content:space-between;font-size:20px;margin:22px 0"><b>Gesamt</b><b id="sum">0,00 €</b></div>
+  <button id="order" class="btn primary" style="width:100%">Bestellanfrage senden</button>
+</aside>
+<footer class="footer"><div class="wrap">FORMORA · Shop</div></footer><script>
 const DEFAULT_DATA = {"brand": "FORMORA", "tagline": "3D-MANUFAKTUR · IDEEN WERDEN GREIFBAR", "heroTitle": "Du denkst es. Wir drucken es.", "heroText": "3D-Druck für Modellbau, Figuren, Ersatzteile, Technik, Deko, Haushalt und personalisierte Ideen.", "email": "deine-email@beispiel.de", "products": [{"id": "p1", "cat": "Modellbau", "name": "Diorama Detail Set", "price": 14.9, "desc": "Kleine Details und Zubehörteile für Modellbau-Projekte.", "image": ""}, {"id": "p2", "cat": "Modellbau", "name": "Fahrzeug Detailteil", "price": 17.9, "desc": "Detailteil für Fahrzeuge, Panzer und Modellbauprojekte.", "image": ""}, {"id": "p3", "cat": "Figuren", "name": "Fantasy Büste", "price": 28.9, "desc": "3D-gedruckte Büste zum Sammeln, Bemalen oder Verschenken.", "image": ""}, {"id": "p4", "cat": "Figuren", "name": "Miniaturen Set", "price": 19.9, "desc": "Mehrere kleine Figuren als Demo-Produkt.", "image": ""}, {"id": "p5", "cat": "Ersatzteile", "name": "Ersatzclip Set", "price": 6.9, "desc": "Praktische Ersatzclips als Beispiel für funktionalen 3D-Druck.", "image": ""}, {"id": "p6", "cat": "Technik", "name": "Universal Adapter", "price": 12.9, "desc": "Adapter, Halterungen und technische Bauteile.", "image": ""}, {"id": "p7", "cat": "Technik", "name": "Controller Dock", "price": 18.9, "desc": "Schlichter Halter für Controller und Gaming-Zubehör.", "image": ""}, {"id": "p8", "cat": "Deko", "name": "Design Vase", "price": 22.9, "desc": "Geometrische Vase mit moderner Oberflächenstruktur.", "image": ""}, {"id": "p9", "cat": "Haushalt", "name": "Kabel Organizer", "price": 8.9, "desc": "Kleine Ordnungshilfe für Arbeitsplatz und Zuhause.", "image": ""}, {"id": "p10", "cat": "Haushalt", "name": "Werkzeughalter", "price": 16.9, "desc": "3D-gedruckter Halter für Werkstatt oder Hobbyraum.", "image": ""}, {"id": "p11", "cat": "Personalisiert", "name": "Namensschild Custom", "price": 13.9, "desc": "Personalisiertes Schild mit Wunschname oder kurzem Text.", "image": ""}, {"id": "p12", "cat": "Personalisiert", "name": "Logo Schlüsselanhänger", "price": 9.9, "desc": "Schlüsselanhänger mit individuellem Namen oder Logo.", "image": ""}]};
 function loadData(){
   try{
@@ -178,26 +181,20 @@ document.addEventListener("DOMContentLoaded",()=>{
 });
 </script>
 <script>
-function adminRender(){
- const d=loadData();aBrand.value=d.brand;aEmail.value=d.email;aTagline.value=d.tagline;aHeroTitle.value=d.heroTitle;aHeroText.value=d.heroText;
- adminProducts.innerHTML="";
- d.products.forEach((p,idx)=>{
-   const row=document.createElement("div");row.className="admin-product";
-   row.innerHTML=`<input value="${p.name.replaceAll('"','&quot;')}" data-f="name" data-i="${idx}"><input type="number" step="0.01" value="${p.price}" data-f="price" data-i="${idx}"><input value="${p.cat}" data-f="cat" data-i="${idx}"><button class="btn" data-del="${idx}">Löschen</button><textarea style="grid-column:1/-1" data-f="desc" data-i="${idx}">${p.desc}</textarea><input style="grid-column:1/-1" placeholder="Bild-URL oder data:image/..." value="${p.image||""}" data-f="image" data-i="${idx}">`;
-   adminProducts.appendChild(row)
- })
-}
 document.addEventListener("DOMContentLoaded",()=>{
- const show=()=>{login.style.display="none";adminApp.style.display="grid";adminRender()};
- if(sessionStorage.getItem("formoraAdmin")==="1")show();
- loginBtn.onclick=()=>{if(user.value==="Admin"&&pass.value==="123"){sessionStorage.setItem("formoraAdmin","1");show()}else loginMsg.textContent="Login falsch."};
- logout.onclick=()=>{sessionStorage.removeItem("formoraAdmin");location.reload()};
- saveGeneral.onclick=()=>{const d=loadData();d.brand=aBrand.value;d.email=aEmail.value;d.tagline=aTagline.value;d.heroTitle=aHeroTitle.value;d.heroText=aHeroText.value;saveData(d);alert("Gespeichert.")};
- adminProducts.addEventListener("input",e=>{const f=e.target.dataset.f,i=e.target.dataset.i;if(f===undefined||i===undefined)return;const d=loadData();d.products[+i][f]=f==="price"?Number(e.target.value):e.target.value;saveData(d)});
- adminProducts.addEventListener("click",e=>{const b=e.target.closest("[data-del]");if(!b)return;const d=loadData();d.products.splice(+b.dataset.del,1);saveData(d);adminRender()});
- addProduct.onclick=()=>{const d=loadData();d.products.push({id:"p"+Date.now(),cat:"Neu",name:"Neues Produkt",price:0,desc:"Beschreibung",image:""});saveData(d);adminRender()};
- exportBtn.onclick=()=>{const blob=new Blob([JSON.stringify(loadData(),null,2)],{type:"application/json"});const a=document.createElement("a");a.href=URL.createObjectURL(blob);a.download="formora-backup.json";a.click();URL.revokeObjectURL(a.href)};
- importFile.onchange=async()=>{const f=importFile.files[0];if(!f)return;try{const d=JSON.parse(await f.text());saveData(d);adminRender();alert("Backup importiert.")}catch(e){alert("Ungültige Datei.")}}
+  let category="Alle"; const d=loadData(), box=document.getElementById("products"), filters=document.getElementById("filters"), search=document.getElementById("search");
+  const cats=["Alle",...new Set(d.products.map(p=>p.cat))];
+  filters.innerHTML=cats.map(c=>`<button class="filter ${c==="Alle"?"active":""}" data-cat="${c}">${c}</button>`).join("");
+  function render(){
+    const q=search.value.toLowerCase().trim();box.innerHTML="";
+    d.products.filter(p=>(category==="Alle"||p.cat===category)&&(!q||(p.name+" "+p.desc+" "+p.cat).toLowerCase().includes(q))).forEach(p=>{
+      const el=document.createElement("article");el.className="product reveal show";
+      el.innerHTML=`<div class="pic">${p.image?`<img src="${p.image}" alt="">`:`<div class="fallback">🧩</div>`}</div><div class="info"><small>${p.cat}</small><h3>${p.name}</h3><p>${p.desc}</p><div class="meta"><span class="price">${money(p.price)}</span><button class="btn primary" data-add-product="${p.id}">+ Warenkorb</button></div></div>`;
+      box.appendChild(el)
+    })
+  }
+  filters.addEventListener("click",e=>{const b=e.target.closest("[data-cat]");if(!b)return;category=b.dataset.cat;filters.querySelectorAll(".filter").forEach(x=>x.classList.toggle("active",x===b));render()});
+  search.addEventListener("input",render);render()
 })
 </script>
 </body></html>
