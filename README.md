@@ -1,19 +1,15 @@
-# FORMORA
+# FORMORA – GitHub Pages
 
-GitHub-fertige Version der FORMORA-Webseite.
+Diese Version besteht absichtlich nur aus **einer einzigen `index.html`**.
 
-## Dateien
-- `index.html` – Startseite
-- `assets/css/style.css` – Design und Responsive-Layout
-- `assets/js/app.js` – Warenkorb, Kategorien und Interaktionen
-- `assets/images/` – Ordner für spätere Produktbilder
-- `.nojekyll` – sorgt für einfache Auslieferung über GitHub Pages
+Dadurch können CSS und JavaScript auf GitHub Pages nicht wegen einer falschen
+Ordnerstruktur fehlen.
 
-## GitHub Pages
-1. Alle Dateien **so wie sie sind** in dein Repository hochladen.
-2. In GitHub: **Settings → Pages**.
-3. Unter **Build and deployment**: `Deploy from a branch`.
-4. Branch `main`, Ordner `/ (root)` auswählen und speichern.
-5. Danach zeigt GitHub dir die Adresse deiner Webseite.
+## Hochladen
+1. `index.html` direkt in das Hauptverzeichnis deines GitHub-Repositories laden.
+2. In GitHub unter **Settings → Pages** die Veröffentlichung aus dem Branch `main`
+   und dem Ordner `/ (root)` aktivieren.
+3. Die GitHub-Pages-Adresse öffnen.
 
-Wichtig: `index.html` muss im Hauptordner bleiben.
+Wichtig: Nicht nur den Inhalt der ZIP als Unterordner hochladen. `index.html`
+muss direkt oben im Repository liegen.
