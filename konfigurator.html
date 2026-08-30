@@ -93,6 +93,25 @@ body.cursor-down .cursor-ring{width:24px;height:24px}
 @media (pointer:coarse){.cursor-ring,.cursor-dot{display:none!important}}
 @media(max-width:900px){.hero-grid{grid-template-columns:1fr}.visual{min-height:360px}.grid,.products{grid-template-columns:repeat(2,minmax(0,1fr))}.admin-shell{grid-template-columns:1fr}.admin-side{height:auto;position:relative;border-right:0;border-bottom:1px solid var(--line)}}
 @media(max-width:620px){nav{gap:5px;justify-content:flex-end}nav a:not(.keep){display:inline-flex;padding:8px 9px;font-size:12px}.grid,.products{grid-template-columns:1fr}.hero{padding:50px 0}.visual{min-height:300px}.print-object{inset:45px}.admin-grid{grid-template-columns:1fr}.admin-field.full{grid-column:auto}.admin-product{grid-template-columns:1fr}.nav{height:auto;padding:14px 0}}
+
+.admin-nav{
+  display:inline-flex!important;
+  align-items:center;
+  justify-content:center;
+  border:1px solid rgba(255,108,207,.5)!important;
+  color:#ffb4e5!important;
+  background:rgba(255,108,207,.08)!important;
+  box-shadow:0 0 20px rgba(255,108,207,.08);
+  font-weight:800
+}
+.admin-nav:hover{
+  border-color:#ff6ccf!important;
+  box-shadow:0 0 26px rgba(255,108,207,.2)
+}
+@media(max-width:620px){
+  .admin-nav{display:inline-flex!important;padding:8px 10px!important;font-size:12px!important}
+}
+
 </style></head>
 <body><div class="cursor-ring"></div><div class="cursor-dot"></div>
 <header><div class="wrap nav">
@@ -100,8 +119,8 @@ body.cursor-down .cursor-ring{width:24px;height:24px}
   <nav>
     <a href="index.html">Start</a>
     <a href="shop.html">Shop</a>
-    <a href="konfigurator.html">Konfigurator</a><a href="admin.html" class="admin-nav">Admin</a>
-    <button id="cartBtn" class="ghost-btn keep">Warenkorb <span id="count">0</span></button>
+    <a href="konfigurator.html">Konfigurator</a>
+    <a href="admin.html" class="admin-nav keep">⚙ Admin Login</a><button id="cartBtn" class="ghost-btn keep">Warenkorb <span id="count">0</span></button>
   </nav>
 </div></header>
 

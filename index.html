@@ -114,6 +114,25 @@ body.cursor-down .cursor-ring{width:24px;height:24px}
 .admin-nav{border-color:rgba(255,108,207,.35)!important;color:#ff9cdb!important}
 @media(max-width:700px){.quick-launch{grid-template-columns:1fr}.nav{align-items:flex-start}.brand{min-width:120px}nav{max-width:65%}}
 
+
+.admin-nav{
+  display:inline-flex!important;
+  align-items:center;
+  justify-content:center;
+  border:1px solid rgba(255,108,207,.5)!important;
+  color:#ffb4e5!important;
+  background:rgba(255,108,207,.08)!important;
+  box-shadow:0 0 20px rgba(255,108,207,.08);
+  font-weight:800
+}
+.admin-nav:hover{
+  border-color:#ff6ccf!important;
+  box-shadow:0 0 26px rgba(255,108,207,.2)
+}
+@media(max-width:620px){
+  .admin-nav{display:inline-flex!important;padding:8px 10px!important;font-size:12px!important}
+}
+
 </style></head>
 <body><div class="cursor-ring"></div><div class="cursor-dot"></div>
 <header><div class="wrap nav">
@@ -121,8 +140,8 @@ body.cursor-down .cursor-ring{width:24px;height:24px}
   <nav>
     <a href="index.html">Start</a>
     <a href="shop.html">Shop</a>
-    <a href="konfigurator.html">Konfigurator</a><a href="admin.html" class="admin-nav">Admin</a>
-    <button id="cartBtn" class="ghost-btn keep">Warenkorb <span id="count">0</span></button>
+    <a href="konfigurator.html">Konfigurator</a>
+    <a href="admin.html" class="admin-nav keep">⚙ Admin Login</a><button id="cartBtn" class="ghost-btn keep">Warenkorb <span id="count">0</span></button>
   </nav>
 </div></header>
 
@@ -133,26 +152,8 @@ body.cursor-down .cursor-ring{width:24px;height:24px}
     <h1 id="heroTitle">Du denkst es.<br>Wir drucken es.</h1>
     <p id="heroText">3D-Druck für Modellbau, Figuren, Ersatzteile, Technik, Deko, Haushalt und personalisierte Ideen.</p>
     <div class="hero-actions"><a class="btn primary" href="shop.html">Shop öffnen</a><a class="btn" href="konfigurator.html">Eigenes Projekt starten</a></div>
-<div class="new-badge">✦ NEU: Mehrseiten-Shop + Admin</div>
-<div class="quick-launch">
-  <a class="launch-card" href="shop.html">
-    <div class="launch-icon">🛒</div>
-    <b>Shop öffnen</b>
-    <small>Der Shop öffnet jetzt als eigene Seite.</small>
-  </a>
-  <a class="launch-card" href="konfigurator.html">
-    <div class="launch-icon">🧪</div>
-    <b>3D-Konfigurator</b>
-    <small>Material, Farbe, Größe und Datei auswählen.</small>
-  </a>
-  <a class="launch-card" href="admin.html">
-    <div class="launch-icon">⚙️</div>
-    <b>Admin öffnen</b>
-    <small>Produkte, Preise, Texte und Bilder verwalten.</small>
-  </a>
-</div>
 
-  </div>
+
   <div class="visual reveal"><div class="print-object"><span>🧊</span></div></div>
 </div></section>
 <div class="magic-line"></div>
