@@ -1,339 +1,289 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="de">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>RC Panzer Werkstatt | Modelle, Umbauten & Teile</title>
-  <meta name="description" content="Private RC-Panzer Sammlung, Umbauten, Ersatzteile und Kontakt für Interessenten." />
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css" />
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>FORMORA — 3D Manufaktur</title>
+<link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
-  <header class="site-header">
-    <a class="brand" href="#start" aria-label="Zur Startseite">
-      <span class="brand-mark">RC</span>
-      <span>
-        <strong id="siteBrand">PANZER WERKSTATT</strong>
-        <small id="siteTagline">Modelle · Umbauten · Teile</small>
-      </span>
+<div class="noise"></div>
+<div class="orb a"></div><div class="orb b"></div>
+<div class="cursor-dot" id="cursorDot"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+
+<header>
+  <div class="wrap nav">
+    <a href="#start" class="brand">
+      <div class="logo">F//</div>
+      <div>FORMORA<small>3D-MANUFAKTUR · IDEEN WERDEN GREIFBAR</small></div>
     </a>
-
-    <button class="menu-toggle" aria-label="Menü öffnen" aria-expanded="false">☰</button>
-
-    <nav class="nav">
-      <a href="#start">Start</a>
-      <a href="#panzer">Meine Panzer</a>
-      <a href="#teile">Teile</a>
-      <a href="#ueber-mich">Über mich</a>
-      <a href="#kontakt">Kontakt</a><button class="nav-cta admin-login-open" type="button">Admin Login</button>
+    <nav>
+      <a href="#kategorien">Kategorien</a>
+      <a href="#shop">Shop</a>
+      <a href="#sonder">Wunschdruck</a>
+      <a href="#kontakt">Kontakt</a>
     </nav>
-  </header>
+    <button class="cartbtn" id="cartBtn" aria-label="Warenkorb öffnen">◈ Warenkorb <span id="count">0</span></button>
+  </div>
+</header>
 
-  <main>
-    <section class="hero" id="start">
-      <div class="hero-grid"></div>
-      <div class="hero-content">
-        <p class="eyebrow">RC-MODELLBAU · PRIVATE SAMMLUNG</p>
-        <h1 id="editable-hero-title">RC Panzer.<br><span>Gebaut für Details.</span></h1>
-        <p class="hero-copy" id="editable-hero-copy">
-          Willkommen in meiner kleinen RC-Panzer-Werkstatt. Hier zeige ich meine Modelle,
-          Umbauten und Projekte – und biete hin und wieder passende Ersatz- und Zubehörteile an.
-        </p>
-        <div class="hero-actions">
-          <a class="btn btn-primary" href="#panzer">Panzer ansehen</a>
-          <a class="btn btn-secondary" href="#teile">Teile entdecken</a>
-        </div>
-        <div class="hero-facts">
-          <div><strong>1:16</strong><span>Schwerpunkt</span></div>
-          <div><strong>RC</strong><span>Umbauten & Technik</span></div>
-          <div><strong>Privat</strong><span>Mit Leidenschaft</span></div>
-        </div>
+<main id="start">
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <div class="signal">Print System Online</div>
+      <h1>Du denkst es.<br><span class="gradient">Wir drucken es.</span></h1>
+      <p class="lead">Ein 3D-Druck-Shop für Modellbau, Figuren, Ersatzteile, Technik, Deko, Haushalt, personalisierte Produkte und individuelle Ideen. Nicht auf eine Nische beschränkt — sondern offen für fast alles, was sich sinnvoll drucken lässt.</p>
+      <div class="actions">
+        <a class="btn primary" href="#kategorien">Kategorien entdecken →</a>
+        <a class="btn secondary" href="#sonder">Eigenen Wunsch anfragen</a>
       </div>
-      <div class="hero-tank" aria-hidden="true">
-        <div class="tank-card">
-          <div class="tank-silhouette">
-            <div class="turret"></div>
-            <div class="barrel"></div>
-            <div class="hull"></div>
-            <div class="tracks"></div>
-          </div>
-          <span>MEINE RC-PANZER</span>
-        </div>
+      <div class="stats">
+        <div class="stat"><b>01</b> Einzelstücke</div>
+        <div class="stat"><b>02</b> Kleinserien</div>
+        <div class="stat"><b>03</b> Eigene Dateien</div>
+        <div class="stat"><b>04</b> Wunschprojekte</div>
       </div>
-    </section>
-
-    <section class="section" id="panzer">
-      <div class="section-heading">
-        <div>
-          <p class="eyebrow">SAMMLUNG & PROJEKTE</p>
-          <h2>Meine Panzer</h2>
-        </div>
-        <p>Meine RC-Sammlung mit Modellbezeichnungen direkt unter den Bildern. Bei zwei Modellen ist die genaue Ausführung nach Foto nur vermutlich bestimmt.</p>
-      </div>
-
-      <div class="tank-grid">
-        
-        <article class="model-card">
-          <div class="model-image"><img src="tiger.jpg" alt="Tiger I"></div>
-          <div class="model-content">
-            <div class="model-meta"><span>1:16</span><span>Klassiker</span></div>
-            <h3>Tiger I</h3>
-            <p>Deutscher schwerer Panzer des Zweiten Weltkriegs.</p>
-          </div>
-        </article>
-        <article class="model-card">
-          <div class="model-image"><img src="flakpanzer.jpg" alt="Flakpanzer Gepard"></div>
-          <div class="model-content">
-            <div class="model-meta"><span>RC</span><span>Flak</span></div>
-            <h3>Flakpanzer Gepard</h3>
-            <p>Bundeswehr-Flugabwehrpanzer mit markantem Zwillinggeschütz.</p>
-          </div>
-        </article>
-        <article class="model-card">
-          <div class="model-image"><img src="rasenmaeher.jpg" alt="RC-Rasenmäher – Sonderprojekt"></div>
-          <div class="model-content">
-            <div class="model-meta"><span>RC</span><span>Sonderprojekt</span></div>
-            <h3>RC-Rasenmäher – Sonderprojekt</h3>
-            <p>Kein Panzer, aber als besonderes RC-Projekt weiterhin in deiner Sammlung.</p>
-          </div>
-        </article>
-        <article class="model-card">
-          <div class="model-image"><img src="t72.jpg" alt="T-72 – vermutlich T-72B"></div>
-          <div class="model-content">
-            <div class="model-meta"><span>RC</span><span>Ostblock</span></div>
-            <h3>T-72 – vermutlich T-72B</h3>
-            <p>Sowjetisch/russischer Kampfpanzer mit Zusatzpanzerung am Turm.</p>
-          </div>
-        </article>
-        <article class="model-card">
-          <div class="model-image"><img src="leopard2a6.jpg" alt="Leopard 2A6"></div>
-          <div class="model-content">
-            <div class="model-meta"><span>RC</span><span>Bundeswehr</span></div>
-            <h3>Leopard 2A6</h3>
-            <p>Moderner deutscher Kampfpanzer mit langem 120-mm-Rohr und Keilpanzerung am Turm.</p>
-          </div>
-        </article>
-        <article class="model-card">
-          <div class="model-image"><img src="m113.jpg" alt="M113"></div>
-          <div class="model-content">
-            <div class="model-meta"><span>RC</span><span>Transporter</span></div>
-            <h3>M113</h3>
-            <p>Klassischer leichter Ketten-Schützenpanzer/Transportpanzer mit fünf Laufrollen.</p>
-          </div>
-        </article>
-        <article class="model-card">
-          <div class="model-image"><img src="marder1a3.jpg" alt="Schützenpanzer Marder 1A3"></div>
-          <div class="model-content">
-            <div class="model-meta"><span>RC</span><span>Bundeswehr</span></div>
-            <h3>Schützenpanzer Marder 1A3</h3>
-            <p>Bundeswehr-Schützenpanzer mit 20-mm-Bordkanone und markanter Seitenpanzerung.</p>
-          </div>
-        </article>
-        <article class="model-card">
-          <div class="model-image"><img src="scimitar.jpg" alt="FV107 Scimitar – vermutlich"></div>
-          <div class="model-content">
-            <div class="model-meta"><span>RC</span><span>Britisch</span></div>
-            <h3>FV107 Scimitar – vermutlich</h3>
-            <p>Britischer leichter Spähpanzer mit kompakter Silhouette und 30-mm-Bewaffnung.</p>
-          </div>
-        </article>
-        <article class="model-card">
-          <div class="model-image"><img src="gepard2.jpg" alt="Flakpanzer Gepard"></div>
-          <div class="model-content">
-            <div class="model-meta"><span>RC</span><span>Flak</span></div>
-            <h3>Flakpanzer Gepard</h3>
-            <p>Bundeswehr-Flugabwehrkanonenpanzer auf Leopard-1-Fahrgestell mit zwei 35-mm-Kanonen.</p>
-          </div>
-        </article>
-        <article class="model-card">
-          <div class="model-image"><img src="panzer3.jpg" alt="Panzer III – vermutlich Ausf. L/M"></div>
-          <div class="model-content">
-            <div class="model-meta"><span>RC</span><span>WWII</span></div>
-            <h3>Panzer III – vermutlich Ausf. L/M</h3>
-            <p>Deutscher mittlerer Panzer mit sechs Laufrollen und langem 5-cm-Rohr.</p>
-          </div>
-        </article>
-        <article class="model-card">
-          <div class="model-image"><img src="t72b.jpg" alt="T-72B"></div>
-          <div class="model-content">
-            <div class="model-meta"><span>RC</span><span>Ostblock</span></div>
-            <h3>T-72B</h3>
-            <p>Sowjetischer Kampfpanzer mit Reaktivpanzerung und typischer niedriger Turmsilhouette.</p>
-          </div>
-        </article>
-        <article class="model-card">
-          <div class="model-image"><img src="cromwell.jpg" alt="Cromwell Cruiser Tank"></div>
-          <div class="model-content">
-            <div class="model-meta"><span>RC</span><span>Britisch</span></div>
-            <h3>Cromwell Cruiser Tank</h3>
-            <p>Britischer Cruiser-Panzer des Zweiten Weltkriegs mit fünf großen Laufrollen.</p>
-          </div>
-        </article>
-        <article class="model-card">
-          <div class="model-image"><img src="sturmtiger.jpg" alt="Sturmtiger"></div>
-          <div class="model-content">
-            <div class="model-meta"><span>RC</span><span>WWII</span></div>
-            <h3>Sturmtiger</h3>
-            <p>Deutsches schweres Sturmpanzermodell mit dem auffälligen 38-cm-Raketenmörser.</p>
-          </div>
-        </article>
-      </div>
-    </section>
-
-    <section class="section parts-section" id="teile">
-      <div class="section-heading">
-        <div>
-          <p class="eyebrow">ANGEBOTE</p>
-          <h2 id="partsHeading">Teile & Zubehör</h2>
-        </div>
-        <p>Beispielangebote – ideal für Ersatzteile, Umbaukomponenten oder Teile aus ausgeschlachteten Modellen.</p>
-      </div>
-
-      <div class="parts-grid">
-        <article class="part-card">
-          <div class="part-status available">Verfügbar</div>
-          <div class="part-icon">⚙</div>
-          <h3>Metallgetriebe 1:16</h3>
-          <p>Gebrauchtes Getriebe, technisch geprüft und voll funktionsfähig.</p>
-          <div class="price-row"><strong>35 €</strong><a href="mailto:rcpanzermodelle@gmail.com?subject=Interesse%20an%20Metallgetriebe">Anfragen →</a></div>
-        </article>
-
-        <article class="part-card">
-          <div class="part-status available">Verfügbar</div>
-          <div class="part-icon">⛓</div>
-          <h3>Metallketten Tiger I</h3>
-          <p>Ein Satz Metallketten mit Gebrauchsspuren, passend für viele 1:16-Modelle.</p>
-          <div class="price-row"><strong>45 €</strong><a href="mailto:rcpanzermodelle@gmail.com?subject=Interesse%20an%20Metallketten">Anfragen →</a></div>
-        </article>
-
-        <article class="part-card">
-          <div class="part-status reserved">Reserviert</div>
-          <div class="part-icon">◉</div>
-          <h3>Turm-Einheit Panther</h3>
-          <p>Komplette Turmeinheit als Basis für Reparatur, Ersatz oder eigenes Umbauprojekt.</p>
-          <div class="price-row"><strong>60 €</strong><span>Derzeit reserviert</span></div>
-        </article>
-
-        <article class="part-card">
-          <div class="part-status available">Verfügbar</div>
-          <div class="part-icon">✦</div>
-          <h3>Kleinteile-Paket</h3>
-          <p>Luken, Werkzeuge, Halterungen und weitere Kleinteile aus verschiedenen Projekten.</p>
-          <div class="price-row"><strong>20 €</strong><a href="mailto:rcpanzermodelle@gmail.com?subject=Interesse%20am%20Kleinteile-Paket">Anfragen →</a></div>
-        </article>
-      </div>
-      <p class="legal-note" id="legalNote">Privatverkauf. Beispieltexte und -preise – bitte vor Veröffentlichung mit deinen echten Angaben ersetzen.</p>
-    </section>
-
-    <section class="section about-section" id="ueber-mich">
-      <div class="about-card">
-        <div class="about-badge">SEIT<br><strong id="aboutSince">20XX</strong></div>
-        <div>
-          <p class="eyebrow">ÜBER MICH</p>
-          <h2 id="aboutHeading">Modellbau aus Leidenschaft</h2>
-          <p id="aboutText1">Hallo! Ich beschäftige mich seit einigen Jahren mit RC-Panzern und allem,
-            was dazugehört. Besonders spannend finde ich Umbauten, technische Verbesserungen,
-            eigene Lackierungen und natürlich das Fahren der Modelle.</p>
-          <p id="aboutText2">Auf dieser Seite möchte ich meine Panzer und laufenden Projekte zeigen.
-            Da sich im Laufe der Zeit auch einige Ersatzteile und Zubehörteile ansammeln,
-            findest du hier außerdem gelegentlich Teile, die ich privat abgeben möchte.</p>
-          <p id="aboutText3">Wenn du Fragen zu einem Modell oder Interesse an einem Teil hast, schreib mir
-            einfach eine E-Mail. Ich freue mich über den Austausch mit anderen RC-Panzer-Fans.</p>
-        </div>
-      </div>
-    </section>
-
-    <section class="contact-section" id="kontakt">
-      <div class="contact-card">
-        <div>
-          <p class="eyebrow">KONTAKT</p>
-          <h2 id="contactHeading">Interesse an einem Teil?</h2>
-          <p id="contactIntro">Schreib mir kurz, um welches Teil oder Modell es geht. Für den Test ist aktuell
-            eine Beispieladresse eingetragen.</p>
-        </div>
-        <div class="contact-box">
-          <span>E-Mail</span>
-          <a id="contactEmail" href="mailto:rcpanzermodelle@gmail.com">rcpanzermodelle@gmail.com</a>
-          <small id="contactNote">Bitte vor Veröffentlichung durch deine echte E-Mail-Adresse ersetzen.</small>
-          <a class="btn btn-primary" href="mailto:rcpanzermodelle@gmail.com?subject=Anfrage%20%C3%BCber%20die%20RC-Panzer-Webseite">E-Mail schreiben</a>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  
-  <div class="admin-modal" id="adminModal" aria-hidden="true">
-    <div class="admin-modal-backdrop" data-close-admin></div>
-    <div class="admin-modal-box" role="dialog" aria-modal="true" aria-labelledby="adminLoginTitle">
-      <button class="admin-modal-close" type="button" data-close-admin aria-label="Schließen">×</button>
-      <p class="eyebrow">ADMIN-BEREICH</p>
-      <h2 id="adminLoginTitle">Anmelden</h2>
-      <p class="admin-modal-text">Melde dich an, um deine Panzer, Texte und Bilder zu bearbeiten.</p>
-
-      <label for="adminUser">Benutzername</label>
-      <input id="adminUser" type="text" autocomplete="username" placeholder="Benutzername">
-
-      <label for="adminPass">Passwort</label>
-      <input id="adminPass" type="password" autocomplete="current-password" placeholder="Passwort">
-
-      <button class="btn btn-primary admin-submit" id="adminSubmit" type="button">Einloggen</button>
-      <p class="admin-login-message" id="adminLoginMessage"></p>
+    </div>
+    <div class="hero-card">
+      <div class="gridlines"></div><div class="scan"></div>
+      <div class="corner tl">FORMORA // Live Preview</div>
+      <div class="object">🧊</div>
+      <div class="corner br">Layer 248 · 0.16 mm</div>
     </div>
   </div>
+</section>
 
-<footer>
-    <div class="brand footer-brand">
-      <span class="brand-mark">RC</span>
-      <span><strong>PANZER WERKSTATT</strong><small>Private Modellbau-Seite</small></span>
+<section id="kategorien">
+<div class="wrap">
+  <div class="head">
+    <div><div class="eyebrow">Choose your world</div><h2>Was möchtest du entdecken?</h2></div>
+    <p>Jede Kategorie filtert den Shop sofort. Du siehst danach nur die Produkte, die wirklich dazu gehören.</p>
+  </div>
+  <div class="category-grid">
+    <a href="#shop" class="cat" data-cat="Modellbau" style="--glowcolor:#6cf7ff"><div><div class="cat-icon">🧱</div><h3>Modellbau</h3><p>Fahrzeuge, Diorama-Teile, Gebäude, Details und Zubehör.</p></div><b>Öffnen →</b></a>
+    <a href="#shop" class="cat" data-cat="Figuren" style="--glowcolor:#9d7bff"><div><div class="cat-icon">🧙</div><h3>Figuren & Miniaturen</h3><p>Charaktere, Büsten, Miniaturen und Sammlermodelle.</p></div><b>Öffnen →</b></a>
+    <a href="#shop" class="cat" data-cat="Ersatzteile" style="--glowcolor:#ff6db1"><div><div class="cat-icon">⚙️</div><h3>Ersatzteile</h3><p>Clips, Abdeckungen, Knöpfe und schwer erhältliche Kunststoffteile.</p></div><b>Öffnen →</b></a>
+    <a href="#shop" class="cat" data-cat="Technik" style="--glowcolor:#74ffa1"><div><div class="cat-icon">🔧</div><h3>Technik</h3><p>Adapter, Gerätehalterungen, Gehäuse und funktionale Bauteile.</p></div><b>Öffnen →</b></a>
+    <a href="#shop" class="cat" data-cat="Deko" style="--glowcolor:#ffd36c"><div><div class="cat-icon">🏺</div><h3>Deko & Design</h3><p>Vasen, Lampenformen, Schriftzüge und besondere Wohnobjekte.</p></div><b>Öffnen →</b></a>
+    <a href="#shop" class="cat" data-cat="Haushalt" style="--glowcolor:#6cc8ff"><div><div class="cat-icon">🧰</div><h3>Haushalt</h3><p>Organizer, Haken, Halterungen und clevere Alltagshelfer.</p></div><b>Öffnen →</b></a>
+    <a href="#shop" class="cat" data-cat="Personalisiert" style="--glowcolor:#ff9b6c"><div><div class="cat-icon">🏷️</div><h3>Personalisiert</h3><p>Namensschilder, Logos, Schlüsselanhänger und Wunschtexte.</p></div><b>Öffnen →</b></a>
+    <a href="#sonder" class="cat" data-cat="Sonderanfertigung" style="--glowcolor:#c66cff"><div><div class="cat-icon">💡</div><h3>Sonderanfertigung</h3><p>Eigene STL/3MF-Datei oder komplett neue Idee nach Absprache.</p></div><b>Projekt starten →</b></a>
+  </div>
+</div>
+</section>
+
+<section id="shop">
+<div class="wrap">
+  <div class="head">
+    <div><div class="eyebrow">Curated Prints</div><h2>Shop</h2></div>
+    <p>Mit Filter, Suche, Schnellansicht und Warenkorb. Alle Artikel und Preise sind Demo-Inhalte.</p>
+  </div>
+  
+<div class="toolbar">
+  <div class="filters fixed-filters"><button type="button" class="filter active" onclick="filterProducts('Alle')" data-filter="Alle">Alle</button><button type="button" class="filter" onclick="filterProducts('Modellbau')" data-filter="Modellbau">Modellbau</button><button type="button" class="filter" onclick="filterProducts('Figuren')" data-filter="Figuren">Figuren</button><button type="button" class="filter" onclick="filterProducts('Ersatzteile')" data-filter="Ersatzteile">Ersatzteile</button><button type="button" class="filter" onclick="filterProducts('Technik')" data-filter="Technik">Technik</button><button type="button" class="filter" onclick="filterProducts('Deko')" data-filter="Deko">Deko</button><button type="button" class="filter" onclick="filterProducts('Haushalt')" data-filter="Haushalt">Haushalt</button><button type="button" class="filter" onclick="filterProducts('Personalisiert')" data-filter="Personalisiert">Personalisiert</button></div>
+</div>
+<div class="search fixed-search-note">Wähle eine Kategorie oder lege ein Produkt direkt in den Warenkorb.</div>
+<div class="products fixed-products" id="fixedProducts">
+  
+<article class="product fixed-product" data-category="Modellbau">
+  <div class="pic"><div style="font-size:74px">🧱</div></div>
+  <div class="info">
+    <div style="font-size:11px;letter-spacing:.13em;text-transform:uppercase;color:#8f99aa;margin-bottom:6px">Modellbau</div>
+    <h3>Diorama Detail Set</h3>
+    <p>Kleine Details und Zubehörteile für Modellbau-Projekte.</p>
+    <div class="meta">
+      <span class="price">14,90 €</span>
+      <button type="button" class="add cart-add-btn" data-product-id="1">+ Warenkorb</button>
     </div>
-    <p>© <span id="year"></span> RC Panzer Werkstatt · Privatprojekt</p>
-    <p class="footer-note" id="footerNote">Kein offizieller Auftritt der Bundeswehr. Gestaltung lediglich im militärisch-technischen Stil.</p>
-  </footer>
+  </div>
+</article>
+<article class="product fixed-product" data-category="Modellbau">
+  <div class="pic"><div style="font-size:74px">🛞</div></div>
+  <div class="info">
+    <div style="font-size:11px;letter-spacing:.13em;text-transform:uppercase;color:#8f99aa;margin-bottom:6px">Modellbau</div>
+    <h3>Fahrzeug Detailteil</h3>
+    <p>Beispiel für ein Fahrzeug- oder Panzerdetail im Modellbau.</p>
+    <div class="meta">
+      <span class="price">17,90 €</span>
+      <button type="button" class="add cart-add-btn" data-product-id="2">+ Warenkorb</button>
+    </div>
+  </div>
+</article>
+<article class="product fixed-product" data-category="Figuren">
+  <div class="pic"><div style="font-size:74px">🧙</div></div>
+  <div class="info">
+    <div style="font-size:11px;letter-spacing:.13em;text-transform:uppercase;color:#8f99aa;margin-bottom:6px">Figuren</div>
+    <h3>Fantasy Büste</h3>
+    <p>3D-gedruckte Büste zum Sammeln, Bemalen oder Verschenken.</p>
+    <div class="meta">
+      <span class="price">28,90 €</span>
+      <button type="button" class="add cart-add-btn" data-product-id="3">+ Warenkorb</button>
+    </div>
+  </div>
+</article>
+<article class="product fixed-product" data-category="Figuren">
+  <div class="pic"><div style="font-size:74px">♟️</div></div>
+  <div class="info">
+    <div style="font-size:11px;letter-spacing:.13em;text-transform:uppercase;color:#8f99aa;margin-bottom:6px">Figuren</div>
+    <h3>Miniaturen Set</h3>
+    <p>Mehrere kleine Figuren als Demo-Produkt.</p>
+    <div class="meta">
+      <span class="price">19,90 €</span>
+      <button type="button" class="add cart-add-btn" data-product-id="4">+ Warenkorb</button>
+    </div>
+  </div>
+</article>
+<article class="product fixed-product" data-category="Ersatzteile">
+  <div class="pic"><div style="font-size:74px">🔩</div></div>
+  <div class="info">
+    <div style="font-size:11px;letter-spacing:.13em;text-transform:uppercase;color:#8f99aa;margin-bottom:6px">Ersatzteile</div>
+    <h3>Ersatzclip Set</h3>
+    <p>Praktische Ersatzclips als Beispiel für funktionalen 3D-Druck.</p>
+    <div class="meta">
+      <span class="price">6,90 €</span>
+      <button type="button" class="add cart-add-btn" data-product-id="5">+ Warenkorb</button>
+    </div>
+  </div>
+</article>
+<article class="product fixed-product" data-category="Technik">
+  <div class="pic"><div style="font-size:74px">🔧</div></div>
+  <div class="info">
+    <div style="font-size:11px;letter-spacing:.13em;text-transform:uppercase;color:#8f99aa;margin-bottom:6px">Technik</div>
+    <h3>Universal Adapter</h3>
+    <p>Beispiel für Adapter, Halterungen und technische Bauteile.</p>
+    <div class="meta">
+      <span class="price">12,90 €</span>
+      <button type="button" class="add cart-add-btn" data-product-id="6">+ Warenkorb</button>
+    </div>
+  </div>
+</article>
+<article class="product fixed-product" data-category="Technik">
+  <div class="pic"><div style="font-size:74px">🎮</div></div>
+  <div class="info">
+    <div style="font-size:11px;letter-spacing:.13em;text-transform:uppercase;color:#8f99aa;margin-bottom:6px">Technik</div>
+    <h3>Controller Dock</h3>
+    <p>Schlichter Halter für Controller und Gaming-Zubehör.</p>
+    <div class="meta">
+      <span class="price">18,90 €</span>
+      <button type="button" class="add cart-add-btn" data-product-id="7">+ Warenkorb</button>
+    </div>
+  </div>
+</article>
+<article class="product fixed-product" data-category="Deko">
+  <div class="pic"><div style="font-size:74px">🏺</div></div>
+  <div class="info">
+    <div style="font-size:11px;letter-spacing:.13em;text-transform:uppercase;color:#8f99aa;margin-bottom:6px">Deko</div>
+    <h3>Design Vase</h3>
+    <p>Geometrische Vase mit moderner Oberflächenstruktur.</p>
+    <div class="meta">
+      <span class="price">22,90 €</span>
+      <button type="button" class="add cart-add-btn" data-product-id="8">+ Warenkorb</button>
+    </div>
+  </div>
+</article>
+<article class="product fixed-product" data-category="Haushalt">
+  <div class="pic"><div style="font-size:74px">🔌</div></div>
+  <div class="info">
+    <div style="font-size:11px;letter-spacing:.13em;text-transform:uppercase;color:#8f99aa;margin-bottom:6px">Haushalt</div>
+    <h3>Kabel Organizer</h3>
+    <p>Kleine Ordnungshilfe für Arbeitsplatz und Zuhause.</p>
+    <div class="meta">
+      <span class="price">8,90 €</span>
+      <button type="button" class="add cart-add-btn" data-product-id="9">+ Warenkorb</button>
+    </div>
+  </div>
+</article>
+<article class="product fixed-product" data-category="Haushalt">
+  <div class="pic"><div style="font-size:74px">🧰</div></div>
+  <div class="info">
+    <div style="font-size:11px;letter-spacing:.13em;text-transform:uppercase;color:#8f99aa;margin-bottom:6px">Haushalt</div>
+    <h3>Werkzeughalter</h3>
+    <p>3D-gedruckter Halter für Werkstatt oder Hobbyraum.</p>
+    <div class="meta">
+      <span class="price">16,90 €</span>
+      <button type="button" class="add cart-add-btn" data-product-id="10">+ Warenkorb</button>
+    </div>
+  </div>
+</article>
+<article class="product fixed-product" data-category="Personalisiert">
+  <div class="pic"><div style="font-size:74px">🏷️</div></div>
+  <div class="info">
+    <div style="font-size:11px;letter-spacing:.13em;text-transform:uppercase;color:#8f99aa;margin-bottom:6px">Personalisiert</div>
+    <h3>Namensschild Custom</h3>
+    <p>Personalisiertes Schild mit Wunschname oder kurzem Text.</p>
+    <div class="meta">
+      <span class="price">13,90 €</span>
+      <button type="button" class="add cart-add-btn" data-product-id="11">+ Warenkorb</button>
+    </div>
+  </div>
+</article>
+<article class="product fixed-product" data-category="Personalisiert">
+  <div class="pic"><div style="font-size:74px">🔑</div></div>
+  <div class="info">
+    <div style="font-size:11px;letter-spacing:.13em;text-transform:uppercase;color:#8f99aa;margin-bottom:6px">Personalisiert</div>
+    <h3>Logo Schlüsselanhänger</h3>
+    <p>Schlüsselanhänger mit individuellem Namen oder Logo.</p>
+    <div class="meta">
+      <span class="price">9,90 €</span>
+      <button type="button" class="add cart-add-btn" data-product-id="12">+ Warenkorb</button>
+    </div>
+  </div>
+</article>
+</div>
 
-  <script src="script.js"></script>
-<script src="site-admin-data.js"></script>
+</div>
+</section>
+<section id="sonder">
+<div class="wrap special">
+  <div>
+    <div class="eyebrow">Custom Lab</div>
+    <h2>Dein Teil existiert noch nicht?</h2>
+    <p>Dann ist genau das der interessante Teil. Kunden können dir eine Datei schicken oder ihre Idee beschreiben. Du kannst daraus später ein individuelles Angebot machen.</p>
+    <a href="mailto:deine-email@beispiel.de?subject=Individueller%203D-Druck" class="btn primary">Wunschdruck anfragen →</a>
+  </div>
+  <div class="steps">
+    <div class="step"><div class="num">1</div><div><b>Idee senden</b><span>Beschreibung, Skizze oder 3D-Datei.</span></div></div>
+    <div class="step"><div class="num">2</div><div><b>Machbarkeit prüfen</b><span>Material, Größe, Stabilität und Druckzeit.</span></div></div>
+    <div class="step"><div class="num">3</div><div><b>Angebot erhalten</b><span>Preis und mögliche Varianten abstimmen.</span></div></div>
+    <div class="step"><div class="num">4</div><div><b>Drucken</b><span>Fertigung und Übergabe bzw. Versand.</span></div></div>
+  </div>
+</div>
+</section>
+</main>
 
-<script>
-(function(){
-  const USER = "Micha";
-  const PASS = "moormicha08";
+<footer id="kontakt">
+  <div class="wrap">© 2026 FORMORA · 3D-Manufaktur · Impressum · Datenschutz · Versand · Widerruf</div>
+</footer>
 
-  const modal = document.getElementById("adminModal");
-  const user = document.getElementById("adminUser");
-  const pass = document.getElementById("adminPass");
-  const msg = document.getElementById("adminLoginMessage");
+<div class="overlay" id="overlay"></div>
 
-  document.querySelectorAll(".admin-login-open").forEach(btn => {
-    btn.addEventListener("click", () => {
-      modal.classList.add("open");
-      modal.setAttribute("aria-hidden", "false");
-      msg.textContent = "";
-      setTimeout(() => user.focus(), 50);
-    });
-  });
+<aside class="drawer" id="drawer">
+  <div class="drawer-head"><h3>Warenkorb</h3><button class="close" id="closeCart">✕</button></div>
+  <div class="items" id="items"></div>
+  <div class="drawer-foot">
+    <div class="total"><span>Gesamt</span><span id="sum">0,00 €</span></div>
+    <button class="btn primary" style="width:100%" id="order">Bestellung per E-Mail anfragen</button>
+  </div>
+</aside>
 
-  document.querySelectorAll("[data-close-admin]").forEach(el => {
-    el.addEventListener("click", () => {
-      modal.classList.remove("open");
-      modal.setAttribute("aria-hidden", "true");
-    });
-  });
+<div class="modal" id="modal">
+  <div class="modal-card">
+    <button class="close" id="closeModal" style="float:right">✕</button>
+    <div class="modal-visual" id="modalIcon">🧊</div>
+    <h2 id="modalName" style="font-size:30px;margin-top:18px">Produkt</h2>
+    <p id="modalDesc" style="color:#9da7b6;line-height:1.6"></p>
+    <div class="meta"><div class="price" id="modalPrice"></div><button class="add" id="modalAdd">+ Warenkorb</button></div>
+  </div>
+</div>
 
-  function login(){
-    if(user.value === USER && pass.value === PASS){
-      sessionStorage.setItem("rcPanzerAdminLoggedIn", "1");
-      window.location.href = "admin.html";
-    } else {
-      msg.textContent = "Benutzername oder Passwort ist falsch.";
-    }
-  }
+<div class="toast" id="toast">Zum Warenkorb hinzugefügt</div>
 
-  document.getElementById("adminSubmit").addEventListener("click", login);
-  pass.addEventListener("keydown", e => { if(e.key === "Enter") login(); });
-})();
-</script>
 
+
+
+
+<script src="assets/js/app.js" defer></script>
 </body>
 </html>

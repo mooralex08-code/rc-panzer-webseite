@@ -1,12 +1,19 @@
-# RC Panzer Webseite – komplette Version
+# FORMORA
 
-Diese Version enthält die Webseite, das Design, das Menü und alle bisher hinzugefügten Bilder.
+GitHub-fertige Version der FORMORA-Webseite.
 
-Für GitHub:
-1. ZIP entpacken.
-2. Alle Dateien aus dem entpackten Ordner bei GitHub über `Add file` → `Upload files` hochladen.
-3. Vorhandene `index.html`, `style.css` und `script.js` werden dabei durch die neue Version ersetzt.
-4. `Commit changes` klicken.
-5. GitHub Pages aktualisiert die Webseite automatisch.
+## Dateien
+- `index.html` – Startseite
+- `assets/css/style.css` – Design und Responsive-Layout
+- `assets/js/app.js` – Warenkorb, Kategorien und Interaktionen
+- `assets/images/` – Ordner für spätere Produktbilder
+- `.nojekyll` – sorgt für einfache Auslieferung über GitHub Pages
 
-Hinweis: Bei einzelnen Modellbezeichnungen steht „vermutlich“, wenn die genaue Ausführung anhand des Fotos nicht zweifelsfrei bestimmbar ist.
+## GitHub Pages
+1. Alle Dateien **so wie sie sind** in dein Repository hochladen.
+2. In GitHub: **Settings → Pages**.
+3. Unter **Build and deployment**: `Deploy from a branch`.
+4. Branch `main`, Ordner `/ (root)` auswählen und speichern.
+5. Danach zeigt GitHub dir die Adresse deiner Webseite.
+
+Wichtig: `index.html` muss im Hauptordner bleiben.
