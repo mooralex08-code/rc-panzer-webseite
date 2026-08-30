@@ -1,0 +1,18 @@
+FORMORA – Eigene Domain mit GitHub Pages
+
+Wenn du später deine eigene Domain verwenden möchtest:
+
+1. GitHub Repository öffnen
+2. Settings
+3. Pages
+4. Bei "Custom domain" deine Domain eintragen
+5. Danach die DNS-Einstellungen bei deinem Domain-Anbieter anpassen
+
+Wichtig:
+Die genaue CNAME-Datei kann erst erstellt werden, wenn deine echte Domain feststeht.
+
+Beispiel:
+www.deine-domain.de
+
+Dann würde in der Datei CNAME nur diese Domain stehen:
+www.deine-domain.de

@@ -1,15 +1,32 @@
 # FORMORA – GitHub Pages
 
-Diese Version besteht absichtlich nur aus **einer einzigen `index.html`**.
+Dieses Paket ist vollständig für GitHub Pages vorbereitet.
 
-Dadurch können CSS und JavaScript auf GitHub Pages nicht wegen einer falschen
-Ordnerstruktur fehlen.
+## Diese Dateien müssen direkt ins Hauptverzeichnis des Repositories
 
-## Hochladen
-1. `index.html` direkt in das Hauptverzeichnis deines GitHub-Repositories laden.
-2. In GitHub unter **Settings → Pages** die Veröffentlichung aus dem Branch `main`
-   und dem Ordner `/ (root)` aktivieren.
-3. Die GitHub-Pages-Adresse öffnen.
+- `index.html`
+- `404.html`
+- `.nojekyll`
+- `README.md`
 
-Wichtig: Nicht nur den Inhalt der ZIP als Unterordner hochladen. `index.html`
-muss direkt oben im Repository liegen.
+## GitHub Pages aktivieren
+
+1. Repository auf GitHub öffnen.
+2. **Settings** öffnen.
+3. Links **Pages** auswählen.
+4. Unter **Build and deployment**:
+   - Source: `Deploy from a branch`
+   - Branch: `main`
+   - Folder: `/ (root)`
+5. Speichern.
+6. Kurz warten, bis GitHub die Pages-Adresse anzeigt.
+
+Die `index.html` enthält bereits CSS und JavaScript direkt in der Datei.
+Es werden deshalb keine extra CSS- oder JS-Ordner benötigt.
+
+## Eigene Domain
+
+Wenn später eine eigene Domain verbunden werden soll:
+GitHub → Settings → Pages → Custom domain.
+
+Danach muss beim Domain-Anbieter noch der passende DNS-Eintrag gesetzt werden.

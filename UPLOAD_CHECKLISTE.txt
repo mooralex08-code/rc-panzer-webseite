@@ -1,0 +1,28 @@
+FORMORA – GitHub Upload Checkliste
+
+Du lädst ALLE Dateien aus diesem Ordner direkt in dein Repository:
+
+[ ] index.html
+[ ] 404.html
+[ ] .nojekyll
+[ ] README.md
+[ ] DOMAIN_ANLEITUNG.txt
+[ ] UPLOAD_CHECKLISTE.txt
+
+WICHTIG:
+Nicht den Ordner FORMORA_GITHUB_KOMPLETT als Unterordner hochladen.
+Die Dateien müssen direkt oben im Repository liegen.
+
+Richtig:
+Repository/
+  index.html
+  404.html
+  .nojekyll
+  README.md
+  DOMAIN_ANLEITUNG.txt
+  UPLOAD_CHECKLISTE.txt
+
+Falsch:
+Repository/
+  FORMORA_GITHUB_KOMPLETT/
+    index.html
