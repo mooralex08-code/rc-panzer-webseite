@@ -1,28 +1,16 @@
-# FORMORA FINAL – GETESTETE GITHUB VERSION
+# FORMORA UNIQUE – Persistent Cart
 
-Diese Version enthält:
-- Startseite
-- Shop als eigene Seite
-- Admin als eigene Seite
-- Warenkorb
-- Warenkorb öffnet NICHT automatisch beim Hinzufügen
-- kleine Bestätigung beim Hinzufügen
-- futuristischer FORMORA Mauszeiger
-- weiße Standard-Maus auf PC ausgeblendet
-- kein 3D-Konfigurator
-- responsive für Handy / Tablet / PC
+Neu:
+- Warenkorb wird dauerhaft im Browser gespeichert.
+- Produkte bleiben nach Schließen und erneutem Öffnen der Webseite im Warenkorb.
+- Mengenänderungen und Löschen werden ebenfalls gespeichert.
+- Nach dem Abschicken der Bestellanfrage wird der Warenkorb geleert.
+- neuer FORMORA Holo Navigator im Shop
+- Neon-/Glas-Kategorien mit Animation
+- Mouse-Spotlight im Kategorie-Bereich
+- Scanline- und Orbit-Effekte
+- Live-Anzahl der sichtbaren Produkte
+- responsive für Handy, Tablet und PC
 
-Admin:
-Benutzer: Admin
-Passwort: 123
-
-WICHTIG FÜR GITHUB:
-1. Alte Dateien im Repository löschen/ersetzen.
-2. ALLE Dateien aus diesem ZIP direkt ins Hauptverzeichnis hochladen.
-3. index.html muss direkt oben liegen.
-4. Settings → Pages → Deploy from a branch.
-5. Branch main, Ordner / (root).
-6. Nach dem Upload kurz warten und die Webseite neu laden.
-
-Hinweis zum Admin:
-GitHub Pages ist statisch. Admin-Änderungen werden im Browser gespeichert und sind nicht automatisch global für alle Besucher.
+Wichtig:
+Auf GitHub Pages gibt es noch kein echtes Bezahlsystem. Deshalb wird der Warenkorb aktuell beim Abschicken der Bestellanfrage geleert. Für „erst nach erfolgreicher PayPal/Karten-Zahlung leeren“ braucht es später Zahlungsanbieter + Backend.

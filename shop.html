@@ -119,6 +119,45 @@ body.cursor-down .cursor-ring{width:24px;height:24px}
   html,body,a,button,input,select,textarea,.product,.card,.inspire,.ghost-btn,.btn{cursor:none!important}
 }
 
+
+.holo-shell{
+  position:relative;margin:26px 0 30px;padding:22px;border-radius:28px;
+  border:1px solid rgba(255,255,255,.12);
+  background:radial-gradient(circle at var(--mx,50%) var(--my,50%),rgba(108,247,255,.15),transparent 28%),linear-gradient(135deg,rgba(255,255,255,.055),rgba(255,255,255,.018));
+  backdrop-filter:blur(18px);overflow:hidden;box-shadow:0 24px 70px rgba(0,0,0,.28),inset 0 1px 0 rgba(255,255,255,.05)
+}
+.holo-shell:before{
+  content:"";position:absolute;inset:-1px;border-radius:inherit;padding:1px;
+  background:linear-gradient(110deg,transparent 5%,rgba(108,247,255,.7),rgba(173,124,255,.5),rgba(255,108,207,.45),transparent 85%);
+  -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);
+  -webkit-mask-composite:xor;mask-composite:exclude;opacity:.55;pointer-events:none
+}
+.holo-title{display:flex;align-items:center;justify-content:space-between;gap:16px;position:relative;z-index:2;margin-bottom:18px}
+.holo-title strong{font-size:17px;letter-spacing:.08em;text-transform:uppercase}
+.holo-status{font-size:12px;color:#8fa1b6;display:flex;align-items:center;gap:7px}
+.holo-status i{width:7px;height:7px;border-radius:50%;background:#6cf7ff;box-shadow:0 0 14px #6cf7ff;animation:pulseDot 1.8s infinite}
+@keyframes pulseDot{50%{opacity:.35;transform:scale(.72)}}
+.holo-track{display:flex;gap:10px;overflow-x:auto;padding:4px 2px 8px;scrollbar-width:none;position:relative;z-index:2}
+.holo-track::-webkit-scrollbar{display:none}
+.holo-cat{
+  position:relative;flex:0 0 auto;min-width:138px;border:1px solid rgba(255,255,255,.10);
+  background:rgba(8,14,23,.68);color:#dce7f3;border-radius:18px;padding:15px 16px;cursor:pointer;text-align:left;
+  transition:transform .22s ease,border-color .22s ease,box-shadow .22s ease,background .22s ease;overflow:hidden
+}
+.holo-cat:after{content:"";position:absolute;inset:0;background:linear-gradient(120deg,transparent 30%,rgba(255,255,255,.08),transparent 70%);transform:translateX(-120%);transition:.45s}
+.holo-cat:hover:after{transform:translateX(120%)}
+.holo-cat:hover{transform:translateY(-5px) scale(1.02);border-color:rgba(108,247,255,.45);box-shadow:0 14px 35px rgba(108,247,255,.08)}
+.holo-cat.active{background:linear-gradient(135deg,rgba(108,247,255,.15),rgba(173,124,255,.08));border-color:rgba(108,247,255,.6);box-shadow:0 0 0 1px rgba(108,247,255,.08),0 15px 40px rgba(108,247,255,.09)}
+.holo-cat .hc-icon{font-size:24px;display:block;margin-bottom:8px}.holo-cat .hc-name{font-weight:800;display:block}.holo-cat .hc-count{font-size:11px;color:#8593a6;margin-top:4px;display:block}
+.holo-scan{position:absolute;left:-20%;right:-20%;height:1px;top:0;background:linear-gradient(90deg,transparent,#6cf7ff,transparent);box-shadow:0 0 14px rgba(108,247,255,.8);opacity:.35;animation:scanline 5.5s linear infinite;pointer-events:none}
+@keyframes scanline{0%{top:5%}100%{top:95%}}
+.shop-intro-orbit{display:grid;grid-template-columns:1.25fr .75fr;gap:18px;margin-bottom:24px}
+.orbit-card{border:1px solid rgba(255,255,255,.1);border-radius:24px;padding:24px;background:linear-gradient(145deg,rgba(108,247,255,.055),rgba(173,124,255,.035));position:relative;overflow:hidden}
+.orbit-card:before{content:"";position:absolute;width:180px;height:180px;border-radius:50%;border:1px solid rgba(108,247,255,.16);right:-35px;top:-75px;box-shadow:0 0 0 28px rgba(108,247,255,.025),0 0 0 58px rgba(173,124,255,.018);animation:orbitSpin 12s linear infinite}
+@keyframes orbitSpin{to{transform:rotate(360deg)}}
+.orbit-card>*{position:relative;z-index:2}.orbit-label{font-size:11px;letter-spacing:.18em;color:#6cf7ff;text-transform:uppercase}
+@media(max-width:760px){.shop-intro-orbit{grid-template-columns:1fr}.holo-shell{padding:16px;border-radius:22px}.holo-cat{min-width:122px;padding:13px}}
+
 </style></head>
 <body><div class="cursor-ring"></div><div class="cursor-dot"></div>
 <header><div class="wrap nav">
@@ -134,7 +173,15 @@ body.cursor-down .cursor-ring{width:24px;height:24px}
 <main><section><div class="wrap">
 <div class="sectionhead"><div><div class="eyebrow">SHOP</div><h2>Alle Produkte</h2><p>Suche oder filtere nach Kategorie.</p></div></div>
 <input id="search" class="search" placeholder="Produkte suchen …">
-<div id="filters" class="filters"></div>
+<div class="shop-intro-orbit">
+<div class="orbit-card"><div class="orbit-label">FORMORA // PRODUCT UNIVERSE</div><h3 style="font-size:28px;margin:8px 0 8px">Finde dein nächstes Lieblingsstück.</h3><p style="margin:0">Keine langweiligen Kategorien – navigiere durch unsere 3D-Welten.</p></div>
+<div class="orbit-card"><div class="orbit-label">LIVE COLLECTION</div><div style="font-size:40px;font-weight:900;margin-top:8px" id="liveCount">0</div><p style="margin:0">Produkte aktuell sichtbar</p></div>
+</div>
+<div class="holo-shell" id="holoShell">
+<div class="holo-scan"></div>
+<div class="holo-title"><strong>Holo Navigator</strong><span class="holo-status"><i></i> Kategorie-System aktiv</span></div>
+<div id="filters" class="holo-track"></div>
+</div>
 <div id="products" class="products"></div>
 </div></section></main>
 
@@ -156,7 +203,13 @@ function loadData(){
 function saveData(data){localStorage.setItem("formoraData",JSON.stringify(data))}
 function money(v){return Number(v||0).toLocaleString("de-DE",{style:"currency",currency:"EUR"})}
 let cart=[];
-function addCart(p){const x=cart.find(i=>i.id===p.id);if(x)x.qty++;else cart.push({...p,qty:1});renderCart();showCartToast(p.name)}
+try{
+  const savedCart=localStorage.getItem("formoraCart");
+  cart=savedCart?JSON.parse(savedCart):[];
+}catch(e){cart=[];}
+function saveCart(){localStorage.setItem("formoraCart",JSON.stringify(cart));}
+
+function addCart(p){const x=cart.find(i=>i.id===p.id);if(x)x.qty++;else cart.push({...p,qty:1});saveCart();renderCart();showCartToast(p.name)}
 function renderCart(){
   const count=document.getElementById("count"),items=document.getElementById("items"),sum=document.getElementById("sum");
   if(!count||!items||!sum)return;
@@ -182,7 +235,7 @@ function openCart(){document.getElementById("drawer")?.classList.add("open");doc
 function closeCart(){document.getElementById("drawer")?.classList.remove("open");document.getElementById("overlay")?.classList.remove("show")}
 document.addEventListener("click",e=>{
   const add=e.target.closest("[data-add-product]");if(add){const d=loadData();const p=d.products.find(x=>x.id===add.dataset.addProduct);if(p)addCart(p)}
-  const act=e.target.closest("[data-act]");if(act){const x=cart.find(i=>i.id===act.dataset.id);if(!x)return;if(act.dataset.act==="inc")x.qty++;if(act.dataset.act==="dec")x.qty--;if(act.dataset.act==="del"||x.qty<=0)cart=cart.filter(i=>i.id!==act.dataset.id);renderCart()}
+  const act=e.target.closest("[data-act]");if(act){const x=cart.find(i=>i.id===act.dataset.id);if(!x)return;if(act.dataset.act==="inc")x.qty++;if(act.dataset.act==="dec")x.qty--;if(act.dataset.act==="del"||x.qty<=0)cart=cart.filter(i=>i.id!==act.dataset.id);saveCart();renderCart()}
 });
 document.addEventListener("DOMContentLoaded",()=>{
   const d=loadData();
@@ -196,7 +249,9 @@ document.addEventListener("DOMContentLoaded",()=>{
     if(!cart.length)return alert("Der Warenkorb ist leer.");
     const lines=cart.map(x=>`${x.qty}x ${x.name} – ${money(x.price*x.qty)}`);
     const total=money(cart.reduce((a,x)=>a+x.price*x.qty,0));
-    location.href=`mailto:${d.email}?subject=${encodeURIComponent("FORMORA Bestellanfrage")}&body=${encodeURIComponent(lines.join("\n")+"\n\nGesamt: "+total)}`
+    const mail=`mailto:${d.email}?subject=${encodeURIComponent("FORMORA Bestellanfrage")}&body=${encodeURIComponent(lines.join("\n")+"\n\nGesamt: "+total)}`;
+    location.href=mail;
+    setTimeout(()=>{cart=[];saveCart();renderCart();},600);
   };
   const obs=new IntersectionObserver(entries=>entries.forEach(en=>{if(en.isIntersecting)en.target.classList.add("show")}),{threshold:.12});
   document.querySelectorAll(".reveal").forEach(el=>obs.observe(el));
@@ -218,17 +273,32 @@ document.addEventListener("DOMContentLoaded",()=>{
 document.addEventListener("DOMContentLoaded",()=>{
   let category="Alle"; const d=loadData(), box=document.getElementById("products"), filters=document.getElementById("filters"), search=document.getElementById("search");
   const cats=["Alle",...new Set(d.products.map(p=>p.cat))];
-  filters.innerHTML=cats.map(c=>`<button class="filter ${c==="Alle"?"active":""}" data-cat="${c}">${c}</button>`).join("");
+  const icons={"Alle":"✦","Modellbau":"◈","Figuren":"♟","Ersatzteile":"⚙","Technik":"⌁","Deko":"◇","Haushalt":"⌂","Personalisiert":"Aa"};
+  filters.innerHTML=cats.map(c=>{const count=c==="Alle"?d.products.length:d.products.filter(p=>p.cat===c).length;return `<button class="holo-cat ${c==="Alle"?"active":""}" data-cat="${c}"><span class="hc-icon">${icons[c]||"✦"}</span><span class="hc-name">${c}</span><span class="hc-count">${count} Produkte</span></button>`}).join("");
   function render(){
     const q=search.value.toLowerCase().trim();box.innerHTML="";
-    d.products.filter(p=>(category==="Alle"||p.cat===category)&&(!q||(p.name+" "+p.desc+" "+p.cat).toLowerCase().includes(q))).forEach(p=>{
+    const visibleProducts=d.products.filter(p=>(category==="Alle"||p.cat===category)&&(!q||(p.name+" "+p.desc+" "+p.cat).toLowerCase().includes(q)));
+    const lc=document.getElementById("liveCount");if(lc)lc.textContent=visibleProducts.length;
+    visibleProducts.forEach(p=>{
       const el=document.createElement("article");el.className="product reveal show";
       el.innerHTML=`<div class="pic">${p.image?`<img src="${p.image}" alt="">`:`<div class="fallback">🧩</div>`}</div><div class="info"><small>${p.cat}</small><h3>${p.name}</h3><p>${p.desc}</p><div class="meta"><span class="price">${money(p.price)}</span><button class="btn primary" data-add-product="${p.id}">+ Warenkorb</button></div></div>`;
       box.appendChild(el)
     })
   }
-  filters.addEventListener("click",e=>{const b=e.target.closest("[data-cat]");if(!b)return;category=b.dataset.cat;filters.querySelectorAll(".filter").forEach(x=>x.classList.toggle("active",x===b));render()});
+  filters.addEventListener("click",e=>{const b=e.target.closest("[data-cat]");if(!b)return;category=b.dataset.cat;filters.querySelectorAll(".holo-cat").forEach(x=>x.classList.toggle("active",x===b));render()});
   search.addEventListener("input",render);render()
 })
+</script>
+<script>
+document.addEventListener("DOMContentLoaded",()=>{
+  const shell=document.getElementById("holoShell");
+  if(shell && matchMedia("(pointer:fine)").matches){
+    shell.addEventListener("mousemove",e=>{
+      const r=shell.getBoundingClientRect();
+      shell.style.setProperty("--mx",((e.clientX-r.left)/r.width*100)+"%");
+      shell.style.setProperty("--my",((e.clientY-r.top)/r.height*100)+"%");
+    });
+  }
+});
 </script>
 </body></html>

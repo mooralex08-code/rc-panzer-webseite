@@ -289,7 +289,13 @@ function loadData(){
 function saveData(data){localStorage.setItem("formoraData",JSON.stringify(data))}
 function money(v){return Number(v||0).toLocaleString("de-DE",{style:"currency",currency:"EUR"})}
 let cart=[];
-function addCart(p){const x=cart.find(i=>i.id===p.id);if(x)x.qty++;else cart.push({...p,qty:1});renderCart();showCartToast(p.name)}
+try{
+  const savedCart=localStorage.getItem("formoraCart");
+  cart=savedCart?JSON.parse(savedCart):[];
+}catch(e){cart=[];}
+function saveCart(){localStorage.setItem("formoraCart",JSON.stringify(cart));}
+
+function addCart(p){const x=cart.find(i=>i.id===p.id);if(x)x.qty++;else cart.push({...p,qty:1});saveCart();renderCart();showCartToast(p.name)}
 function renderCart(){
   const count=document.getElementById("count"),items=document.getElementById("items"),sum=document.getElementById("sum");
   if(!count||!items||!sum)return;
@@ -315,7 +321,7 @@ function openCart(){document.getElementById("drawer")?.classList.add("open");doc
 function closeCart(){document.getElementById("drawer")?.classList.remove("open");document.getElementById("overlay")?.classList.remove("show")}
 document.addEventListener("click",e=>{
   const add=e.target.closest("[data-add-product]");if(add){const d=loadData();const p=d.products.find(x=>x.id===add.dataset.addProduct);if(p)addCart(p)}
-  const act=e.target.closest("[data-act]");if(act){const x=cart.find(i=>i.id===act.dataset.id);if(!x)return;if(act.dataset.act==="inc")x.qty++;if(act.dataset.act==="dec")x.qty--;if(act.dataset.act==="del"||x.qty<=0)cart=cart.filter(i=>i.id!==act.dataset.id);renderCart()}
+  const act=e.target.closest("[data-act]");if(act){const x=cart.find(i=>i.id===act.dataset.id);if(!x)return;if(act.dataset.act==="inc")x.qty++;if(act.dataset.act==="dec")x.qty--;if(act.dataset.act==="del"||x.qty<=0)cart=cart.filter(i=>i.id!==act.dataset.id);saveCart();renderCart()}
 });
 document.addEventListener("DOMContentLoaded",()=>{
   const d=loadData();
@@ -329,7 +335,9 @@ document.addEventListener("DOMContentLoaded",()=>{
     if(!cart.length)return alert("Der Warenkorb ist leer.");
     const lines=cart.map(x=>`${x.qty}x ${x.name} – ${money(x.price*x.qty)}`);
     const total=money(cart.reduce((a,x)=>a+x.price*x.qty,0));
-    location.href=`mailto:${d.email}?subject=${encodeURIComponent("FORMORA Bestellanfrage")}&body=${encodeURIComponent(lines.join("\n")+"\n\nGesamt: "+total)}`
+    const mail=`mailto:${d.email}?subject=${encodeURIComponent("FORMORA Bestellanfrage")}&body=${encodeURIComponent(lines.join("\n")+"\n\nGesamt: "+total)}`;
+    location.href=mail;
+    setTimeout(()=>{cart=[];saveCart();renderCart();},600);
   };
   const obs=new IntersectionObserver(entries=>entries.forEach(en=>{if(en.isIntersecting)en.target.classList.add("show")}),{threshold:.12});
   document.querySelectorAll(".reveal").forEach(el=>obs.observe(el));
