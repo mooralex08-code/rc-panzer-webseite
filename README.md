@@ -1,15 +1,21 @@
-# FORMORA – Neuheiten + Überrasch mich + Bewertungen + Intro
+# FORMORA – Bewertungen sichtbar FINAL
 
-Neu:
-- Startseiten-Intro mit FORMORA Logo-Animation
-- Intro erscheint einmal pro Browser-Sitzung, damit es nicht nervt
-- Neuheiten-Bereich auf der Startseite
-- NEU-Badges
-- „Überrasch mich“-Randomizer mit animierter Produktempfehlung
-- Bewertungsbereich
-- Bewertungen sind klar als DEMO gekennzeichnet und sollten später durch echte Kundenbewertungen ersetzt werden
-- vorhandene Highlights, So geht’s, Gaming, Geschenke und Warenkorb bleiben erhalten
+Jetzt eindeutig sichtbar:
+- ⭐ Bewertungen oben im Hauptmenü
+- großer Bewertungsbereich direkt auf der Startseite
+- eigene Seite `bewertungen.html`
+- 6 Demo-Bewertungen auf der Bewertungsseite
+- alle Demo-Bewertungen sind klar als DEMO gekennzeichnet
 
-Warenkorb:
-- Speicherung bleibt aus der vorherigen Version erhalten
-- auf echter GitHub-Pages-Adresse testen
+Alle bisherigen Funktionen bleiben erhalten:
+- Neuheiten
+- Überrasch mich
+- Startseiten-Intro
+- Highlights
+- So geht's
+- Shop
+- Warenkorb
+- Admin
+
+Für GitHub Pages:
+Alle Dateien direkt ins Hauptverzeichnis des Repositorys hochladen und alte Dateien ersetzen.
