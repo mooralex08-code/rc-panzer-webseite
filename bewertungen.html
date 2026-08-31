@@ -217,6 +217,23 @@ body.cursor-down .cursor-ring{width:24px;height:24px}
 .review-stars-big{font-size:26px;letter-spacing:.16em;color:#ffe38b}
 @media(max-width:700px){.review-showcase{padding:26px 18px}.review-big-title{font-size:42px}}
 
+
+.review-page{padding:90px 0 60px}.review-page h1{font-size:clamp(48px,8vw,92px);letter-spacing:-.06em;line-height:.92;margin:10px 0 18px}
+.review-layout{display:grid;grid-template-columns:.8fr 1.2fr;gap:24px;align-items:start}
+.review-form,.review-list-wrap{border:1px solid rgba(255,255,255,.1);border-radius:26px;padding:26px;background:rgba(255,255,255,.03)}
+.review-form label{display:block;margin:16px 0 7px;font-size:13px;color:#b9c4d1}
+.review-form input,.review-form textarea{width:100%;padding:14px;border-radius:14px;border:1px solid rgba(255,255,255,.12);background:#070b11;color:#fff}
+.review-form textarea{min-height:130px;resize:vertical}
+.star-picker{display:flex;gap:6px}
+.star-picker button{font-size:30px;background:none;border:0;color:#44505e;cursor:pointer;padding:2px}
+.star-picker button.active{color:#ffe38b}
+.review-entry{padding:20px 0;border-bottom:1px solid rgba(255,255,255,.08)}
+.review-entry:last-child{border-bottom:0}
+.review-entry .stars{color:#ffe38b;letter-spacing:.1em}
+.review-entry-head{display:flex;justify-content:space-between;gap:12px;align-items:center}
+.review-empty{padding:35px 10px;text-align:center;color:#91a0b2}
+@media(max-width:800px){.review-layout{grid-template-columns:1fr}}
+
 </style></head>
 <body>
 <div class="intro-screen" id="introScreen"><div class="intro-core"><div class="intro-ring"></div><div class="intro-logo">FORMORA</div><div class="intro-sub">Ideas become real</div></div></div><div class="cursor-ring"></div><div class="cursor-dot"></div>
@@ -224,7 +241,7 @@ body.cursor-down .cursor-ring{width:24px;height:24px}
   <a class="brand" href="index.html"><span data-brand>FORMORA</span><small data-tagline>3D-MANUFAKTUR · IDEEN WERDEN GREIFBAR</small></a>
   <nav>
     <a href="index.html">Start</a>
-    <a href="shop.html">Shop</a><a href="bewertungen.html">⭐ Bewertungen</a><a href="#neuheiten">Neuheiten</a><a href="highlights.html">Highlights</a><a href="so-gehts.html">So geht’s</a>
+    <a href="shop.html">Shop</a><a href="bewertungen.html">Bewertungen</a><a href="highlights.html">Highlights</a><a href="so-gehts.html">So geht’s</a>
     
     <a href="admin.html" class="admin-nav keep">⚙ Admin Login</a><button id="cartBtn" class="ghost-btn keep">Warenkorb <span id="count">0</span></button>
   </nav>
@@ -232,33 +249,35 @@ body.cursor-down .cursor-ring{width:24px;height:24px}
 
 
 <main>
-<section class="feature-hero"><div class="wrap">
-  <div class="eyebrow">⭐ FORMORA COMMUNITY</div>
-  <h1 class="feature-title">Bewertungen,<br><span>die man sieht.</span></h1>
-  <p style="max-width:720px">Hier findest du später echte Rückmeldungen von Kunden. Die aktuellen Einträge sind klar als Demo markiert.</p>
-</div></section>
+<section class="review-page"><div class="wrap">
+  <div class="eyebrow">FORMORA COMMUNITY</div>
+  <h1>Bewertungen</h1>
+  <p style="max-width:700px">Teile deine Erfahrung mit FORMORA. Deine Bewertung erscheint direkt nach dem Absenden.</p>
 
-<section><div class="wrap">
-  <div class="review-showcase">
-    <div class="review-topline">
-      <div class="review-score">5.0</div>
-      <div><div class="review-stars-big">★★★★★</div><small>Aktuell Demo-Bewertungen</small></div>
+  <div class="review-layout" style="margin-top:34px">
+    <div class="review-form">
+      <h2>Bewertung abgeben</h2>
+      <label>Dein Name</label>
+      <input id="reviewName" maxlength="60" placeholder="Name">
+      <label>Bewertung</label>
+      <div class="star-picker" id="starPicker" aria-label="Sterne auswählen">
+        <button type="button" data-star="1">★</button>
+        <button type="button" data-star="2">★</button>
+        <button type="button" data-star="3">★</button>
+        <button type="button" data-star="4">★</button>
+        <button type="button" data-star="5">★</button>
+      </div>
+      <label>Deine Bewertung</label>
+      <textarea id="reviewText" maxlength="800" placeholder="Wie war deine Erfahrung?"></textarea>
+      <button class="btn primary" id="submitReview" type="button" style="margin-top:16px">Bewertung abschicken</button>
+      <p id="reviewStatus" style="font-size:12px;margin-top:12px;color:#83f6ff"></p>
     </div>
-    <div class="review-grid">
-      <div class="review-card"><div class="stars">★★★★★</div><p>„Sieht hochwertig aus und das Teil passt perfekt in mein Setup.“</p><div class="review-name">Beispielbewertung</div><div class="verified">DEMO</div></div>
-      <div class="review-card"><div class="stars">★★★★★</div><p>„Die personalisierte Idee ist viel besonderer als ein normales Geschenk.“</p><div class="review-name">Beispielbewertung</div><div class="verified">DEMO</div></div>
-      <div class="review-card"><div class="stars">★★★★★</div><p>„Genau für solche kleinen Lösungen ist 3D-Druck richtig praktisch.“</p><div class="review-name">Beispielbewertung</div><div class="verified">DEMO</div></div>
-      <div class="review-card"><div class="stars">★★★★★</div><p>„Das Design wirkt modern und nicht wie ein typischer 3D-Druck-Shop.“</p><div class="review-name">Beispielbewertung</div><div class="verified">DEMO</div></div>
-      <div class="review-card"><div class="stars">★★★★★</div><p>„Die Auswahl an kleinen praktischen Teilen gefällt mir besonders.“</p><div class="review-name">Beispielbewertung</div><div class="verified">DEMO</div></div>
-      <div class="review-card"><div class="stars">★★★★★</div><p>„Personalisierte Sachen sind perfekt als Geschenkidee.“</p><div class="review-name">Beispielbewertung</div><div class="verified">DEMO</div></div>
-    </div>
-  </div>
 
-  <div class="cta-wow reveal" style="margin-top:42px">
-    <div class="eyebrow">SPÄTER ERWEITERBAR</div>
-    <h2>Echte Kundenbewertungen</h2>
-    <p>Wenn du willst, können wir später ein echtes Formular mit Sternen, Name und Text einbauen. Dafür braucht die öffentliche Speicherung dann einen Server oder eine Datenbank.</p>
-    <a class="btn primary" href="shop.html">Zum Shop →</a>
+    <div class="review-list-wrap">
+      <div class="eyebrow">KUNDENSTIMMEN</div>
+      <h2>Aktuelle Bewertungen</h2>
+      <div id="reviewList"></div>
+    </div>
   </div>
 </div></section>
 </main>
@@ -330,19 +349,12 @@ body.cursor-down .cursor-ring{width:24px;height:24px}
 </div></section>
 
 
-<section id="neuheiten"><div class="wrap">
-<div class="sectionhead reveal"><div><div class="eyebrow">FRISCH AUS FORMORA</div><h2>Neuheiten</h2><p>Neue Ideen, neue Formen, neue Lieblingsstücke.</p></div><a class="btn" href="shop.html">Alle Produkte →</a></div>
-<div class="cards">
-<a class="card reveal" href="shop.html"><span class="new-badge">NEU</span><div style="font-size:64px;margin:22px 0">🎧</div><h3>Headset Stand Pro</h3><p>Futuristischer Stand für Gaming- und Desk-Setups.</p></a>
-<a class="card reveal" href="shop.html"><span class="new-badge">NEU</span><div style="font-size:64px;margin:22px 0">✦</div><h3>Message Cube</h3><p>Personalisierbar mit Name, Datum oder Botschaft.</p></a>
-<a class="card reveal" href="shop.html"><span class="new-badge">NEU</span><div style="font-size:64px;margin:22px 0">◇</div><h3>Mini Memory Plaque</h3><p>Eine kleine Erinnerung als individuelles 3D-Objekt.</p></a>
-</div>
-</div></section>
+
 
 
 <section id="bewertungen"><div class="wrap">
 <div class="review-showcase reveal">
-  <div class="eyebrow">⭐ FORMORA BEWERTUNGEN</div>
+  <div class="eyebrow">FORMORA BEWERTUNGEN</div>
   <h2 class="review-big-title">Was Kunden über<br><span>FORMORA sagen.</span></h2>
   <div class="review-topline">
     <div class="review-score">5.0</div>
@@ -562,4 +574,46 @@ document.addEventListener("DOMContentLoaded",()=>{
  });
 });
 </script>
+
+<script>
+document.addEventListener("DOMContentLoaded",()=>{
+ const KEY="formoraReviews_v1";
+ const name=document.getElementById("reviewName");
+ const text=document.getElementById("reviewText");
+ const list=document.getElementById("reviewList");
+ const status=document.getElementById("reviewStatus");
+ const buttons=[...document.querySelectorAll("#starPicker button")];
+ let stars=5;
+
+ function read(){
+   try{const v=JSON.parse(localStorage.getItem(KEY)||"[]");return Array.isArray(v)?v:[]}catch(e){return []}
+ }
+ function save(v){try{localStorage.setItem(KEY,JSON.stringify(v))}catch(e){}}
+ function setStars(n){
+   stars=n;
+   buttons.forEach(b=>b.classList.toggle("active",Number(b.dataset.star)<=n));
+ }
+ function esc(v){return String(v).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[c]))}
+ function render(){
+   const reviews=read().slice().reverse();
+   if(!reviews.length){list.innerHTML='<div class="review-empty">Noch keine Bewertungen vorhanden.</div>';return}
+   list.innerHTML=reviews.map(r=>`<article class="review-entry">
+     <div class="review-entry-head"><strong>${esc(r.name)}</strong><small>${new Date(r.date).toLocaleDateString("de-DE")}</small></div>
+     <div class="stars">${"★".repeat(r.stars)}${"☆".repeat(5-r.stars)}</div>
+     <p>${esc(r.text)}</p>
+   </article>`).join("");
+ }
+ buttons.forEach(b=>b.addEventListener("click",()=>setStars(Number(b.dataset.star))));
+ document.getElementById("submitReview").addEventListener("click",()=>{
+   const n=name.value.trim(),t=text.value.trim();
+   if(!n||!t){status.textContent="Bitte Name und Bewertung eintragen.";return}
+   const reviews=read();
+   reviews.push({id:"r"+Date.now(),name:n,text:t,stars,date:new Date().toISOString()});
+   save(reviews);
+   name.value="";text.value="";setStars(5);status.textContent="Danke! Deine Bewertung wurde gespeichert.";render();
+ });
+ setStars(5);render();
+});
+</script>
+
 </body></html>

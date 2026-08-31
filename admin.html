@@ -98,6 +98,13 @@ body.cursor-down .cursor-ring{width:24px;height:24px}
   html,body,a,button,input,select,textarea,.product,.card,.inspire,.ghost-btn,.btn{cursor:none!important}
 }
 
+
+.review-admin{margin-top:28px;border:1px solid rgba(255,255,255,.1);border-radius:22px;padding:22px;background:rgba(255,255,255,.03)}
+.review-admin-item{display:grid;grid-template-columns:1fr auto;gap:14px;padding:16px 0;border-bottom:1px solid rgba(255,255,255,.08)}
+.review-admin-item:last-child{border-bottom:0}
+.review-admin-stars{color:#ffe38b}
+.review-delete{border:1px solid rgba(255,108,160,.35);background:rgba(255,50,100,.08);color:#ff9cbd;border-radius:12px;padding:9px 12px;cursor:pointer}
+
 </style></head>
 <body><div class="cursor-ring"></div><div class="cursor-dot"></div>
 <div style="position:fixed;top:14px;left:14px;z-index:100"><a href="index.html" class="btn">← Zur Webseite</a></div><div id="login" class="login"><div class="login-box">
@@ -120,6 +127,13 @@ body.cursor-down .cursor-ring{width:24px;height:24px}
 </div><button id="saveGeneral" class="btn primary" style="margin-top:14px">Speichern</button></div>
 <div class="admin-panel"><div style="display:flex;justify-content:space-between;align-items:center;gap:10px"><h3>Produkte</h3><button id="addProduct" class="btn">+ Produkt</button></div><div id="adminProducts"></div></div>
 <div class="admin-panel"><h3>Backup</h3><p>Damit kannst du deine Änderungen sichern und auf einen anderen Browser übertragen.</p><button id="exportBtn" class="btn">Backup herunterladen</button><input id="importFile" type="file" accept=".json" style="margin-top:10px"></div>
+
+<section class="review-admin" id="reviewAdminSection">
+  <h2>Bewertungen verwalten</h2>
+  <p>Hier kannst du gespeicherte Bewertungen auf diesem Gerät löschen.</p>
+  <div id="adminReviewList"></div>
+</section>
+
 </main></div>
 <script>
 const DEFAULT_DATA = {"brand": "FORMORA", "tagline": "3D-MANUFAKTUR · IDEEN WERDEN GREIFBAR", "heroTitle": "Du denkst es. Wir drucken es.", "heroText": "3D-Druck für Modellbau, Figuren, Ersatzteile, Technik, Deko, Haushalt und personalisierte Ideen.", "email": "deine-email@beispiel.de", "products": [{"id": "p1", "cat": "Modellbau", "name": "Diorama Detail Set", "price": 14.9, "desc": "Kleine Details und Zubehörteile für Modellbau-Projekte.", "image": ""}, {"id": "p2", "cat": "Modellbau", "name": "Fahrzeug Detailteil", "price": 17.9, "desc": "Detailteil für Fahrzeuge, Panzer und Modellbauprojekte.", "image": ""}, {"id": "p3", "cat": "Figuren", "name": "Fantasy Büste", "price": 28.9, "desc": "3D-gedruckte Büste zum Sammeln, Bemalen oder Verschenken.", "image": ""}, {"id": "p4", "cat": "Figuren", "name": "Miniaturen Set", "price": 19.9, "desc": "Mehrere kleine Figuren als Demo-Produkt.", "image": ""}, {"id": "p5", "cat": "Ersatzteile", "name": "Ersatzclip Set", "price": 6.9, "desc": "Praktische Ersatzclips als Beispiel für funktionalen 3D-Druck.", "image": ""}, {"id": "p6", "cat": "Technik", "name": "Universal Adapter", "price": 12.9, "desc": "Adapter, Halterungen und technische Bauteile.", "image": ""}, {"id": "p7", "cat": "Technik", "name": "Controller Dock", "price": 18.9, "desc": "Schlichter Halter für Controller und Gaming-Zubehör.", "image": ""}, {"id": "p8", "cat": "Deko", "name": "Design Vase", "price": 22.9, "desc": "Geometrische Vase mit moderner Oberflächenstruktur.", "image": ""}, {"id": "p9", "cat": "Haushalt", "name": "Kabel Organizer", "price": 8.9, "desc": "Kleine Ordnungshilfe für Arbeitsplatz und Zuhause.", "image": ""}, {"id": "p10", "cat": "Haushalt", "name": "Werkzeughalter", "price": 16.9, "desc": "3D-gedruckter Halter für Werkstatt oder Hobbyraum.", "image": ""}, {"id": "p11", "cat": "Personalisiert", "name": "Namensschild Custom", "price": 13.9, "desc": "Personalisiertes Schild mit Wunschname oder kurzem Text.", "image": ""}, {"id": "p12", "cat": "Personalisiert", "name": "Logo Schlüsselanhänger", "price": 9.9, "desc": "Schlüsselanhänger mit individuellem Namen oder Logo.", "image": ""}, {"id": "p13", "cat": "Gaming", "name": "Headset Stand Pro", "price": 21.9, "desc": "Futuristischer Stand für Headsets mit cleanem FORMORA Look.", "image": ""}, {"id": "p14", "cat": "Gaming", "name": "Desk Token Set", "price": 11.9, "desc": "Kleine 3D-Objekte und Marker für Gaming- und Desk-Setups.", "image": ""}, {"id": "p15", "cat": "Geschenke", "name": "Message Cube", "price": 16.9, "desc": "Personalisierbarer Würfel mit Name, Datum oder kurzer Botschaft.", "image": ""}, {"id": "p16", "cat": "Geschenke", "name": "Mini Memory Plaque", "price": 18.9, "desc": "Kleine personalisierte Erinnerungsplatte für besondere Momente.", "image": ""}]};
@@ -294,4 +308,29 @@ document.addEventListener("DOMContentLoaded",()=>{
  importFile.onchange=async()=>{const f=importFile.files[0];if(!f)return;try{const d=JSON.parse(await f.text());saveData(d);adminRender();alert("Backup importiert.")}catch(e){alert("Ungültige Datei.")}}
 })
 </script>
+
+<script>
+document.addEventListener("DOMContentLoaded",()=>{
+ const KEY="formoraReviews_v1", box=document.getElementById("adminReviewList");
+ if(!box)return;
+ function read(){try{const v=JSON.parse(localStorage.getItem(KEY)||"[]");return Array.isArray(v)?v:[]}catch(e){return []}}
+ function save(v){localStorage.setItem(KEY,JSON.stringify(v))}
+ function esc(v){return String(v).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[c]))}
+ function render(){
+   const r=read().slice().reverse();
+   if(!r.length){box.innerHTML="<p>Noch keine Bewertungen gespeichert.</p>";return}
+   box.innerHTML=r.map(x=>`<div class="review-admin-item">
+      <div><b>${esc(x.name)}</b><div class="review-admin-stars">${"★".repeat(x.stars)}${"☆".repeat(5-x.stars)}</div><p>${esc(x.text)}</p></div>
+      <button class="review-delete" data-review-delete="${x.id}" type="button">Löschen</button>
+   </div>`).join("");
+ }
+ box.addEventListener("click",e=>{
+   const b=e.target.closest("[data-review-delete]");if(!b)return;
+   if(!confirm("Diese Bewertung wirklich löschen?"))return;
+   save(read().filter(x=>x.id!==b.dataset.reviewDelete));render();
+ });
+ render();
+});
+</script>
+
 </body></html>
