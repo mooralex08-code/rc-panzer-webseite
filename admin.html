@@ -122,7 +122,7 @@ body.cursor-down .cursor-ring{width:24px;height:24px}
 <div class="admin-panel"><h3>Backup</h3><p>Damit kannst du deine Änderungen sichern und auf einen anderen Browser übertragen.</p><button id="exportBtn" class="btn">Backup herunterladen</button><input id="importFile" type="file" accept=".json" style="margin-top:10px"></div>
 </main></div>
 <script>
-const DEFAULT_DATA = {"brand": "FORMORA", "tagline": "3D-MANUFAKTUR · IDEEN WERDEN GREIFBAR", "heroTitle": "Du denkst es. Wir drucken es.", "heroText": "3D-Druck für Modellbau, Figuren, Ersatzteile, Technik, Deko, Haushalt und personalisierte Ideen.", "email": "deine-email@beispiel.de", "products": [{"id": "p1", "cat": "Modellbau", "name": "Diorama Detail Set", "price": 14.9, "desc": "Kleine Details und Zubehörteile für Modellbau-Projekte.", "image": ""}, {"id": "p2", "cat": "Modellbau", "name": "Fahrzeug Detailteil", "price": 17.9, "desc": "Detailteil für Fahrzeuge, Panzer und Modellbauprojekte.", "image": ""}, {"id": "p3", "cat": "Figuren", "name": "Fantasy Büste", "price": 28.9, "desc": "3D-gedruckte Büste zum Sammeln, Bemalen oder Verschenken.", "image": ""}, {"id": "p4", "cat": "Figuren", "name": "Miniaturen Set", "price": 19.9, "desc": "Mehrere kleine Figuren als Demo-Produkt.", "image": ""}, {"id": "p5", "cat": "Ersatzteile", "name": "Ersatzclip Set", "price": 6.9, "desc": "Praktische Ersatzclips als Beispiel für funktionalen 3D-Druck.", "image": ""}, {"id": "p6", "cat": "Technik", "name": "Universal Adapter", "price": 12.9, "desc": "Adapter, Halterungen und technische Bauteile.", "image": ""}, {"id": "p7", "cat": "Technik", "name": "Controller Dock", "price": 18.9, "desc": "Schlichter Halter für Controller und Gaming-Zubehör.", "image": ""}, {"id": "p8", "cat": "Deko", "name": "Design Vase", "price": 22.9, "desc": "Geometrische Vase mit moderner Oberflächenstruktur.", "image": ""}, {"id": "p9", "cat": "Haushalt", "name": "Kabel Organizer", "price": 8.9, "desc": "Kleine Ordnungshilfe für Arbeitsplatz und Zuhause.", "image": ""}, {"id": "p10", "cat": "Haushalt", "name": "Werkzeughalter", "price": 16.9, "desc": "3D-gedruckter Halter für Werkstatt oder Hobbyraum.", "image": ""}, {"id": "p11", "cat": "Personalisiert", "name": "Namensschild Custom", "price": 13.9, "desc": "Personalisiertes Schild mit Wunschname oder kurzem Text.", "image": ""}, {"id": "p12", "cat": "Personalisiert", "name": "Logo Schlüsselanhänger", "price": 9.9, "desc": "Schlüsselanhänger mit individuellem Namen oder Logo.", "image": ""}]};
+const DEFAULT_DATA = {"brand": "FORMORA", "tagline": "3D-MANUFAKTUR · IDEEN WERDEN GREIFBAR", "heroTitle": "Du denkst es. Wir drucken es.", "heroText": "3D-Druck für Modellbau, Figuren, Ersatzteile, Technik, Deko, Haushalt und personalisierte Ideen.", "email": "deine-email@beispiel.de", "products": [{"id": "p1", "cat": "Modellbau", "name": "Diorama Detail Set", "price": 14.9, "desc": "Kleine Details und Zubehörteile für Modellbau-Projekte.", "image": ""}, {"id": "p2", "cat": "Modellbau", "name": "Fahrzeug Detailteil", "price": 17.9, "desc": "Detailteil für Fahrzeuge, Panzer und Modellbauprojekte.", "image": ""}, {"id": "p3", "cat": "Figuren", "name": "Fantasy Büste", "price": 28.9, "desc": "3D-gedruckte Büste zum Sammeln, Bemalen oder Verschenken.", "image": ""}, {"id": "p4", "cat": "Figuren", "name": "Miniaturen Set", "price": 19.9, "desc": "Mehrere kleine Figuren als Demo-Produkt.", "image": ""}, {"id": "p5", "cat": "Ersatzteile", "name": "Ersatzclip Set", "price": 6.9, "desc": "Praktische Ersatzclips als Beispiel für funktionalen 3D-Druck.", "image": ""}, {"id": "p6", "cat": "Technik", "name": "Universal Adapter", "price": 12.9, "desc": "Adapter, Halterungen und technische Bauteile.", "image": ""}, {"id": "p7", "cat": "Technik", "name": "Controller Dock", "price": 18.9, "desc": "Schlichter Halter für Controller und Gaming-Zubehör.", "image": ""}, {"id": "p8", "cat": "Deko", "name": "Design Vase", "price": 22.9, "desc": "Geometrische Vase mit moderner Oberflächenstruktur.", "image": ""}, {"id": "p9", "cat": "Haushalt", "name": "Kabel Organizer", "price": 8.9, "desc": "Kleine Ordnungshilfe für Arbeitsplatz und Zuhause.", "image": ""}, {"id": "p10", "cat": "Haushalt", "name": "Werkzeughalter", "price": 16.9, "desc": "3D-gedruckter Halter für Werkstatt oder Hobbyraum.", "image": ""}, {"id": "p11", "cat": "Personalisiert", "name": "Namensschild Custom", "price": 13.9, "desc": "Personalisiertes Schild mit Wunschname oder kurzem Text.", "image": ""}, {"id": "p12", "cat": "Personalisiert", "name": "Logo Schlüsselanhänger", "price": 9.9, "desc": "Schlüsselanhänger mit individuellem Namen oder Logo.", "image": ""}, {"id": "p13", "cat": "Gaming", "name": "Headset Stand Pro", "price": 21.9, "desc": "Futuristischer Stand für Headsets mit cleanem FORMORA Look.", "image": ""}, {"id": "p14", "cat": "Gaming", "name": "Desk Token Set", "price": 11.9, "desc": "Kleine 3D-Objekte und Marker für Gaming- und Desk-Setups.", "image": ""}, {"id": "p15", "cat": "Geschenke", "name": "Message Cube", "price": 16.9, "desc": "Personalisierbarer Würfel mit Name, Datum oder kurzer Botschaft.", "image": ""}, {"id": "p16", "cat": "Geschenke", "name": "Mini Memory Plaque", "price": 18.9, "desc": "Kleine personalisierte Erinnerungsplatte für besondere Momente.", "image": ""}]};
 function loadData(){
   try{
     const raw=localStorage.getItem("formoraData");
@@ -132,24 +132,92 @@ function loadData(){
 function saveData(data){localStorage.setItem("formoraData",JSON.stringify(data))}
 function money(v){return Number(v||0).toLocaleString("de-DE",{style:"currency",currency:"EUR"})}
 let cart=[];
-function readCart(){
+const CART_KEY="formoraCart_v3";
+const CART_DB="formoraShopDB";
+const CART_STORE="state";
+
+function readLocalCart(){
   try{
-    const raw=localStorage.getItem("formoraCart_v2")||localStorage.getItem("formoraCart");
-    if(raw){const parsed=JSON.parse(raw);if(Array.isArray(parsed))return parsed;}
+    const keys=[CART_KEY,"formoraCart_v2","formoraCart"];
+    for(const key of keys){
+      const raw=localStorage.getItem(key);
+      if(raw){
+        const parsed=JSON.parse(raw);
+        if(Array.isArray(parsed)) return parsed;
+      }
+    }
   }catch(e){}
   return [];
 }
-cart=readCart();
+
+function openCartDB(){
+  return new Promise((resolve,reject)=>{
+    if(!("indexedDB" in window)) return reject(new Error("no indexedDB"));
+    const req=indexedDB.open(CART_DB,1);
+    req.onupgradeneeded=()=>{const db=req.result;if(!db.objectStoreNames.contains(CART_STORE))db.createObjectStore(CART_STORE)};
+    req.onsuccess=()=>resolve(req.result);
+    req.onerror=()=>reject(req.error);
+  });
+}
+
+async function readDBCart(){
+  try{
+    const db=await openCartDB();
+    return await new Promise(resolve=>{
+      const tx=db.transaction(CART_STORE,"readonly");
+      const req=tx.objectStore(CART_STORE).get(CART_KEY);
+      req.onsuccess=()=>resolve(Array.isArray(req.result)?req.result:[]);
+      req.onerror=()=>resolve([]);
+    });
+  }catch(e){return []}
+}
+
+async function writeDBCart(){
+  try{
+    const db=await openCartDB();
+    await new Promise(resolve=>{
+      const tx=db.transaction(CART_STORE,"readwrite");
+      tx.objectStore(CART_STORE).put(cart,CART_KEY);
+      tx.oncomplete=()=>resolve();
+      tx.onerror=()=>resolve();
+    });
+  }catch(e){}
+}
+
 function saveCart(){
   try{
     const raw=JSON.stringify(cart);
+    localStorage.setItem(CART_KEY,raw);
     localStorage.setItem("formoraCart_v2",raw);
     localStorage.setItem("formoraCart",raw);
   }catch(e){}
+  writeDBCart();
 }
+
+async function restoreCart(){
+  const local=readLocalCart();
+  const db=await readDBCart();
+  cart=(local && local.length)?local:db;
+  if(!Array.isArray(cart))cart=[];
+  saveCart();
+  renderCart();
+}
+
+function clearCartStorage(){
+  cart=[];
+  try{
+    localStorage.removeItem(CART_KEY);
+    localStorage.removeItem("formoraCart_v2");
+    localStorage.removeItem("formoraCart");
+  }catch(e){}
+  writeDBCart();
+  renderCart();
+}
+
+cart=readLocalCart();
 window.addEventListener("pagehide",saveCart);
 window.addEventListener("beforeunload",saveCart);
-
+document.addEventListener("visibilitychange",()=>{if(document.visibilityState==="hidden")saveCart()});
 
 function addCart(p){const x=cart.find(i=>i.id===p.id);if(x)x.qty++;else cart.push({...p,qty:1});saveCart();renderCart();showCartToast(p.name)}
 function renderCart(){
@@ -200,6 +268,7 @@ document.addEventListener("DOMContentLoaded",()=>{
     addEventListener("mousedown",()=>document.body.classList.add("cursor-down"));addEventListener("mouseup",()=>document.body.classList.remove("cursor-down"));
   }
   renderCart();
+  restoreCart();
 });
 </script>
 <script>

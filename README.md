@@ -1,12 +1,21 @@
-# FORMORA – Warenkorb FIX + WOW
+# FORMORA ULTRA – Warenkorb + neue Features
 
-- Warenkorb wird dauerhaft in localStorage gespeichert.
-- Speicherung zusätzlich beim Schließen/Verlassen der Seite.
-- Alte Warenkorb-Daten werden übernommen.
-- Eine Bestellanfrage leert den Warenkorb NICHT mehr.
-- Manueller Button „Warenkorb leeren“.
-- Neuer sichtbarer FORMORA Discovery-Bereich über den Kategorien.
-- Holo-Navigator bleibt erhalten.
-- Responsive für Handy, Tablet und PC.
+Warenkorb:
+- localStorage + IndexedDB
+- wird beim Schließen/Verlassen nochmals gespeichert
+- bleibt auf derselben veröffentlichten Website im selben Browser/Gerät erhalten
+- wird NICHT durch normales Schließen geleert
+- wird erst nach Klick auf „Preisanfrage anfragen“ geleert
+- manuelles Leeren bleibt möglich
 
-Wichtig: Auf der echten GitHub-Pages-Adresse bleibt der Warenkorb im selben Browser/Gerät erhalten. Private Tabs oder manche Datei-Vorschauen können Speicher blockieren.
+Neu:
+- Highlights als eigener Menüpunkt + eigene Seite
+- So geht’s als eigener Menüpunkt + eigene Seite
+- neue Kategorien: Gaming und Geschenke
+- 4 neue Demo-Produkte
+- FORMORA Holo-Navigator
+- Discovery-Bereich und Animationen
+- mobile / tablet / desktop responsive
+
+WICHTIG:
+Wenn du die HTML-Datei nur in einer Datei-Vorschau öffnest, kann iPhone/ChatGPT/Dateimanager den Webspeicher beim Schließen löschen. Auf deiner echten GitHub-Pages-Adresse funktioniert die dauerhafte Speicherung im selben Browser. Geräteübergreifende Speicherung braucht später Kundenkonto + Server-Datenbank.

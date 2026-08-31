@@ -1,4 +1,4 @@
-<!doctype html><html lang="de"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>FORMORA — Shop</title><style>
+<!doctype html><html lang="de"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>FORMORA — So geht's — 3D Manufaktur</title><style>
 :root{
   --bg:#05070b;--panel:#0a0f18;--panel2:#0e1522;--txt:#f5f7fb;--muted:#8e99ab;
   --cyan:#6cf7ff;--violet:#ad7cff;--pink:#ff6ccf;--line:rgba(255,255,255,.10);
@@ -94,6 +94,27 @@ body.cursor-down .cursor-ring{width:24px;height:24px}
 @media(max-width:900px){.hero-grid{grid-template-columns:1fr}.visual{min-height:360px}.grid,.products{grid-template-columns:repeat(2,minmax(0,1fr))}.admin-shell{grid-template-columns:1fr}.admin-side{height:auto;position:relative;border-right:0;border-bottom:1px solid var(--line)}}
 @media(max-width:620px){nav{gap:5px;justify-content:flex-end}nav a:not(.keep){display:inline-flex;padding:8px 9px;font-size:12px}.grid,.products{grid-template-columns:1fr}.hero{padding:50px 0}.visual{min-height:300px}.print-object{inset:45px}.admin-grid{grid-template-columns:1fr}.admin-field.full{grid-column:auto}.admin-product{grid-template-columns:1fr}.nav{height:auto;padding:14px 0}}
 
+.new-badge{
+  display:inline-flex;align-items:center;gap:7px;padding:8px 12px;border-radius:999px;
+  border:1px solid rgba(108,247,255,.32);background:rgba(108,247,255,.08);
+  color:#9ffbff;font-size:12px;font-weight:800;letter-spacing:.08em;margin-bottom:18px
+}
+.quick-launch{
+  display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin-top:26px
+}
+.launch-card{
+  display:block;padding:20px;border:1px solid rgba(255,255,255,.12);border-radius:20px;
+  background:linear-gradient(145deg,rgba(108,247,255,.07),rgba(173,124,255,.05));
+  transition:.25s ease
+}
+.launch-card:hover{transform:translateY(-5px);border-color:rgba(108,247,255,.45)}
+.launch-card .launch-icon{font-size:34px;margin-bottom:10px}
+.launch-card b{display:block;font-size:19px;margin-bottom:5px}
+.launch-card small{color:#9ba7b8;line-height:1.5}
+.admin-nav{border-color:rgba(255,108,207,.35)!important;color:#ff9cdb!important}
+@media(max-width:700px){.quick-launch{grid-template-columns:1fr}.nav{align-items:flex-start}.brand{min-width:120px}nav{max-width:65%}}
+
+
 .admin-nav{
   display:inline-flex!important;
   align-items:center;
@@ -113,59 +134,62 @@ body.cursor-down .cursor-ring{width:24px;height:24px}
 }
 
 
-.cart-toast{position:fixed;right:20px;bottom:20px;z-index:120;padding:14px 18px;border-radius:15px;background:#0d1720;border:1px solid rgba(108,247,255,.35);box-shadow:0 18px 55px rgba(0,0,0,.4);color:#dffcff;transform:translateY(30px);opacity:0;pointer-events:none;transition:.25s}.cart-toast.show{transform:none;opacity:1}@media(max-width:520px){.cart-toast{left:14px;right:14px;bottom:14px}}
+.feature-strip{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:34px}
+.feature-pill{padding:16px;border:1px solid rgba(255,255,255,.1);border-radius:18px;background:rgba(255,255,255,.035);backdrop-filter:blur(10px)}
+.feature-pill strong{display:block;margin-bottom:5px}.feature-pill span{font-size:13px;color:#929dad}
+.showcase{display:grid;grid-template-columns:1.15fr .85fr;gap:18px;margin-top:22px}
+.showcase-main,.showcase-side{border:1px solid rgba(255,255,255,.1);border-radius:28px;overflow:hidden;position:relative;background:linear-gradient(145deg,rgba(108,247,255,.06),rgba(173,124,255,.045))}
+.showcase-main{min-height:380px;padding:34px;display:flex;flex-direction:column;justify-content:flex-end}
+.showcase-side{min-height:380px;padding:28px}
+.glow-shape{position:absolute;width:260px;height:260px;border-radius:42% 58% 63% 37%;background:linear-gradient(135deg,rgba(108,247,255,.32),rgba(173,124,255,.24),rgba(255,108,207,.2));filter:blur(2px);right:-40px;top:-55px;animation:morph 8s ease-in-out infinite}
+@keyframes morph{50%{transform:rotate(35deg) scale(1.12);border-radius:62% 38% 43% 57%}}
+.process{display:grid;gap:14px;margin-top:22px}.process-step{display:grid;grid-template-columns:42px 1fr;gap:12px;align-items:start;padding:14px;border-bottom:1px solid rgba(255,255,255,.08)}
+.process-step b:first-child{width:38px;height:38px;border-radius:12px;display:grid;place-items:center;background:rgba(108,247,255,.08);color:#6cf7ff}
+@media(max-width:800px){.feature-strip{grid-template-columns:repeat(2,1fr)}.showcase{grid-template-columns:1fr}.showcase-main,.showcase-side{min-height:320px}}
+@media(max-width:480px){.feature-strip{grid-template-columns:1fr}}
+
+
+.cart-toast{position:fixed;right:20px;bottom:20px;z-index:120;padding:14px 18px;border-radius:15px;background:#0d1720;border:1px solid rgba(108,247,255,.35);box-shadow:0 18px 55px rgba(0,0,0,.4);color:#dffcff;transform:translateY(30px);opacity:0;pointer-events:none;transition:.25s}
+.cart-toast.show{transform:none;opacity:1}
+.hero-trust{display:flex;gap:18px;flex-wrap:wrap;margin-top:22px;color:#9ca8b8;font-size:13px}
+.hero-trust span{display:flex;align-items:center;gap:6px}
+.hero-highlight{background:linear-gradient(90deg,#fff,#9ffaff 45%,#c9a7ff 75%,#ffb2e4);-webkit-background-clip:text;background-clip:text;color:transparent}
+.inspiration-grid{display:grid;grid-template-columns:1.2fr .8fr .8fr;grid-template-rows:230px 230px;gap:16px}
+.inspire{border:1px solid rgba(255,255,255,.1);border-radius:25px;position:relative;overflow:hidden;padding:24px;background:#0a1018;display:flex;align-items:flex-end;transition:.3s}
+.inspire:hover{transform:translateY(-5px);border-color:rgba(108,247,255,.35)}
+.inspire.big{grid-row:1/3}
+.inspire:before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 70% 20%,rgba(108,247,255,.18),transparent 38%),radial-gradient(circle at 20% 90%,rgba(173,124,255,.13),transparent 38%)}
+.inspire:nth-child(2):before{background:radial-gradient(circle at 60% 20%,rgba(255,108,207,.18),transparent 40%)}
+.inspire:nth-child(3):before{background:radial-gradient(circle at 60% 30%,rgba(173,124,255,.2),transparent 40%)}
+.inspire:nth-child(4):before{background:radial-gradient(circle at 50% 20%,rgba(108,247,255,.16),transparent 40%)}
+.inspire-content{position:relative;z-index:2}.inspire-icon{font-size:56px;position:absolute;right:24px;top:24px;filter:drop-shadow(0 16px 25px rgba(0,0,0,.4))}
+.inspire.big .inspire-icon{font-size:110px;right:35px;top:45px}
+.cta-wow{position:relative;overflow:hidden;border:1px solid rgba(108,247,255,.22);border-radius:30px;padding:46px;background:linear-gradient(120deg,rgba(108,247,255,.08),rgba(173,124,255,.08),rgba(255,108,207,.06));text-align:center}
+.cta-wow:before{content:"";position:absolute;width:340px;height:340px;border-radius:50%;background:rgba(108,247,255,.08);filter:blur(20px);left:-120px;top:-160px}
+.cta-wow>*{position:relative;z-index:2}
+@media(max-width:800px){.inspiration-grid{grid-template-columns:1fr 1fr;grid-template-rows:auto}.inspire.big{grid-row:auto;grid-column:1/-1;min-height:320px}.inspire{min-height:210px}}
+@media(max-width:520px){.inspiration-grid{grid-template-columns:1fr}.inspire.big{grid-column:auto}.inspire{min-height:220px}.cta-wow{padding:30px 20px}.cart-toast{left:14px;right:14px;bottom:14px}}
+
 
 @media (pointer:fine){
   html,body,a,button,input,select,textarea,.product,.card,.inspire,.ghost-btn,.btn{cursor:none!important}
 }
 
 
-.holo-shell{
-  position:relative;margin:26px 0 30px;padding:22px;border-radius:28px;
-  border:1px solid rgba(255,255,255,.12);
-  background:radial-gradient(circle at var(--mx,50%) var(--my,50%),rgba(108,247,255,.15),transparent 28%),linear-gradient(135deg,rgba(255,255,255,.055),rgba(255,255,255,.018));
-  backdrop-filter:blur(18px);overflow:hidden;box-shadow:0 24px 70px rgba(0,0,0,.28),inset 0 1px 0 rgba(255,255,255,.05)
-}
-.holo-shell:before{
-  content:"";position:absolute;inset:-1px;border-radius:inherit;padding:1px;
-  background:linear-gradient(110deg,transparent 5%,rgba(108,247,255,.7),rgba(173,124,255,.5),rgba(255,108,207,.45),transparent 85%);
-  -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);
-  -webkit-mask-composite:xor;mask-composite:exclude;opacity:.55;pointer-events:none
-}
-.holo-title{display:flex;align-items:center;justify-content:space-between;gap:16px;position:relative;z-index:2;margin-bottom:18px}
-.holo-title strong{font-size:17px;letter-spacing:.08em;text-transform:uppercase}
-.holo-status{font-size:12px;color:#8fa1b6;display:flex;align-items:center;gap:7px}
-.holo-status i{width:7px;height:7px;border-radius:50%;background:#6cf7ff;box-shadow:0 0 14px #6cf7ff;animation:pulseDot 1.8s infinite}
-@keyframes pulseDot{50%{opacity:.35;transform:scale(.72)}}
-.holo-track{display:flex;gap:10px;overflow-x:auto;padding:4px 2px 8px;scrollbar-width:none;position:relative;z-index:2}
-.holo-track::-webkit-scrollbar{display:none}
-.holo-cat{
-  position:relative;flex:0 0 auto;min-width:138px;border:1px solid rgba(255,255,255,.10);
-  background:rgba(8,14,23,.68);color:#dce7f3;border-radius:18px;padding:15px 16px;cursor:pointer;text-align:left;
-  transition:transform .22s ease,border-color .22s ease,box-shadow .22s ease,background .22s ease;overflow:hidden
-}
-.holo-cat:after{content:"";position:absolute;inset:0;background:linear-gradient(120deg,transparent 30%,rgba(255,255,255,.08),transparent 70%);transform:translateX(-120%);transition:.45s}
-.holo-cat:hover:after{transform:translateX(120%)}
-.holo-cat:hover{transform:translateY(-5px) scale(1.02);border-color:rgba(108,247,255,.45);box-shadow:0 14px 35px rgba(108,247,255,.08)}
-.holo-cat.active{background:linear-gradient(135deg,rgba(108,247,255,.15),rgba(173,124,255,.08));border-color:rgba(108,247,255,.6);box-shadow:0 0 0 1px rgba(108,247,255,.08),0 15px 40px rgba(108,247,255,.09)}
-.holo-cat .hc-icon{font-size:24px;display:block;margin-bottom:8px}.holo-cat .hc-name{font-weight:800;display:block}.holo-cat .hc-count{font-size:11px;color:#8593a6;margin-top:4px;display:block}
-.holo-scan{position:absolute;left:-20%;right:-20%;height:1px;top:0;background:linear-gradient(90deg,transparent,#6cf7ff,transparent);box-shadow:0 0 14px rgba(108,247,255,.8);opacity:.35;animation:scanline 5.5s linear infinite;pointer-events:none}
-@keyframes scanline{0%{top:5%}100%{top:95%}}
-.shop-intro-orbit{display:grid;grid-template-columns:1.25fr .75fr;gap:18px;margin-bottom:24px}
-.orbit-card{border:1px solid rgba(255,255,255,.1);border-radius:24px;padding:24px;background:linear-gradient(145deg,rgba(108,247,255,.055),rgba(173,124,255,.035));position:relative;overflow:hidden}
-.orbit-card:before{content:"";position:absolute;width:180px;height:180px;border-radius:50%;border:1px solid rgba(108,247,255,.16);right:-35px;top:-75px;box-shadow:0 0 0 28px rgba(108,247,255,.025),0 0 0 58px rgba(173,124,255,.018);animation:orbitSpin 12s linear infinite}
-@keyframes orbitSpin{to{transform:rotate(360deg)}}
-.orbit-card>*{position:relative;z-index:2}.orbit-label{font-size:11px;letter-spacing:.18em;color:#6cf7ff;text-transform:uppercase}
-@media(max-width:760px){.shop-intro-orbit{grid-template-columns:1fr}.holo-shell{padding:16px;border-radius:22px}.holo-cat{min-width:122px;padding:13px}}
+.feature-hero{padding:90px 0 55px}
+.feature-title{font-size:clamp(48px,8vw,96px);line-height:.9;margin:14px 0 20px;letter-spacing:-.06em}
+.feature-title span{background:linear-gradient(90deg,#fff,#78f8ff 40%,#c09cff 70%,#ff8ed8);-webkit-background-clip:text;background-clip:text;color:transparent}
+.portal-grid{display:grid;grid-template-columns:1.2fr .8fr .8fr;gap:16px}
+.portal{min-height:250px;border:1px solid rgba(255,255,255,.1);border-radius:28px;padding:25px;position:relative;overflow:hidden;background:linear-gradient(145deg,rgba(108,247,255,.06),rgba(173,124,255,.03));transition:.3s}
+.portal:hover{transform:translateY(-7px) scale(1.01);border-color:rgba(108,247,255,.45);box-shadow:0 30px 70px rgba(0,0,0,.3)}
+.portal:first-child{grid-row:span 2;min-height:520px}
+.portal:before{content:"";position:absolute;width:230px;height:230px;border-radius:50%;right:-70px;top:-60px;background:radial-gradient(circle,rgba(108,247,255,.22),transparent 65%);animation:float 6s ease-in-out infinite}
+.portal:nth-child(2):before{background:radial-gradient(circle,rgba(255,108,207,.2),transparent 65%)}.portal:nth-child(3):before{background:radial-gradient(circle,rgba(173,124,255,.2),transparent 65%)}
+.portal-content{position:absolute;left:25px;right:25px;bottom:25px;z-index:2}.portal-icon{font-size:70px;position:absolute;right:28px;top:28px}
+@media(max-width:800px){.portal-grid{grid-template-columns:1fr}.portal:first-child{grid-row:auto;min-height:330px}.portal{min-height:260px}}
 
-
-.category-wow-head{position:relative;border-radius:28px;padding:34px 30px;margin:20px 0 22px;overflow:hidden;border:1px solid rgba(108,247,255,.2);background:radial-gradient(circle at 85% 30%,rgba(108,247,255,.16),transparent 22%),radial-gradient(circle at 72% 72%,rgba(255,108,207,.12),transparent 24%),linear-gradient(135deg,rgba(10,19,29,.96),rgba(13,10,25,.96));box-shadow:0 25px 80px rgba(0,0,0,.28)}
-.category-wow-head h2{font-size:clamp(34px,5vw,62px);line-height:.95;margin:7px 0 12px;max-width:760px}.category-wow-head h2 span{background:linear-gradient(90deg,#fff,#7ff8ff,#bd9cff,#ff91d4);-webkit-background-clip:text;background-clip:text;color:transparent}
-.category-wow-head p{max-width:650px}.category-orb{position:absolute;width:170px;height:170px;border-radius:50%;right:40px;top:32px;border:1px solid rgba(108,247,255,.38);box-shadow:0 0 0 25px rgba(108,247,255,.035),0 0 0 50px rgba(173,124,255,.025),0 0 55px rgba(108,247,255,.14);animation:floatOrb 4s ease-in-out infinite}
-.category-orb:before,.category-orb:after{content:"";position:absolute;inset:20%;border:1px solid rgba(255,108,207,.38);transform:rotate(45deg);animation:spinShape 8s linear infinite}.category-orb:after{inset:36%;border-color:rgba(255,255,255,.35);animation-direction:reverse}
-@keyframes floatOrb{50%{transform:translateY(-10px) scale(1.03)}}@keyframes spinShape{to{transform:rotate(405deg)}}
-.cart-save-note{font-size:12px;color:#95a6b8;margin:-5px 0 15px}.danger-lite{width:100%;margin-top:10px}
-@media(max-width:700px){.category-wow-head{padding:26px 20px 155px}.category-orb{right:calc(50% - 70px);top:auto;bottom:18px;width:140px;height:140px}}
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}.step{border:1px solid var(--line);border-radius:24px;padding:24px;background:rgba(255,255,255,.035);position:relative;overflow:hidden}.step-num{font-size:54px;font-weight:900;color:rgba(108,247,255,.18);line-height:1}.step h3{margin:8px 0}.step:after{content:"";position:absolute;left:0;right:0;bottom:0;height:2px;background:linear-gradient(90deg,var(--cyan),var(--violet),var(--pink));transform:scaleX(.2);transform-origin:left;transition:.3s}.step:hover:after{transform:scaleX(1)}
+@media(max-width:850px){.steps{grid-template-columns:1fr 1fr}}@media(max-width:520px){.steps{grid-template-columns:1fr}}
 
 </style></head>
 <body><div class="cursor-ring"></div><div class="cursor-dot"></div>
@@ -179,30 +203,94 @@ body.cursor-down .cursor-ring{width:24px;height:24px}
   </nav>
 </div></header>
 
-<main><section><div class="wrap">
-<div class="sectionhead"><div><div class="eyebrow">SHOP</div><h2>Alle Produkte</h2><p>Suche oder filtere nach Kategorie.</p></div></div>
-<div class="category-wow-head reveal"><div class="eyebrow">FORMORA // DISCOVERY SYSTEM</div><h2>Nicht suchen.<br><span>Entdecken.</span></h2><p>Jede Kategorie ist eine eigene 3D-Welt. Fahr mit der Maus über den Holo-Navigator oder wische auf dem Handy durch die Bereiche.</p><div class="category-orb" aria-hidden="true"></div></div><input id="search" class="search" placeholder="Produkte suchen …">
-<div class="shop-intro-orbit">
-<div class="orbit-card"><div class="orbit-label">FORMORA // PRODUCT UNIVERSE</div><h3 style="font-size:28px;margin:8px 0 8px">Finde dein nächstes Lieblingsstück.</h3><p style="margin:0">Keine langweiligen Kategorien – navigiere durch unsere 3D-Welten.</p></div>
-<div class="orbit-card"><div class="orbit-label">LIVE COLLECTION</div><div style="font-size:40px;font-weight:900;margin-top:8px" id="liveCount">0</div><p style="margin:0">Produkte aktuell sichtbar</p></div>
+<main>
+<section class="feature-hero"><div class="wrap">
+<div class="eyebrow">SO GEHT’S</div>
+<h1 class="feature-title">Von der Idee<br><span>zum echten Teil.</span></h1>
+<p style="max-width:700px">Einfach, verständlich und ohne Technik-Chaos. Du suchst dir etwas aus, stellst die Preisanfrage und FORMORA macht daraus etwas Greifbares.</p>
+</div></section>
+<section><div class="wrap">
+<div class="steps">
+<div class="step reveal"><div class="step-num">01</div><h3>Entdecken</h3><p>Produkt oder Idee im Shop auswählen.</p></div>
+<div class="step reveal"><div class="step-num">02</div><h3>Warenkorb</h3><p>Alles sammeln. Dein Warenkorb bleibt beim Schließen gespeichert.</p></div>
+<div class="step reveal"><div class="step-num">03</div><h3>Preisanfrage</h3><p>Anfrage senden. Erst dann wird der Warenkorb geleert.</p></div>
+<div class="step reveal"><div class="step-num">04</div><h3>FORMORA</h3><p>Details klären, fertigen und dein Produkt entsteht.</p></div>
 </div>
-<div class="holo-shell" id="holoShell">
-<div class="holo-scan"></div>
-<div class="holo-title"><strong>Holo Navigator</strong><span class="holo-status"><i></i> Kategorie-System aktiv</span></div>
-<div id="filters" class="holo-track"></div>
-</div>
-<div id="products" class="products"></div>
-</div></section></main>
+<div class="cta-wow reveal" style="margin-top:40px"><div class="eyebrow">BEREIT?</div><h2>Schau, was möglich ist.</h2><p>Von praktisch bis außergewöhnlich.</p><a class="btn primary" href="shop.html">Zum Shop →</a></div>
+</div></section>
+</main>
 
 <div id="overlay" class="overlay"></div>
 <aside id="drawer" class="drawer">
   <div style="display:flex;justify-content:space-between;align-items:center"><h3>Warenkorb</h3><button id="closeCart" class="ghost-btn">Schließen</button></div>
-  <div class="cart-save-note">✓ Warenkorb bleibt auf diesem Gerät gespeichert</div><div id="items"></div>
+  <div style="font-size:12px;color:#95a6b8;margin:0 0 12px">✓ Warenkorb bleibt auf diesem Gerät gespeichert</div><div id="items"></div>
   <div style="display:flex;justify-content:space-between;font-size:20px;margin:22px 0"><b>Gesamt</b><b id="sum">0,00 €</b></div>
-  <button id="order" class="btn primary" style="width:100%">Bestellanfrage senden</button><button id="clearCart" class="ghost-btn danger-lite">Warenkorb leeren</button>
+  <button id="order" class="btn primary" style="width:100%">Bestellanfrage senden</button>
 </aside>
-<footer class="footer"><div class="wrap">FORMORA · Shop</div></footer><script>
-const DEFAULT_DATA = {"brand": "FORMORA", "tagline": "3D-MANUFAKTUR · IDEEN WERDEN GREIFBAR", "heroTitle": "Du denkst es. Wir drucken es.", "heroText": "3D-Druck für Modellbau, Figuren, Ersatzteile, Technik, Deko, Haushalt und personalisierte Ideen.", "email": "deine-email@beispiel.de", "products": [{"id": "p1", "cat": "Modellbau", "name": "Diorama Detail Set", "price": 14.9, "desc": "Kleine Details und Zubehörteile für Modellbau-Projekte.", "image": ""}, {"id": "p2", "cat": "Modellbau", "name": "Fahrzeug Detailteil", "price": 17.9, "desc": "Detailteil für Fahrzeuge, Panzer und Modellbauprojekte.", "image": ""}, {"id": "p3", "cat": "Figuren", "name": "Fantasy Büste", "price": 28.9, "desc": "3D-gedruckte Büste zum Sammeln, Bemalen oder Verschenken.", "image": ""}, {"id": "p4", "cat": "Figuren", "name": "Miniaturen Set", "price": 19.9, "desc": "Mehrere kleine Figuren als Demo-Produkt.", "image": ""}, {"id": "p5", "cat": "Ersatzteile", "name": "Ersatzclip Set", "price": 6.9, "desc": "Praktische Ersatzclips als Beispiel für funktionalen 3D-Druck.", "image": ""}, {"id": "p6", "cat": "Technik", "name": "Universal Adapter", "price": 12.9, "desc": "Adapter, Halterungen und technische Bauteile.", "image": ""}, {"id": "p7", "cat": "Technik", "name": "Controller Dock", "price": 18.9, "desc": "Schlichter Halter für Controller und Gaming-Zubehör.", "image": ""}, {"id": "p8", "cat": "Deko", "name": "Design Vase", "price": 22.9, "desc": "Geometrische Vase mit moderner Oberflächenstruktur.", "image": ""}, {"id": "p9", "cat": "Haushalt", "name": "Kabel Organizer", "price": 8.9, "desc": "Kleine Ordnungshilfe für Arbeitsplatz und Zuhause.", "image": ""}, {"id": "p10", "cat": "Haushalt", "name": "Werkzeughalter", "price": 16.9, "desc": "3D-gedruckter Halter für Werkstatt oder Hobbyraum.", "image": ""}, {"id": "p11", "cat": "Personalisiert", "name": "Namensschild Custom", "price": 13.9, "desc": "Personalisiertes Schild mit Wunschname oder kurzem Text.", "image": ""}, {"id": "p12", "cat": "Personalisiert", "name": "Logo Schlüsselanhänger", "price": 9.9, "desc": "Schlüsselanhänger mit individuellem Namen oder Logo.", "image": ""}, {"id": "p13", "cat": "Gaming", "name": "Headset Stand Pro", "price": 21.9, "desc": "Futuristischer Stand für Headsets mit cleanem FORMORA Look.", "image": ""}, {"id": "p14", "cat": "Gaming", "name": "Desk Token Set", "price": 11.9, "desc": "Kleine 3D-Objekte und Marker für Gaming- und Desk-Setups.", "image": ""}, {"id": "p15", "cat": "Geschenke", "name": "Message Cube", "price": 16.9, "desc": "Personalisierbarer Würfel mit Name, Datum oder kurzer Botschaft.", "image": ""}, {"id": "p16", "cat": "Geschenke", "name": "Mini Memory Plaque", "price": 18.9, "desc": "Kleine personalisierte Erinnerungsplatte für besondere Momente.", "image": ""}]};
+
+
+<section>
+<div class="wrap">
+  <div class="sectionhead reveal">
+    <div><div class="eyebrow">FORMORA EXPERIENCE</div><h2>Von der Idee zum echten Teil.</h2><p>Ein moderner 3D-Druck-Service für Einzelstücke, Kleinserien und besondere Projekte.</p></div>
+  </div>
+  <div class="feature-strip">
+    <div class="feature-pill reveal"><strong>⚡ Schnell</strong><span>Direkte Anfrage ohne komplizierte Schritte.</span></div>
+    <div class="feature-pill reveal"><strong>🧪 Materialwahl</strong><span>PLA, PETG, TPU und weitere Optionen.</span></div>
+    <div class="feature-pill reveal"><strong>✦ Individuell</strong><span>Personalisierte Teile und Sonderanfertigungen.</span></div>
+    <div class="feature-pill reveal"><strong>📐 Präzise</strong><span>Für Deko, Technik, Modellbau und Ersatzteile.</span></div>
+  </div>
+
+  <div class="showcase">
+    <div class="showcase-main reveal">
+      <div class="glow-shape"></div>
+      <div style="position:relative;z-index:2">
+        <div class="eyebrow">CUSTOM PRINT</div>
+        <h2 style="font-size:clamp(34px,5vw,62px)">Deine Idee.<br>Deine Form.</h2>
+        <p>Du hast ein eigenes Modell oder brauchst ein spezielles Teil? Stelle dein Projekt im Konfigurator zusammen.</p>
+        
+      </div>
+    </div>
+    <div class="showcase-side reveal">
+      <div class="eyebrow">SO FUNKTIONIERT'S</div>
+      <div class="process">
+        <div class="process-step"><b>01</b><div><b>Idee auswählen</b><p>Produkt aus dem Shop oder eigenes Projekt.</p></div></div>
+        <div class="process-step"><b>02</b><div><b>Konfigurieren</b><p>Material, Farbe, Größe und Menge festlegen.</p></div></div>
+        <div class="process-step"><b>03</b><div><b>Anfrage senden</b><p>Zusammenfassung prüfen und Anfrage abschicken.</p></div></div>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+
+<section>
+<div class="wrap">
+<div class="sectionhead reveal"><div><div class="eyebrow">LASS DICH INSPIRIEREN</div><h2>Nicht einfach gedruckt.<br>Für dich gemacht.</h2><p>Entdecke, was mit 3D-Druck alles möglich ist.</p></div><a class="btn" href="shop.html">Zum Shop →</a></div>
+<div class="inspiration-grid">
+  <a class="inspire big reveal" href="shop.html"><div class="inspire-icon">⚙️</div><div class="inspire-content"><div class="eyebrow">FUNKTIONAL</div><h2 style="font-size:38px">Ersatzteile & Technik</h2><p>Wenn ein kleines Teil fehlt, muss nicht gleich alles neu gekauft werden.</p></div></a>
+  <a class="inspire reveal" href="shop.html"><div class="inspire-icon">♟️</div><div class="inspire-content"><b>Figuren & Modellbau</b><p>Details, Miniaturen und besondere Projekte.</p></div></a>
+  <a class="inspire reveal" href="shop.html"><div class="inspire-icon">✦</div><div class="inspire-content"><b>Deko & Design</b><p>Formen, die auffallen.</p></div></a>
+  <a class="inspire reveal" href="shop.html"><div class="inspire-icon">⌂</div><div class="inspire-content"><b>Haushalt</b><p>Praktische Ideen für den Alltag.</p></div></a>
+  <a class="inspire reveal" href="shop.html"><div class="inspire-icon">Aa</div><div class="inspire-content"><b>Personalisiert</b><p>Produkte mit deinem Namen oder Wunschtext.</p></div></a>
+</div>
+</div>
+</section>
+<section><div class="wrap">
+<div class="cta-wow reveal">
+<div class="eyebrow">FORMORA 3D-MANUFAKTUR</div>
+<h2>Etwas Besonderes gesucht?</h2>
+<p>Schau dir unsere Produkte an und entdecke, was aus einer guten Idee entstehen kann.</p>
+<a class="btn primary" href="shop.html">Jetzt Shop entdecken →</a>
+</div>
+</div></section>
+
+<footer class="footer"><div class="wrap">FORMORA · 3D-Manufaktur <span style="float:right"><a href="admin.html" style="opacity:.35">Admin</a></span></div></footer>
+<script>
+document.addEventListener("DOMContentLoaded",()=>{const d=loadData();document.getElementById("heroTitle").innerHTML=d.heroTitle.replace(". ",".<br>");document.getElementById("heroText").textContent=d.heroText})
+</script>
+<script>
+const DEFAULT_DATA = {"brand": "FORMORA", "tagline": "3D-MANUFAKTUR · IDEEN WERDEN GREIFBAR", "heroTitle": "Aus Ideen werden echte Dinge.", "heroText": "Besondere 3D-Drucke, praktische Lösungen und individuelle Designs – gemacht für Menschen, die nicht einfach irgendetwas von der Stange wollen.", "email": "deine-email@beispiel.de", "products": [{"id": "p1", "cat": "Modellbau", "name": "Diorama Detail Set", "price": 14.9, "desc": "Kleine Details und Zubehörteile für Modellbau-Projekte.", "image": ""}, {"id": "p2", "cat": "Modellbau", "name": "Fahrzeug Detailteil", "price": 17.9, "desc": "Detailteil für Fahrzeuge, Panzer und Modellbauprojekte.", "image": ""}, {"id": "p3", "cat": "Figuren", "name": "Fantasy Büste", "price": 28.9, "desc": "3D-gedruckte Büste zum Sammeln, Bemalen oder Verschenken.", "image": ""}, {"id": "p4", "cat": "Figuren", "name": "Miniaturen Set", "price": 19.9, "desc": "Mehrere kleine Figuren als Demo-Produkt.", "image": ""}, {"id": "p5", "cat": "Ersatzteile", "name": "Ersatzclip Set", "price": 6.9, "desc": "Praktische Ersatzclips als Beispiel für funktionalen 3D-Druck.", "image": ""}, {"id": "p6", "cat": "Technik", "name": "Universal Adapter", "price": 12.9, "desc": "Adapter, Halterungen und technische Bauteile.", "image": ""}, {"id": "p7", "cat": "Technik", "name": "Controller Dock", "price": 18.9, "desc": "Schlichter Halter für Controller und Gaming-Zubehör.", "image": ""}, {"id": "p8", "cat": "Deko", "name": "Design Vase", "price": 22.9, "desc": "Geometrische Vase mit moderner Oberflächenstruktur.", "image": ""}, {"id": "p9", "cat": "Haushalt", "name": "Kabel Organizer", "price": 8.9, "desc": "Kleine Ordnungshilfe für Arbeitsplatz und Zuhause.", "image": ""}, {"id": "p10", "cat": "Haushalt", "name": "Werkzeughalter", "price": 16.9, "desc": "3D-gedruckter Halter für Werkstatt oder Hobbyraum.", "image": ""}, {"id": "p11", "cat": "Personalisiert", "name": "Namensschild Custom", "price": 13.9, "desc": "Personalisiertes Schild mit Wunschname oder kurzem Text.", "image": ""}, {"id": "p12", "cat": "Personalisiert", "name": "Logo Schlüsselanhänger", "price": 9.9, "desc": "Schlüsselanhänger mit individuellem Namen oder Logo.", "image": ""}, {"id": "p13", "cat": "Gaming", "name": "Headset Stand Pro", "price": 21.9, "desc": "Futuristischer Stand für Headsets mit cleanem FORMORA Look.", "image": ""}, {"id": "p14", "cat": "Gaming", "name": "Desk Token Set", "price": 11.9, "desc": "Kleine 3D-Objekte und Marker für Gaming- und Desk-Setups.", "image": ""}, {"id": "p15", "cat": "Geschenke", "name": "Message Cube", "price": 16.9, "desc": "Personalisierbarer Würfel mit Name, Datum oder kurzer Botschaft.", "image": ""}, {"id": "p16", "cat": "Geschenke", "name": "Mini Memory Plaque", "price": 18.9, "desc": "Kleine personalisierte Erinnerungsplatte für besondere Momente.", "image": ""}]};
 function loadData(){
   try{
     const raw=localStorage.getItem("formoraData");
@@ -333,7 +421,7 @@ document.addEventListener("DOMContentLoaded",()=>{
   document.querySelectorAll("[data-tagline]").forEach(x=>x.textContent=d.tagline);
   document.getElementById("cartBtn")?.addEventListener("click",openCart);
   document.getElementById("closeCart")?.addEventListener("click",closeCart);
-  document.getElementById("overlay")?.addEventListener("click",closeCart);document.getElementById("clearCart")?.addEventListener("click",()=>{if(!cart.length)return;if(confirm("Warenkorb wirklich leeren?")){cart=[];saveCart();renderCart();}});
+  document.getElementById("overlay")?.addEventListener("click",closeCart);
   const order=document.getElementById("order");
   if(order)order.onclick=()=>{
     if(!cart.length)return alert("Der Warenkorb ist leer.");
@@ -358,37 +446,4 @@ document.addEventListener("DOMContentLoaded",()=>{
   renderCart();
   restoreCart();
 });
-</script>
-<script>
-document.addEventListener("DOMContentLoaded",()=>{
-  let category="Alle"; const d=loadData(), box=document.getElementById("products"), filters=document.getElementById("filters"), search=document.getElementById("search");
-  const cats=["Alle",...new Set(d.products.map(p=>p.cat))];
-  const icons={"Alle":"✦","Modellbau":"◈","Figuren":"♟","Ersatzteile":"⚙","Technik":"⌁","Deko":"◇","Haushalt":"⌂","Personalisiert":"Aa","Gaming":"⌘","Geschenke":"✦"};
-  filters.innerHTML=cats.map(c=>{const count=c==="Alle"?d.products.length:d.products.filter(p=>p.cat===c).length;return `<button class="holo-cat ${c==="Alle"?"active":""}" data-cat="${c}"><span class="hc-icon">${icons[c]||"✦"}</span><span class="hc-name">${c}</span><span class="hc-count">${count} Produkte</span></button>`}).join("");
-  function render(){
-    const q=search.value.toLowerCase().trim();box.innerHTML="";
-    const visibleProducts=d.products.filter(p=>(category==="Alle"||p.cat===category)&&(!q||(p.name+" "+p.desc+" "+p.cat).toLowerCase().includes(q)));
-    const lc=document.getElementById("liveCount");if(lc)lc.textContent=visibleProducts.length;
-    visibleProducts.forEach(p=>{
-      const el=document.createElement("article");el.className="product reveal show";
-      el.innerHTML=`<div class="pic">${p.image?`<img src="${p.image}" alt="">`:`<div class="fallback">🧩</div>`}</div><div class="info"><small>${p.cat}</small><h3>${p.name}</h3><p>${p.desc}</p><div class="meta"><span class="price">${money(p.price)}</span><button class="btn primary" data-add-product="${p.id}">+ Warenkorb</button></div></div>`;
-      box.appendChild(el)
-    })
-  }
-  filters.addEventListener("click",e=>{const b=e.target.closest("[data-cat]");if(!b)return;category=b.dataset.cat;filters.querySelectorAll(".holo-cat").forEach(x=>x.classList.toggle("active",x===b));render()});
-  search.addEventListener("input",render);render()
-})
-</script>
-<script>
-document.addEventListener("DOMContentLoaded",()=>{
-  const shell=document.getElementById("holoShell");
-  if(shell && matchMedia("(pointer:fine)").matches){
-    shell.addEventListener("mousemove",e=>{
-      const r=shell.getBoundingClientRect();
-      shell.style.setProperty("--mx",((e.clientX-r.left)/r.width*100)+"%");
-      shell.style.setProperty("--my",((e.clientY-r.top)/r.height*100)+"%");
-    });
-  }
-});
-</script>
-</body></html>
+</script></body></html>
