@@ -132,11 +132,24 @@ function loadData(){
 function saveData(data){localStorage.setItem("formoraData",JSON.stringify(data))}
 function money(v){return Number(v||0).toLocaleString("de-DE",{style:"currency",currency:"EUR"})}
 let cart=[];
-try{
-  const savedCart=localStorage.getItem("formoraCart");
-  cart=savedCart?JSON.parse(savedCart):[];
-}catch(e){cart=[];}
-function saveCart(){localStorage.setItem("formoraCart",JSON.stringify(cart));}
+function readCart(){
+  try{
+    const raw=localStorage.getItem("formoraCart_v2")||localStorage.getItem("formoraCart");
+    if(raw){const parsed=JSON.parse(raw);if(Array.isArray(parsed))return parsed;}
+  }catch(e){}
+  return [];
+}
+cart=readCart();
+function saveCart(){
+  try{
+    const raw=JSON.stringify(cart);
+    localStorage.setItem("formoraCart_v2",raw);
+    localStorage.setItem("formoraCart",raw);
+  }catch(e){}
+}
+window.addEventListener("pagehide",saveCart);
+window.addEventListener("beforeunload",saveCart);
+
 
 function addCart(p){const x=cart.find(i=>i.id===p.id);if(x)x.qty++;else cart.push({...p,qty:1});saveCart();renderCart();showCartToast(p.name)}
 function renderCart(){
@@ -172,7 +185,6 @@ document.addEventListener("DOMContentLoaded",()=>{
     const total=money(cart.reduce((a,x)=>a+x.price*x.qty,0));
     const mail=`mailto:${d.email}?subject=${encodeURIComponent("FORMORA Bestellanfrage")}&body=${encodeURIComponent(lines.join("\n")+"\n\nGesamt: "+total)}`;
     location.href=mail;
-    setTimeout(()=>{cart=[];saveCart();renderCart();},600);
   };
   const obs=new IntersectionObserver(entries=>entries.forEach(en=>{if(en.isIntersecting)en.target.classList.add("show")}),{threshold:.12});
   document.querySelectorAll(".reveal").forEach(el=>obs.observe(el));

@@ -158,6 +158,15 @@ body.cursor-down .cursor-ring{width:24px;height:24px}
 .orbit-card>*{position:relative;z-index:2}.orbit-label{font-size:11px;letter-spacing:.18em;color:#6cf7ff;text-transform:uppercase}
 @media(max-width:760px){.shop-intro-orbit{grid-template-columns:1fr}.holo-shell{padding:16px;border-radius:22px}.holo-cat{min-width:122px;padding:13px}}
 
+
+.category-wow-head{position:relative;border-radius:28px;padding:34px 30px;margin:20px 0 22px;overflow:hidden;border:1px solid rgba(108,247,255,.2);background:radial-gradient(circle at 85% 30%,rgba(108,247,255,.16),transparent 22%),radial-gradient(circle at 72% 72%,rgba(255,108,207,.12),transparent 24%),linear-gradient(135deg,rgba(10,19,29,.96),rgba(13,10,25,.96));box-shadow:0 25px 80px rgba(0,0,0,.28)}
+.category-wow-head h2{font-size:clamp(34px,5vw,62px);line-height:.95;margin:7px 0 12px;max-width:760px}.category-wow-head h2 span{background:linear-gradient(90deg,#fff,#7ff8ff,#bd9cff,#ff91d4);-webkit-background-clip:text;background-clip:text;color:transparent}
+.category-wow-head p{max-width:650px}.category-orb{position:absolute;width:170px;height:170px;border-radius:50%;right:40px;top:32px;border:1px solid rgba(108,247,255,.38);box-shadow:0 0 0 25px rgba(108,247,255,.035),0 0 0 50px rgba(173,124,255,.025),0 0 55px rgba(108,247,255,.14);animation:floatOrb 4s ease-in-out infinite}
+.category-orb:before,.category-orb:after{content:"";position:absolute;inset:20%;border:1px solid rgba(255,108,207,.38);transform:rotate(45deg);animation:spinShape 8s linear infinite}.category-orb:after{inset:36%;border-color:rgba(255,255,255,.35);animation-direction:reverse}
+@keyframes floatOrb{50%{transform:translateY(-10px) scale(1.03)}}@keyframes spinShape{to{transform:rotate(405deg)}}
+.cart-save-note{font-size:12px;color:#95a6b8;margin:-5px 0 15px}.danger-lite{width:100%;margin-top:10px}
+@media(max-width:700px){.category-wow-head{padding:26px 20px 155px}.category-orb{right:calc(50% - 70px);top:auto;bottom:18px;width:140px;height:140px}}
+
 </style></head>
 <body><div class="cursor-ring"></div><div class="cursor-dot"></div>
 <header><div class="wrap nav">
@@ -172,7 +181,7 @@ body.cursor-down .cursor-ring{width:24px;height:24px}
 
 <main><section><div class="wrap">
 <div class="sectionhead"><div><div class="eyebrow">SHOP</div><h2>Alle Produkte</h2><p>Suche oder filtere nach Kategorie.</p></div></div>
-<input id="search" class="search" placeholder="Produkte suchen …">
+<div class="category-wow-head reveal"><div class="eyebrow">FORMORA // DISCOVERY SYSTEM</div><h2>Nicht suchen.<br><span>Entdecken.</span></h2><p>Jede Kategorie ist eine eigene 3D-Welt. Fahr mit der Maus über den Holo-Navigator oder wische auf dem Handy durch die Bereiche.</p><div class="category-orb" aria-hidden="true"></div></div><input id="search" class="search" placeholder="Produkte suchen …">
 <div class="shop-intro-orbit">
 <div class="orbit-card"><div class="orbit-label">FORMORA // PRODUCT UNIVERSE</div><h3 style="font-size:28px;margin:8px 0 8px">Finde dein nächstes Lieblingsstück.</h3><p style="margin:0">Keine langweiligen Kategorien – navigiere durch unsere 3D-Welten.</p></div>
 <div class="orbit-card"><div class="orbit-label">LIVE COLLECTION</div><div style="font-size:40px;font-weight:900;margin-top:8px" id="liveCount">0</div><p style="margin:0">Produkte aktuell sichtbar</p></div>
@@ -188,9 +197,9 @@ body.cursor-down .cursor-ring{width:24px;height:24px}
 <div id="overlay" class="overlay"></div>
 <aside id="drawer" class="drawer">
   <div style="display:flex;justify-content:space-between;align-items:center"><h3>Warenkorb</h3><button id="closeCart" class="ghost-btn">Schließen</button></div>
-  <div id="items"></div>
+  <div class="cart-save-note">✓ Warenkorb bleibt auf diesem Gerät gespeichert</div><div id="items"></div>
   <div style="display:flex;justify-content:space-between;font-size:20px;margin:22px 0"><b>Gesamt</b><b id="sum">0,00 €</b></div>
-  <button id="order" class="btn primary" style="width:100%">Bestellanfrage senden</button>
+  <button id="order" class="btn primary" style="width:100%">Bestellanfrage senden</button><button id="clearCart" class="ghost-btn danger-lite">Warenkorb leeren</button>
 </aside>
 <footer class="footer"><div class="wrap">FORMORA · Shop</div></footer><script>
 const DEFAULT_DATA = {"brand": "FORMORA", "tagline": "3D-MANUFAKTUR · IDEEN WERDEN GREIFBAR", "heroTitle": "Du denkst es. Wir drucken es.", "heroText": "3D-Druck für Modellbau, Figuren, Ersatzteile, Technik, Deko, Haushalt und personalisierte Ideen.", "email": "deine-email@beispiel.de", "products": [{"id": "p1", "cat": "Modellbau", "name": "Diorama Detail Set", "price": 14.9, "desc": "Kleine Details und Zubehörteile für Modellbau-Projekte.", "image": ""}, {"id": "p2", "cat": "Modellbau", "name": "Fahrzeug Detailteil", "price": 17.9, "desc": "Detailteil für Fahrzeuge, Panzer und Modellbauprojekte.", "image": ""}, {"id": "p3", "cat": "Figuren", "name": "Fantasy Büste", "price": 28.9, "desc": "3D-gedruckte Büste zum Sammeln, Bemalen oder Verschenken.", "image": ""}, {"id": "p4", "cat": "Figuren", "name": "Miniaturen Set", "price": 19.9, "desc": "Mehrere kleine Figuren als Demo-Produkt.", "image": ""}, {"id": "p5", "cat": "Ersatzteile", "name": "Ersatzclip Set", "price": 6.9, "desc": "Praktische Ersatzclips als Beispiel für funktionalen 3D-Druck.", "image": ""}, {"id": "p6", "cat": "Technik", "name": "Universal Adapter", "price": 12.9, "desc": "Adapter, Halterungen und technische Bauteile.", "image": ""}, {"id": "p7", "cat": "Technik", "name": "Controller Dock", "price": 18.9, "desc": "Schlichter Halter für Controller und Gaming-Zubehör.", "image": ""}, {"id": "p8", "cat": "Deko", "name": "Design Vase", "price": 22.9, "desc": "Geometrische Vase mit moderner Oberflächenstruktur.", "image": ""}, {"id": "p9", "cat": "Haushalt", "name": "Kabel Organizer", "price": 8.9, "desc": "Kleine Ordnungshilfe für Arbeitsplatz und Zuhause.", "image": ""}, {"id": "p10", "cat": "Haushalt", "name": "Werkzeughalter", "price": 16.9, "desc": "3D-gedruckter Halter für Werkstatt oder Hobbyraum.", "image": ""}, {"id": "p11", "cat": "Personalisiert", "name": "Namensschild Custom", "price": 13.9, "desc": "Personalisiertes Schild mit Wunschname oder kurzem Text.", "image": ""}, {"id": "p12", "cat": "Personalisiert", "name": "Logo Schlüsselanhänger", "price": 9.9, "desc": "Schlüsselanhänger mit individuellem Namen oder Logo.", "image": ""}]};
@@ -203,11 +212,24 @@ function loadData(){
 function saveData(data){localStorage.setItem("formoraData",JSON.stringify(data))}
 function money(v){return Number(v||0).toLocaleString("de-DE",{style:"currency",currency:"EUR"})}
 let cart=[];
-try{
-  const savedCart=localStorage.getItem("formoraCart");
-  cart=savedCart?JSON.parse(savedCart):[];
-}catch(e){cart=[];}
-function saveCart(){localStorage.setItem("formoraCart",JSON.stringify(cart));}
+function readCart(){
+  try{
+    const raw=localStorage.getItem("formoraCart_v2")||localStorage.getItem("formoraCart");
+    if(raw){const parsed=JSON.parse(raw);if(Array.isArray(parsed))return parsed;}
+  }catch(e){}
+  return [];
+}
+cart=readCart();
+function saveCart(){
+  try{
+    const raw=JSON.stringify(cart);
+    localStorage.setItem("formoraCart_v2",raw);
+    localStorage.setItem("formoraCart",raw);
+  }catch(e){}
+}
+window.addEventListener("pagehide",saveCart);
+window.addEventListener("beforeunload",saveCart);
+
 
 function addCart(p){const x=cart.find(i=>i.id===p.id);if(x)x.qty++;else cart.push({...p,qty:1});saveCart();renderCart();showCartToast(p.name)}
 function renderCart(){
@@ -243,7 +265,7 @@ document.addEventListener("DOMContentLoaded",()=>{
   document.querySelectorAll("[data-tagline]").forEach(x=>x.textContent=d.tagline);
   document.getElementById("cartBtn")?.addEventListener("click",openCart);
   document.getElementById("closeCart")?.addEventListener("click",closeCart);
-  document.getElementById("overlay")?.addEventListener("click",closeCart);
+  document.getElementById("overlay")?.addEventListener("click",closeCart);document.getElementById("clearCart")?.addEventListener("click",()=>{if(!cart.length)return;if(confirm("Warenkorb wirklich leeren?")){cart=[];saveCart();renderCart();}});
   const order=document.getElementById("order");
   if(order)order.onclick=()=>{
     if(!cart.length)return alert("Der Warenkorb ist leer.");
@@ -251,7 +273,6 @@ document.addEventListener("DOMContentLoaded",()=>{
     const total=money(cart.reduce((a,x)=>a+x.price*x.qty,0));
     const mail=`mailto:${d.email}?subject=${encodeURIComponent("FORMORA Bestellanfrage")}&body=${encodeURIComponent(lines.join("\n")+"\n\nGesamt: "+total)}`;
     location.href=mail;
-    setTimeout(()=>{cart=[];saveCart();renderCart();},600);
   };
   const obs=new IntersectionObserver(entries=>entries.forEach(en=>{if(en.isIntersecting)en.target.classList.add("show")}),{threshold:.12});
   document.querySelectorAll(".reveal").forEach(el=>obs.observe(el));
