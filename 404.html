@@ -175,8 +175,25 @@ body.cursor-down .cursor-ring{width:24px;height:24px}
   html,body,a,button,input,select,textarea,.product,.card,.inspire,.ghost-btn,.btn{cursor:none!important}
 }
 
+
+.intro-screen{position:fixed;inset:0;z-index:9999;background:#05080d;display:grid;place-items:center;transition:opacity .7s ease,visibility .7s ease}
+.intro-screen.hide{opacity:0;visibility:hidden;pointer-events:none}
+.intro-core{text-align:center;position:relative}
+.intro-logo{font-size:clamp(46px,10vw,100px);font-weight:950;letter-spacing:-.06em;background:linear-gradient(90deg,#fff,#74f8ff,#c09cff,#ff8ed8);-webkit-background-clip:text;background-clip:text;color:transparent;animation:introPulse 1.15s ease both}
+.intro-sub{font-size:11px;letter-spacing:.32em;color:#8fa1b5;margin-top:12px;text-transform:uppercase}
+.intro-ring{position:absolute;width:190px;height:190px;border:1px solid rgba(108,247,255,.3);border-radius:50%;left:50%;top:50%;transform:translate(-50%,-50%);box-shadow:0 0 50px rgba(108,247,255,.08);animation:introRing 1.25s ease both}
+@keyframes introPulse{0%{opacity:0;filter:blur(18px);transform:scale(.82)}65%{opacity:1;filter:blur(0);transform:scale(1.04)}100%{transform:scale(1)}}
+@keyframes introRing{0%{opacity:0;transform:translate(-50%,-50%) scale(.2)}70%{opacity:.8}100%{opacity:0;transform:translate(-50%,-50%) scale(1.9)}}
+.new-badge{display:inline-flex;padding:5px 9px;border-radius:999px;background:linear-gradient(90deg,rgba(108,247,255,.15),rgba(255,108,207,.14));border:1px solid rgba(108,247,255,.28);font-size:10px;font-weight:900;letter-spacing:.12em;color:#bffcff}
+.surprise-zone{border:1px solid rgba(255,255,255,.1);border-radius:28px;padding:32px;margin:34px 0;background:radial-gradient(circle at 80% 30%,rgba(255,108,207,.13),transparent 25%),radial-gradient(circle at 20% 70%,rgba(108,247,255,.1),transparent 28%),rgba(255,255,255,.025);text-align:center;overflow:hidden;position:relative}
+.surprise-zone h2{font-size:clamp(32px,5vw,58px);margin:8px 0}.surprise-result{margin:20px auto 0;max-width:500px;padding:20px;border-radius:20px;background:rgba(5,10,17,.72);border:1px solid rgba(108,247,255,.2);display:none}.surprise-result.show{display:block;animation:popResult .45s ease}
+@keyframes popResult{from{opacity:0;transform:scale(.88) rotate(-1deg)}to{opacity:1;transform:none}}
+.review-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}.review-card{border:1px solid rgba(255,255,255,.1);border-radius:22px;padding:22px;background:rgba(255,255,255,.03);transition:.25s}.review-card:hover{transform:translateY(-5px);border-color:rgba(108,247,255,.3)}.stars{letter-spacing:.12em;color:#ffe38b;font-size:18px}.review-name{font-weight:850;margin-top:14px}.verified{font-size:11px;color:#7ff8ff}
+@media(max-width:760px){.review-grid{grid-template-columns:1fr}.surprise-zone{padding:26px 18px}}
+
 </style></head>
-<body><div class="cursor-ring"></div><div class="cursor-dot"></div>
+<body>
+<div class="intro-screen" id="introScreen"><div class="intro-core"><div class="intro-ring"></div><div class="intro-logo">FORMORA</div><div class="intro-sub">Ideas become real</div></div></div><div class="cursor-ring"></div><div class="cursor-dot"></div>
 <header><div class="wrap nav">
   <a class="brand" href="index.html"><span data-brand>FORMORA</span><small data-tagline>3D-MANUFAKTUR · IDEEN WERDEN GREIFBAR</small></a>
   <nav>
@@ -435,4 +452,15 @@ document.addEventListener("DOMContentLoaded",()=>{
   renderCart();
   restoreCart();
 });
-</script></body></html>
+</script><script>
+document.addEventListener("DOMContentLoaded",()=>{
+ const intro=document.getElementById("introScreen");
+ if(!intro)return;
+ const seen=sessionStorage.getItem("formoraIntroSeen");
+ if(seen){intro.remove();return}
+ sessionStorage.setItem("formoraIntroSeen","1");
+ setTimeout(()=>intro.classList.add("hide"),1250);
+ setTimeout(()=>intro.remove(),2050);
+});
+</script>
+</body></html>
